@@ -92,7 +92,7 @@ bing_verify:
 # For external links add external: true
 links:
   - title: Home
-    url: /
+    url:
     external: false
     icon: home
   - title: <i class="icon-book"></i> Documentation
