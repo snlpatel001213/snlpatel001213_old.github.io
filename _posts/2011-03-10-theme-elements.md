@@ -9,7 +9,7 @@ imagefeature: cover6.jpg
 comments: true
 share: true
 ---
-\\[ x = {-b \pm \sqrt{b^2-4ac} \over 2a} \\]
+$$[ x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
 
 Below is just about everything you'll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.
 
