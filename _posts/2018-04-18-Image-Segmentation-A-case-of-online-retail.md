@@ -79,308 +79,212 @@ Figure 4. This flow chart explains all procedure for object localization. 1) A b
 Having captured entire idea behind working on this technique, let's move to the implementation part.
 
 **1)  VGG NETWORK**
-
-    def getModelDefination(trainedModelPath=None):
-     """
-     core definition of model
-     :return: compiled model
-     """
-     # defining convolutional network
-     model = Sequential()
-     model.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
-     model.add(Convolution2D(64, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(64, 3, 3, activation='relu'))
-     model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(128, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(128, 3, 3, activation='relu'))
-     model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(256, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(256, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(256, 3, 3, activation='relu'))
-     model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(ZeroPadding2D((1, 1)))
-     model.add(Convolution2D(512, 3, 3, activation='relu'))
-     model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     model.add(Flatten())
-     model.add(Dense(4096, activation='relu'))
-     model.add(Dropout(0.5))
-     model.add(Dense(4096, activation='relu'))
-     model.add(Dropout(0.5))
-     model.add(Dense(2, activation='softmax'))
-     # compiling model
-     model.compile(optimizer='sgd', loss='categorical_crossentropy',metrics=['accuracy'])
-     # returning Model
-     return model
+```PYTHON
+def getModelDefination(trainedModelPath=None):
+    """
+    core definition of model
+    :return: compiled model
+    """
+    # defining convolutional network
+    model = Sequential()
+    model.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
+    model.add(Convolution2D(64, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(64, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    model.add(Flatten())
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(2, activation='softmax'))
+    # compiling model
+    model.compile(optimizer='sgd', loss='categorical_crossentropy',metrics=['accuracy'])
+    # returning Model
+    return model
+```
 
 **2)  VGG CAM model**
+```python
+def VGGCAM(nb_classes, num_input_channels):
+    """
+    Build Convolution Neural Network
+    nb_classes : nb_classes (int) number of classes
+    num_input_channels : number of channel to be kept in last convolutional model of VGGCAM
+    returns : Neural Net model
+    """
+    VGGCAM = Sequential()
+    VGGCAM.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
+    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    # Add another conv layer with ReLU + GAP
+    VGGCAM.add(Convolution2D(num_input_channels, 3, 3, activation='relu', border_mode="same"))
+    VGGCAM.add(AveragePooling2D((14, 14)))
+    VGGCAM.add(Flatten())
+    # Add the W layer
+    VGGCAM.add(Dense(nb_classes, activation='softmax'))
+    # VGGCAM.summary()
+    return VGGCAM
+```
+Note that last fully connected layers of the VGG are replaced by large pooling layer $VGGCAM.add(AveragePooling2D((14, 14)))$.
 
-    def VGGCAM(nb_classes, num_input_channels):
-     """
-     Build Convolution Neural Network
-     nb_classes : nb_classes (int) number of classes
-     num_input_channels : number of channel to be kept in last convolutional model of VGGCAM
-     returns : Neural Net model
-     """
-     VGGCAM = Sequential()
-     VGGCAM.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
-     VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
-     VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
-     VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-     VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     VGGCAM.add(ZeroPadding2D((1, 1)))
-     VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-     # Add another conv layer with ReLU + GAP
-     VGGCAM.add(Convolution2D(num_input_channels, 3, 3, activation='relu', border_mode="same"))
-     VGGCAM.add(AveragePooling2D((14, 14)))
-     VGGCAM.add(Flatten())
-     # Add the W layer
-     VGGCAM.add(Dense(nb_classes, activation='softmax'))
-     # VGGCAM.summary()
-     return VGGCAM
-
-Note that last fully connected layers of the VGG are replaced by large pooling layer VGGCAM.add(AveragePooling2D((14, 14))).
-
-3) Fine tuning VGG Model with specialized train set
+***3) Fine tuning VGG Model with specialized train set***
 
 As explained earlier, at each iteration a new set of images fine tune VGG model and after training, weights are passed to VGGCAM model, where with the help of large pulling a class activation is developed for the given class
 
+```python
 def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_channels):
+    """
+    Train VGG model
+    args: VGG_weight_path (str) path to keras vgg16 weights
+    nb_classes (int) number of classes
+    num_input_channels (int) number of conv filters to add
+    in before the GAP layer
+    """
+    # Load model
+    trainedModel = getModelDefination(trainedModelPath=trained_weight_path)
+    # Compile
+    sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+    trainedModel.compile(optimizer=sgd, loss='categorical_crossentropy',metrics=['accuracy'])
+    for epochNo in range(0,epoches):\
+    print "Epoch No : ", epochNo
+    batch_Count = 0
+    for image,labels in getImageAndCategory(batchSize):
+        try:
+            # last 10 image selection for test while training
+            # train model with rest images
+            for i in range (len(trainedModel.layers)):
+                print (i, trainedModel.layers[i].name),
+                print "\n"+"%"*100
+                trainedModel.fit(image,labels,batch_size=50,nb_epoch=1, verbose=1)
+                modelCAM = VGGCAM(nb_classes,num_input_channels)
+                print ("NAME OF LAYERS IN NEW MODEL FOR CAM")
+                for i in range (len(modelCAM.layers)):
+                    print (i, modelCAM.layers[i].name),
+                    # Load weights to new model
+                    for k in range(len(trainedModel.layers)):
+                        weights = trainedModel.layers[k].get_weights()
+                        modelCAM.layers[k].set_weights(weights)
+                        # modelCAM.layers[k].trainable=True
+                        if k==16:
+                            break
+                            print('\nModel loaded.')
+                            batch_Count = batch_Count + 1
+                            modelCAM.save_weights("CAM_Trained.h5")
+                            # to see performance of model on one of the image while training
+                            plot_classmap("CAM_Trained.h5",trainedModel, "jeans.jpg", 1,nb_classes,num_input_channels)
+                        except:
+                            print traceback.print_exc()
+```
 
- """
-
- Train VGG model
-
- args: VGG_weight_path (str) path to keras vgg16 weights
-
- nb_classes (int) number of classes
-
- num_input_channels (int) number of conv filters to add
-
- in before the GAP layer
-
- """
-
- # Load model
-
- trainedModel = getModelDefination(trainedModelPath=trained_weight_path)
-
- # Compile
-
- sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
-
- trainedModel.compile(optimizer=sgd, loss='categorical_crossentropy',metrics=['accuracy'])
-
- for epochNo in range(0,epoches):
-
- print "Epoch No : ", epochNo
-
- batch_Count = 0
-
- for image,labels in getImageAndCategory(batchSize):
-
- try:
-
- # last 10 image selection for test while training
-
- # train model with rest images
-
- for i in range (len(trainedModel.layers)):
-
- print (i, trainedModel.layers[i].name),
-
- print "\n"+"%"*100
-
- trainedModel.fit(image,labels,batch_size=50,nb_epoch=1, verbose=1)
-
- modelCAM = VGGCAM(nb_classes,num_input_channels)
-
- print ("NAME OF LAYERS IN NEW MODEL FOR CAM")
-
- for i in range (len(modelCAM.layers)):
-
- print (i, modelCAM.layers[i].name),
-
- # Load weights to new model
-
- for k in range(len(trainedModel.layers)):
-
- weights = trainedModel.layers[k].get_weights()
-
- modelCAM.layers[k].set_weights(weights)
-
- # modelCAM.layers[k].trainable=True
-
- if k==16:
-
- break
-
- print('\nModel loaded.')
-
- batch_Count = batch_Count + 1
-
- modelCAM.save_weights("CAM_Trained.h5")
-
- # to see performance of model on one of the image while training
-
- plot_classmap("CAM_Trained.h5",trainedModel, "jeans.jpg", 1,nb_classes,num_input_channels)
-
- except:
-
- print traceback.print_exc()
-
-4) Get Heat MAP
-
+**4) Getting Heat MAP**
+``` PYTHON
 def get_classmap(model, X, nb_classes, batch_size, num_input_channels, ratio):
+    """
+    To get heat map from the weight present in last convolutional layer in VGGCAM network
+    """
+    inc = model.layers[0].input
+    conv6 = model.layers[-4].output
+    conv6_resized = absconv.bilinear_upsampling(conv6, ratio,
+    batch_size=batch_size,
+    num_input_channels=num_input_channels)
+    WT = model.layers[-1].W.T
+    conv6_resized = K.reshape(conv6_resized, (1, -1, 224 * 224))
+    classmap = K.dot(WT, conv6_resized)
+    # print "\n"+"$"*50
+    classmap = classmap.reshape((1, nb_classes, 224, 224))
+    get_cmap = K.function([inc], classmap)
+    return get_cmap([X])
+```
 
- """
+***5) Potting heat map***
 
- To get heat map from the weight present in last convolutional layer in VGGCAM network
+```python
+def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,nb_classes, num_input_channels, ratio=16):
+    """
+    Plot class activation map of trained VGGCAM model
+    args: VGGCAM_weight_path (str) path to trained keras VGGCAM weights
+    img_path (str) path to the image for which we get the activation map
+    label (int) label (0 to nb_classes-1) of the class activation map to plot
+    nb_classes (int) number of classes
+    num_input_channels (int) number of conv filters to add
+    in before the GAP layer
+    ratio (int) upsampling ratio (16 * 14 = 224)
+    """
+    # Load and compile model
+    modelCAM = VGGCAM(nb_classes, num_input_channels)
+    modelCAM.load_weights(VGGCAM_weight_path)
+    modelCAM.compile(loss="categorical_crossentropy", optimizer="sgd")
+    img = image.load_img(img_path, target_size=(224, 224))
+    x = image.img_to_array(img)
+    #vgg model is used to predict class
+    label = trainedModel.predict_classes(x.reshape(1, 3, 224, 224),verbose=0)
+    batch_size = 1
+    classmap = get_classmap(modelCAM,x.reshape(1, 3, 224, 224),nb_classes,batch_size,num_input_channels=num_input_channels,ratio=ratio)
+    classes = ["jeans","tshirt"]
+    print "PREDICTED LABEL : ", classes[label[0]]
+    plt.imshow(img)
+    activation = classmap[0,0, :, :]+classmap[0,1, :, :]
+    plt.imshow(activation,
+    cmap='jet',
+    alpha=0.5,
+    interpolation='nearest')
+    plt.show()
 
- """
-
- inc = model.layers[0].input
-
- conv6 = model.layers[-4].output
-
- conv6_resized = absconv.bilinear_upsampling(conv6, ratio,
-
- batch_size=batch_size,
-
- num_input_channels=num_input_channels)
-
- WT = model.layers[-1].W.T
-
- conv6_resized = K.reshape(conv6_resized, (1, -1, 224 * 224))
-
- classmap = K.dot(WT, conv6_resized)
-
-# print "\n"+"$"*50
-
- classmap = classmap.reshape((1, nb_classes, 224, 224))
-
- get_cmap = K.function([inc], classmap)
-
- return get_cmap([X])
-
-5) plotting heat map
-
-def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,
-
- nb_classes, num_input_channels, ratio=16):
-
- """
-
- Plot class activation map of trained VGGCAM model
-
- args: VGGCAM_weight_path (str) path to trained keras VGGCAM weights
-
- img_path (str) path to the image for which we get the activation map
-
- label (int) label (0 to nb_classes-1) of the class activation map to plot
-
- nb_classes (int) number of classes
-
- num_input_channels (int) number of conv filters to add
-
- in before the GAP layer
-
- ratio (int) upsampling ratio (16 * 14 = 224)
-
- """
-
- # Load and compile model
-
- modelCAM = VGGCAM(nb_classes, num_input_channels)
-
- modelCAM.load_weights(VGGCAM_weight_path)
-
- modelCAM.compile(loss="categorical_crossentropy", optimizer="sgd")
-
- img = image.load_img(img_path, target_size=(224, 224))
-
- x = image.img_to_array(img)
-
- #vgg model is used to predict class
-
- label = trainedModel.predict_classes(x.reshape(1, 3, 224, 224),verbose=0)
-
- batch_size = 1
-
- classmap = get_classmap(modelCAM,
-
- x.reshape(1, 3, 224, 224),
-
- nb_classes,
-
- batch_size,
-
- num_input_channels=num_input_channels,
-
- ratio=ratio)
-
- classes = ["jeans","tshirt"]
-
- print "PREDICTED LABEL : ", classes[label[0]]
-
- plt.imshow(img)
-
- #mapping activation on the basis of weights
-
- activation = classmap[0,0, :, :]+classmap[0,1, :, :]
-
- plt.imshow(activation,
-
- cmap='jet',
-
- alpha=0.5,
-
- interpolation='nearest')
-
- plt.show()
-
-# plt.imsave(VGGCAM_weight_path+".jpg",classmap[0, label, :, :])
-
-
+```
 
 When I progressively checked performance improvement in the model epoch by epoch, I got following result, It is very clear that if such large amount of specific examples are provided it can actually perform great.
 
