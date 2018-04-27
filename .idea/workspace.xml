@@ -2,98 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fff4ca03-7ec0-49e4-a11a-3ebe429cbbd0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/alaska.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/bef_main_page.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/bef_post.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/bg_about.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/bg_contact.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/bora-bora.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/canyon.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/face.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/himalayan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/indonesia.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/malaysia.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/nevada.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/new-york.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/new-zealand.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/sweden.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/video/mountains.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/video/mountains.mp4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/video/mountains.ogv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/video/mountains.webm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/analytics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/arrow_top.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/banner.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/disqus.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/head.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/javascripts.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/newsletter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/pagination.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_includes/social_footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/default.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/post.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_pages/about.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_pages/contact.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_pages/tags.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2011-03-10-theme-elements.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2012-05-22-readability-post.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2014-06-19-documentation.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2014-07-19-introducing-notepad.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2014-07-23-why-jekyll.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-03-the-wonderful-himalayan.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-04-texas-grand-canyon.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-05-sweden-beautiful-forest.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-08-malaysia-free-swimming.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-10-indonesia-rocky-mountains.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-11-nevada-on-the-way-to-nevada.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-indonesia-rocky-mountains.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-malaysia-free-swimming.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-nevada-on-the-way-to-nevada.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-sweden-beautiful-forest.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-texas-grand-canyon.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2017-07-12-the-wonderful-himalayan.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/2018-04-18-Image-Segmentation-A-case-of-online-retail.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_about.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_contact.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_media.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_post.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_smooth.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_syntax.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_tags.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/_variables.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/main.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_arrow_top.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_banner.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_cards.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_comment_area.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_footer.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_header.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_newsletter.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/parts/_pagination.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/tools/_animate.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/css/sass/tools/_normalize.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/fonts/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/jquery-3.2.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/jquery.vide.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_layouts/main.html" afterPath="$PROJECT_DIR$/_layouts/main.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -114,11 +24,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            <state relative-caret-position="-377">
+              <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="68" column="40" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="68" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_layouts/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -133,6 +63,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/_layouts/main.html" />
       </list>
     </option>
   </component>
@@ -165,6 +96,16 @@
             <path>
               <item name="snlpatel001213.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="snlpatel001213.github.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="snlpatel001213.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snlpatel001213.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="snlpatel001213.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snlpatel001213.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="snlpatel001213.github.io" type="b2602c69:ProjectViewProjectNode" />
@@ -222,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524840744720</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new beginning">
+      <created>1524840974394</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1524840974394</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -273,8 +221,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        <state relative-caret-position="-377">
+          <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="68" column="40" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="68" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
           <folding />
         </state>
       </provider>
