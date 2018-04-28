@@ -1,4 +1,12 @@
-# Image Segmentation - A case of online retail
+---
+layout: post
+title: "Image Segmentation - A case of online retail"
+img: himalayan.jpg # Add image post (optional)
+date: 2017-07-03 12:55:00 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+tag: [Image Segmentation, Python]
+---
+
 Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
 All codes related to this blog can be found on my [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/vggcam) page
 Before running code, download following requirements and place in the same working directory
@@ -10,7 +18,9 @@ Before running code, download following requirements and place in the same worki
 
 4) In case of any error, first check requirements.txt file. check whether any updated package is giving error? (mostly Keras)
 
-![](https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_662,h_662,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp)
+<p align="center">
+  <img  src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_662,h_662,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
+</p>
 
 Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
 
