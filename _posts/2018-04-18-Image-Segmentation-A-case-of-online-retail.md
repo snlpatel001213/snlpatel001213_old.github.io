@@ -19,7 +19,7 @@ Before running code, download following requirements and place in the same worki
 4) In case of any error, first check requirements.txt file. check whether any updated package is giving error? (mostly Keras)
 
 <p align="center">
-  <img  src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_662,h_662,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
+  <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_662,h_662,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
 </p>
 
 Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
@@ -39,9 +39,11 @@ Now the third point is tricky if you see the millions of products and thousand o
 Training a machine for all product in the world is a computationally expensive task so I did, what ever I could with available resources.
 
 Here in this tutorial, we will practically see, how to not only identify an object in the image but also to locate it where it exists in the image. Before I tell you anything I want you to look at below given image whereby entire concept in pictured. The same thing we want to achieve- technically called as Image Segmentation.
+
 <p align="center">
-<img  src="https://static.wixstatic.com/media/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png/v1/fill/w_945,h_355,al_c,lg_1/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png">
+<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png/v1/fill/w_945,h_355,al_c,lg_1/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png">
 </p>
+
 ```Figure 1. Image segmentation thereby separating different object class wise in picture.```
 
 Techniques for image segmentation/object localization have come a long way. A decade earlier we used to have techniques like Haar, Shift, and Hog for Image segmentation. With invent and advancement of GPU based CNN architecture a revolution in images segmentation started and soon all giant like Facebook and Microsoft jumped into it. It all started with a paper from MIT -“Learning Deep Features for Discriminative Localization

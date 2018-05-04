@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fff4ca03-7ec0-49e4-a11a-3ebe429cbbd0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_pages/about.html" afterPath="$PROJECT_DIR$/_pages/about.html" />
-=======
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_pages/about.html" afterPath="$PROJECT_DIR$/_pages/about.html" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md" afterPath="$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,105 +14,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="697">
               <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="12" />
-<<<<<<< HEAD
-=======
-=======
-    <leaf>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014-07-23-why-jekyll.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2014-07-23-why-jekyll.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
       <file leaf-file-name="contact.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_pages/contact.html">
           <provider selected="true" editor-type-id="text-editor">
-=======
-      <file leaf-file-name="2017-07-03-the-wonderful-himalayan.markdown" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2017-07-03-the-wonderful-himalayan.markdown">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2011-03-10-theme-elements.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2011-03-10-theme-elements.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2012-05-22-readability-post.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2012-05-22-readability-post.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2013-05-23-readability-feature-post.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
->>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="contact.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_pages/contact.html">
-=======
       <file leaf-file-name="2014-06-19-documentation.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2014-06-19-documentation.md">
           <provider selected="true" editor-type-id="text-editor">
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
@@ -127,16 +43,11 @@
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="about.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_pages/about.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-=======
-      <file leaf-file-name="2018-04-18-Image-Segmentation-A-case-of-online-retail.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-04-18-Image-Segmentation-A-case-of-online-retail.md">
->>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -145,19 +56,11 @@
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="about.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_pages/about.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-=======
-      <file leaf-file-name="2014-07-19-introducing-notepad.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2014-07-19-introducing-notepad.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
               <folding />
             </state>
@@ -185,13 +88,7 @@
         <option value="$PROJECT_DIR$/_includes/header.html" />
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/_pages/about.html" />
-=======
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/_pages/about.html" />
-=======
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
       </list>
     </option>
@@ -230,14 +127,7 @@
             <path>
               <item name="snlpatel001213.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="snlpatel001213.github.io" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
               <item name="_pages" type="462c0819:PsiDirectoryNode" />
-=======
-<<<<<<< HEAD
-              <item name="_pages" type="462c0819:PsiDirectoryNode" />
-=======
-              <item name="_posts" type="462c0819:PsiDirectoryNode" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
             </path>
           </expand>
@@ -320,10 +210,6 @@
       <option name="project" value="LOCAL" />
       <updated>1524890436169</updated>
     </task>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
     <task id="LOCAL-00007" summary="test post added">
       <created>1524890593177</created>
       <option name="number" value="00007" />
@@ -332,11 +218,6 @@
       <updated>1524890593177</updated>
     </task>
     <option name="localTasksCounter" value="8" />
-<<<<<<< HEAD
-=======
-=======
-    <option name="localTasksCounter" value="7" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
     <servers />
   </component>
@@ -344,14 +225,7 @@
     <frame x="464" y="165" width="1311" height="783" extended-state="6" />
     <editor active="true" />
     <layout>
-<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2573007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-<<<<<<< HEAD
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2573007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25335437" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -384,16 +258,8 @@
     <MESSAGE value="mathjax added" />
     <MESSAGE value="footer commented" />
     <MESSAGE value="disqus added" />
-<<<<<<< HEAD
     <MESSAGE value="test post added" />
     <option name="LAST_COMMIT_MESSAGE" value="test post added" />
-=======
-<<<<<<< HEAD
-    <MESSAGE value="test post added" />
-    <option name="LAST_COMMIT_MESSAGE" value="test post added" />
-=======
-    <option name="LAST_COMMIT_MESSAGE" value="disqus added" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
   </component>
   <component name="XDebuggerManager">
@@ -539,30 +405,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="697">
           <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="12" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="697">
-          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="12" />
-=======
-        <state relative-caret-position="201">
-          <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="9" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/_pages/contact.html">
-=======
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/_pages/contact.html">
-=======
-    <entry file="file://$PROJECT_DIR$/_posts/2014-07-23-why-jekyll.md">
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -570,21 +420,10 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/_pages/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-=======
-    <entry file="file://$PROJECT_DIR$/_posts/2017-07-03-the-wonderful-himalayan.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-04-18-Image-Segmentation-A-case-of-online-retail.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -592,50 +431,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2014-07-19-introducing-notepad.md">
->>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/_pages/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-=======
-    <entry file="file://$PROJECT_DIR$/_posts/2014-06-19-documentation.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2012-05-22-readability-post.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2011-03-10-theme-elements.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2013-05-23-readability-feature-post.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
->>>>>>> a2b520a3e8ce0c988cf46e2689e846a609ac30ea
 >>>>>>> 289a6b679350c727e34dcd3f1833f6caf0c63da8
           <folding />
         </state>
