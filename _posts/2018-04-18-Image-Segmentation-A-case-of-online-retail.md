@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Image Segmentation - A case of online retail"
-img: himalayan.jpg # Add image post (optional)
+img: image_segmentation_1.webp # Add image post (optional)
 date: 2017-07-03 12:55:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [Image Segmentation, Python]
