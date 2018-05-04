@@ -4296,15 +4296,15 @@ cite {
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   margin: 0;
+  background-color: rgb(255, 3, 44);
   color: #ffffff;
-  background-color: rgba(210, 84, 105, 0.4);
 }
 
 .post header .post_title {
   padding: 1rem;
   font-size: 2rem;
   margin: 0;
-  background-color: rgba(192, 51, 74, 0.4);
+  background-color: rgb(255, 3, 44);
   color: #ffffff;
 }
 
