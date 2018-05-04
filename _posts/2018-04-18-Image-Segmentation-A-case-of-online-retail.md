@@ -74,7 +74,10 @@ A class activation map for a particular category indicates the discriminative im
 
 The overall architecture of the VGG model Class Activation Mapping model can be shown by the following image.
 
-![](https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp)
+![]()
+<p align="center">
+  <img  src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
+</p>
 
 ```Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”```
 
