@@ -3855,10 +3855,10 @@ body {
 }
 
 p {
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
   line-height: 1.75rem;
   margin: 0 0 1.75rem;
-  color: #525c65;
+  color: #3b4044;
   font-weight: 400;
 }
 
