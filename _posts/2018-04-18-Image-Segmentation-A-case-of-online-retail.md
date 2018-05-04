@@ -54,7 +54,10 @@ In this blog I have started with something basic, basically, I am going to imple
 
 In this tutorial, we will see, How we can implement and utilize image segmentation for online retails.
 
-![](https://static.wixstatic.com/media/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png/v1/fill/w_945,h_555,al_c,usm_0.66_1.00_0.01/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png)
+<p align="center">
+<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png/v1/fill/w_945,h_555,al_c,usm_0.66_1.00_0.01/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png">
+</p>
+
 
 ```Figure 2. Approaches and research in field of image segmentation```
 
@@ -87,14 +90,16 @@ The overall architecture of the VGG model Class Activation Mapping model can be 
 
 A function which takes a particular class and generates 2D heat map for that class taking weight of last convolution layer of VGGCAM
 
-![](https://static.wixstatic.com/media/884a24_766543488dbd414594e3a542b1ebba18~mv2.jpg/v1/fill/w_752,h_584,al_c,lg_1,q_85/884a24_766543488dbd414594e3a542b1ebba18~mv2.webp)
+<p align="center">
+<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_766543488dbd414594e3a542b1ebba18~mv2.jpg/v1/fill/w_752,h_584,al_c,lg_1,q_85/884a24_766543488dbd414594e3a542b1ebba18~mv2.webp">
+</p>
 
 ```Figure 4. This flow chart explains all procedure for object localization. 1) A batch generator provides images and labels repetitively. 2) A VGG model with pre-trained wights, get fine tuned on provided images with labels 3) at each iteration, from weights of VGG, last fully connected layers are removed and convolutional layer with pull size $14*14$ introduced. 4) Vgg network will predict the class of the test image pass its weights and predicted class to VGGCAM model. VGGCAM model will produce class activation map and class activation generator plot such weights into the 2D heat map.```
 
 Having captured entire idea behind working on this technique, let's move to the implementation part.
 
 **1)  VGG NETWORK**
-```PYTHON
+```Python
 def getModelDefination(trainedModelPath=None):
     """
     core definition of model
