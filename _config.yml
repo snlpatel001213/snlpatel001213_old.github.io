@@ -44,16 +44,7 @@ paginate_path: /page:num/
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
-    input: GFM
-      syntax_highlighter_opts:
-        default_lang: html
-        css_class: 'highlight'
-        span:
-          line_numbers: false
-        block:
-          line_numbers: true
-          start_line: 1
+highlighter: rouge
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
