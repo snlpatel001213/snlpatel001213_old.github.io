@@ -4290,6 +4290,11 @@ cite {
   bottom: 0;
 }
 
+img.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
 .post header .post_meta {
   display: inline-block;
   text-transform: uppercase;
