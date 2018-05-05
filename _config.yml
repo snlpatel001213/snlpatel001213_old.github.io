@@ -39,9 +39,10 @@ mailchimp: # add your MailChimp form identifier. For example - blogenjoyfreedom.
 analytics:
 timezone:    Asia/Dhaka
 future:      true
+pygments:    true
 highlighter: pygments
 markdown:    kramdown
-paginate:    5
+paginate:    12
 paginate_path: "/page:num/"
 
 kramdown:
