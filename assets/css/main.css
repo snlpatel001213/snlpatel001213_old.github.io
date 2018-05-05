@@ -3525,7 +3525,7 @@ template {
 .highlighter-rouge {
   color: #157ca4;
   font-weight: 400;
-  border: 0px double;
+  border: 1px double;
   -webkit-border-radius: 3px;
   border-radius: 1px;
   padding: 0.1rem 0.5rem;

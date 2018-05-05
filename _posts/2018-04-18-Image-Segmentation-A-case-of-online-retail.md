@@ -3,7 +3,7 @@ layout: post
 title: "Image Segmentation - A case of online retail"
 img: image_segmentation_1.webp # Add image post (optional)
 date: 2017-07-03 12:55:00 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+description: Understanding Image Segmentation. Image Segmentation done using VGG-CAM technique. # Add post description (optional)
 tag: [Image Segmentation, Python]
 ---
 
@@ -55,8 +55,9 @@ Here I am defining famous VGG network which was used by Visual Geometry Group, a
 
 3) VGGCAM Model
 CAM stands for Class Activation Mapping. This model is special and has specialized layer. In this model, all fully connected layer from the bottom of the VGG model is replaced by a convolutional layer and max pooling with the massive size of $14 * 14$. usually we use pool size of $2 * 2$ or $3 * 3$. but when pulled with such a high pool size the weights heat map actually represents the portion of the image which was actually responsible for the prediction of the class. The pulled filter will be multiplied by factor $16$ so that $[14 * 14]$ scale out by multiplying with factor $16$ yields heat map of size $[224 * 224]$ (size of the actual image). Such heat map shows higher activation at the portion of the image which is responsible for prediction of given class of in the image. A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category.
-The overall architecture of the VGG model Class Activation Mapping model can be shown by the following image.<p align="center">
- <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
+The overall architecture of the VGG model Class Activation Mapping model can be shown by the following image.
+<p align="center">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
 </p>
 
  __Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”__
@@ -174,7 +175,7 @@ def VGGCAM(nb_classes, num_input_channels):
 Note that last fully connected layers of the VGG are replaced by large pooling layer VGGCAM.add(AveragePooling2D((14, 14))).
 
 **3) Fine tuning VGG Model with specialized train set**
-As explained earlier, at each iteration a new set of images fine tune VGG model and after training, weights are passed to VGGCAM model, where with the help of large pulling a class activation is developed for the given class
+As explained earlier, at each iteration a new set of images fine tune VGG model and after training, weights are passed to VGGCAM model, where with the help of large pulling a class activation is developed for the given class.
 ```python
 def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_channels):
     """
