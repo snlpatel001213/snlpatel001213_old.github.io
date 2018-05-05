@@ -63,7 +63,7 @@ It is having following components :
 
 3) VGGCAM Model
 
-CAM stands for Class Activation Mapping.This model is special and has specialized layer. In this model, all fully connected layer from the bottom of the VGG model is replaced by a convolutional layer and max pooling with the massive size of $14 * 14$. usually we use pool size of $2*2$ or $3*3$. but when pulled with such a high pool size the weights heat map actually represents the portion of the image which was actually responsible for the prediction of the class. The pulled filter will be multiplied by factor 16 so that $[14* 14]$ scale out by multiplying with factor 16 yields heat map of size $[224 * 224]$ (size of the actual image). Such heat map shows higher activation at the portion of the image which is responsible for prediction of given class of in the image.
+CAM stands for Class Activation Mapping.This model is special and has specialized layer. In this model, all fully connected layer from the bottom of the VGG model is replaced by a convolutional layer and max pooling with the massive size of $14 * 14$. usually we use pool size of $2 * 2$ or $3 * 3 $. but when pulled with such a high pool size the weights heat map actually represents the portion of the image which was actually responsible for the prediction of the class. The pulled filter will be multiplied by factor 16 so that $ [14* 14] $ scale out by multiplying with factor 16 yields heat map of size $[224 * 224]$ (size of the actual image). Such heat map shows higher activation at the portion of the image which is responsible for prediction of given class of in the image.
 
 A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category.
 
