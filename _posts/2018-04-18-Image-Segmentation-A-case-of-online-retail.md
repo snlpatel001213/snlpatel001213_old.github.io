@@ -174,7 +174,6 @@ def VGGCAM(nb_classes, num_input_channels):
 Note that last fully connected layers of the VGG are replaced by large pooling layer VGGCAM.add(AveragePooling2D((14, 14))).
 
 **3) Fine tuning VGG Model with specialized train set**
-
 As explained earlier, at each iteration a new set of images fine tune VGG model and after training, weights are passed to VGGCAM model, where with the help of large pulling a class activation is developed for the given class
 ```python
 def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_channels):
@@ -242,7 +241,6 @@ def get_classmap(model, X, nb_classes, batch_size, num_input_channels, ratio):
 ```
 
 **5) Potting heat map**
-
 ```python
 def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,nb_classes, num_input_channels, ratio=16):
     """
