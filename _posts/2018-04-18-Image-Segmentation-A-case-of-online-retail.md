@@ -188,7 +188,7 @@ def VGGCAM(nb_classes, num_input_channels):
     # VGGCAM.summary()
     return VGGCAM
 ```
-Note that last fully connected layers of the VGG are replaced by large pooling layer $VGGCAM.add(AveragePooling2D((14, 14)))$.
+Note that last fully connected layers of the VGG are replaced by large pooling layer \$VGGCAM.add(AveragePooling2D((14, 14)))\$.
 
 ***3) Fine tuning VGG Model with specialized train set***
 
