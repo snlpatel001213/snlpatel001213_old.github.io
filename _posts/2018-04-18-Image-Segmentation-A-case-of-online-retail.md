@@ -88,7 +88,7 @@ A function which takes a particular class and generates 2D heat map for that cla
 Having captured entire idea behind working on this technique, let's move to the implementation part.
 
 **1)  VGG NETWORK**
-```Python
+```python
 def getModelDefination(trainedModelPath=None):
     """
     core definition of model
