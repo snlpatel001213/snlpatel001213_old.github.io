@@ -7,40 +7,7 @@ layout: default
     height: auto;
 }
 </style>
-<script>
-MathJax.Hub.Config({
-    config: ["MMLorHTML.js"],
-    extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
-    jax: ["input/TeX"],
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-    },
-    TeX: {
-        TagSide: "right",
-        TagIndent: ".8em",
-        MultLineWidth: "85%",
-        equationNumbers: {
-           autoNumber: "AMS",
-        },
-        unicode: {
-           fonts: "STIXGeneral,'Arial Unicode MS'"
-        }
-    },
-    showProcessingMessages: false
-});
-// MathJax.Hub.Config({
-//             extensions: ["tex2jax.js"],
-//             jax: ["input/TeX", "output/HTML-CSS"],
-//             tex2jax: {
-//                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-//                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-//                 processEscapes: true
-//             },
-//         "HTML-CSS": { availableFonts: ["TeX"] }
-//   });
-</script>
+
 {% include header.html %}
 
 <main class="post_content">
