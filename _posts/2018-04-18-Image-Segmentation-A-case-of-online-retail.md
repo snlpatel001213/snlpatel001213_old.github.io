@@ -7,22 +7,12 @@ description: You’ll find this post in your `_posts` directory. Go ahead and ed
 tag: [Image Segmentation, Python]
 ---
 
-Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
-All codes related to this blog can be found on my [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/vggcam) page
+>All codes related to this blog can be found on my [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/vggcam) page
 Before running code, download following requirements and place in the same working directory
-1) Download VGG_ 16 weights from [here](https://drive.google.com/file/d/0B5mEsS-c9HHAdUNtWmo2NDltaTA/view?usp=sharing)
-
-2) Download required images from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NG7kcqmTiNC4ExfQ) (unzip and place the folder in current working directory)
-
-3) Download annotation files from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NEwv5o291y0k99ww) (unzip and place the folder in current working directory)
-
-4) In case of any error, first check requirements.txt file. check whether any updated package is giving error? (mostly Keras)
-
-<p align="center">
-  <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_662,h_662,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
-</p>
-
-Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
+>1. Download VGG_ 16 model weights from [here](https://drive.google.com/file/d/0B5mEsS-c9HHAdUNtWmo2NDltaTA/view?usp=sharing)
+>2. Download required images from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NG7kcqmTiNC4ExfQ) (unzip and place the folder in current working directory)
+>3. Download annotation files from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NEwv5o291y0k99ww) (unzip and place the folder in current working directory)
+>4. In case of any error, first check requirements.txt file. check wheather any updated package is giving error? (mostly Keras)
 
 From a couple of days, I was reading the papers regarding, R-CNN and its advancements. In earlier blog-post, I have given a clear explanation of how things work for object detection in an image. Next question is how to locate that object. This is where RCNN comes in picture. RCNN is capable of identifying an object in an image and it repetitive manner can tag many objects in the same image. RCNN is not as simple as we were have done many image e classification.
 
@@ -218,7 +208,7 @@ def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_ch
     # Compile
     sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
     trainedModel.compile(optimizer=sgd, loss='categorical_crossentropy',metrics=['accuracy'])
-    for epochNo in range(0,epoches):\
+    for epochNo in range(0,epoches):
     print "Epoch No : ", epochNo
     batch_Count = 0
     for image,labels in getImageAndCategory(batchSize):
@@ -250,7 +240,7 @@ def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_ch
 ```
 
 **4) Getting Heat MAP**
-``` PYTHON
+``` Python
 def get_classmap(model, X, nb_classes, batch_size, num_input_channels, ratio):
     """
     To get heat map from the weight present in last convolutional layer in VGGCAM network
@@ -307,8 +297,11 @@ def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,nb_classes, n
 
 When I progressively checked performance improvement in the model epoch by epoch, I got following result, It is very clear that if such large amount of specific examples are provided it can actually perform great.
 
-![](https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_728,h_728,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp)
 
-Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)
+<p align="center">
+<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_728,h_728,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
+</p>
+
+```Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)```
 
 I do understand, that this requires a lot of training, I have tried to develop a prototype. To this prototype, one can provide N number images and M number of classes to make the prediction. To train such model it would require highly powerful, state of art GPUs.
