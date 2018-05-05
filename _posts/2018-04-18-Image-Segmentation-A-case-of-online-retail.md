@@ -34,7 +34,7 @@ Here in this tutorial, we will practically see, how to not only identify an obje
 <img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png/v1/fill/w_945,h_355,al_c,lg_1/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png">
 </p>
 
-```Figure 1. Image segmentation thereby separating different object class wise in picture.```
+`Figure 1. Image segmentation thereby separating different object class wise in picture.`
 
 Techniques for image segmentation/object localization have come a long way. A decade earlier we used to have techniques like Haar, Shift, and Hog for Image segmentation. With invent and advancement of GPU based CNN architecture a revolution in images segmentation started and soon all giant like Facebook and Microsoft jumped into it. It all started with a paper from MIT -“Learning Deep Features for Discriminative Localization
 
@@ -49,7 +49,7 @@ In this tutorial, we will see, How we can implement and utilize image segmentati
 </p>
 
 
-```Figure 2. Approaches and research in field of image segmentation```
+`Figure 2. Approaches and research in field of image segmentation`
 
 This tutorial is really complicated than earlier ones. This involves two massive models and lot of information processing to get the desired output. All codes are available on my GitHub page and I will be explaining each block of code step by step here in this blog.
 
@@ -73,7 +73,7 @@ The overall architecture of the VGG model Class Activation Mapping model can be 
   <img  class="img-responsive"  src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
 </p>
 
-```Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”```
+`Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”`
 
 4) A class activation map generator
 
@@ -83,7 +83,7 @@ A function which takes a particular class and generates 2D heat map for that cla
 <img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_766543488dbd414594e3a542b1ebba18~mv2.jpg/v1/fill/w_752,h_584,al_c,lg_1,q_85/884a24_766543488dbd414594e3a542b1ebba18~mv2.webp">
 </p>
 
-```Figure 4. This flow chart explains all procedure for object localization. 1) A batch generator provides images and labels repetitively. 2) A VGG model with pre-trained wights, get fine tuned on provided images with labels 3) at each iteration, from weights of VGG, last fully connected layers are removed and convolutional layer with pull size $14*14$ introduced. 4) Vgg network will predict the class of the test image pass its weights and predicted class to VGGCAM model. VGGCAM model will produce class activation map and class activation generator plot such weights into the 2D heat map.```
+`Figure 4. This flow chart explains all procedure for object localization. 1) A batch generator provides images and labels repetitively. 2) A VGG model with pre-trained wights, get fine tuned on provided images with labels 3) at each iteration, from weights of VGG, last fully connected layers are removed and convolutional layer with pull size $14*14$ introduced. 4) Vgg network will predict the class of the test image pass its weights and predicted class to VGGCAM model. VGGCAM model will produce class activation map and class activation generator plot such weights into the 2D heat map.`
 
 Having captured entire idea behind working on this technique, let's move to the implementation part.
 
@@ -240,7 +240,7 @@ def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_ch
 ```
 
 **4) Getting Heat MAP**
-``` Python
+``` python
 def get_classmap(model, X, nb_classes, batch_size, num_input_channels, ratio):
     """
     To get heat map from the weight present in last convolutional layer in VGGCAM network
@@ -302,6 +302,6 @@ When I progressively checked performance improvement in the model epoch by epoch
 <img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_728,h_728,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
 </p>
 
-```Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)```
+`Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)`
 
 I do understand, that this requires a lot of training, I have tried to develop a prototype. To this prototype, one can provide N number images and M number of classes to make the prediction. To train such model it would require highly powerful, state of art GPUs.
