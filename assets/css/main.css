@@ -3523,11 +3523,11 @@ template {
 }
 
 .highlighter-rouge {
-  color: #e74b3c;
+  color: #157ca4;
   font-weight: 400;
-  border: 1px solid #607D8B;
+  border: 1px double;
   -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 1px;
   padding: 0.1rem 0.5rem;
 }
 

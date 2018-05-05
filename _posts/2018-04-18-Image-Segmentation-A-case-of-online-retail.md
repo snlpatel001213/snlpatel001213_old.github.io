@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "Image Segmentation - A case of online retail"
 img: image_segmentation_1.webp # Add image post (optional)
@@ -8,86 +8,69 @@ tag: [Image Segmentation, Python]
 ---
 
 >All codes related to this blog can be found on my [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/vggcam) page
-Before running code, download following requirements and place in the same working directory
->1. Download VGG_ 16 model weights from [here](https://drive.google.com/file/d/0B5mEsS-c9HHAdUNtWmo2NDltaTA/view?usp=sharing)
->2. Download required images from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NG7kcqmTiNC4ExfQ) (unzip and place the folder in current working directory)
->3. Download annotation files from [here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NEwv5o291y0k99ww) (unzip and place the folder in current working directory)
+Before running code, download following dependancies and place in the same working directory
+>1. Download VGG_ 16 model weights from [Here](https://drive.google.com/file/d/0B5mEsS-c9HHAdUNtWmo2NDltaTA/view?usp=sharing)
+>2. Download required images from [Here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NG7kcqmTiNC4ExfQ) (unzip and place the folder in current working directory)
+>3. Download annotation files from [Here](https://1drv.ms/u/s!Atn7BMbmwAZ4h4NEwv5o291y0k99ww) (unzip and place the folder in current working directory)
 >4. In case of any error, first check requirements.txt file. check wheather any updated package is giving error? (mostly Keras)
 
-From a couple of days, I was reading the papers regarding, R-CNN and its advancements. In earlier blog-post, I have given a clear explanation of how things work for object detection in an image. Next question is how to locate that object. This is where RCNN comes in picture. RCNN is capable of identifying an object in an image and it repetitive manner can tag many objects in the same image. RCNN is not as simple as we were have done many image e classification.
+In this tutorial, we will practically see, how to identify an object in the image but also to locate it where it exists in the image. Before I tell you anything I want you to look at below given image whereby entire concept in pictured. The same thing we want to achieve- technically called as Image Segmentation/Image localization.
 
-I could try RCNN with VGG network but I wanted to do something practical usable one. So I choose an example of retail business. To understand the problem first we need to understand the logic behind How big retail works. Let's take Amazon as an example, this guy is huge with millions of items up and available. To put anything on amazon, may have following procedure
+<p align="center">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png/v1/fill/w_945,h_355,al_c,lg_1/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png">
+</p>
+
+__Figure 1. Image segmentation thereby separating different object class wise in picture.__
+
+Techniques for image segmentation/object localization have come a long way. A decade earlier we used to have techniques like Haar, Shift, and Hog for Image segmentation. With invent and advancement of GPU based CNN architecture a revolution in images segmentation started and soon giants like Facebook and Microsoft jumped into it. Since past 10 years it ws going slow paced but it was accelerated with series of research paper published after 2013 one of them was a paper from MIT -“[Learning Deep Features for Discriminative Localization](https://arxiv.org/pdf/1512.04150.pdf)” by Bolei Zhou and coworkers in 2014. Soon after this paper Ross Girshick came up with his research paper “[Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/abs/1311.2524)” simply known as Regions with Convolutional Neural Network or R-CNN. Soon after this a team at Microsoft came up with more precise and faster algorithm of R-CNN and named it as [Fast-RCNN](https://arxiv.org/abs/1504.08083). Soon after this research, Facebook came up with more precise [Mask R-CNN](https://arxiv.org/abs/1703.06870) and few researchers came up with [Faster R-CNN](https://arxiv.org/abs/1506.01497). Chase to achieve state of art Segmentation still continue but we have achieved a lot in this segment in past 4years.
+
+In this blog I have started with something basic, basically, I am going to implement technique described in a paper a paper “[Learning Deep Features for Discriminative Localization](https://arxiv.org/abs/1512.04150)” by Bolei Zhou and coworkers. This will be a starting point for our next set of implementations on Image segmentation.
+<p align="center">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png/v1/fill/w_945,h_555,al_c,usm_0.66_1.00_0.01/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png">
+</p>
+
+__Figure 2. Approaches and research in field of image segmentation__
+
+In this tutorial, we will see, How we can implement and utilize image segmentation for online retails. I will be taking example of online retail to understand andimplement this problem step by step. To understand the problem first we need to understand the logic behind How big retail works. Let's take Amazon as an example, this guy is huge with millions of items up and available. To put anything on amazon, may have following procedure
 
 1) A retailer or bulk producer reach out to Amazon.
 2) Ask for Amazon for selling something.
 3) Amazon grant permissions and access permissions to its sale management console.
 4) If that retailer want to sell a “T-shirt for Male” to Amazon he performed following steps In given online form by Amazon, retailers enter relevant details including :
-A) valid name B) image C) its hierarchy Garments> male > t-shirt > slim fit D) other information
+- Valid name
+- Product Image
+- Its hierarchy in product catalogue, such as a "slim-fit T-shirt" may require following hierarchy to be selected Garments > male > t-shirt > slim fit
+- Other information
 
-Now the third point is tricky if you see the millions of products and thousand of such category exists Now got me ?? its quite tiresome job and time-consuming too. Considering this, I have an idea, If that t-shirt was automatically classified into hierarchy upon uploading its image to Amazon portal, nice isn't it??. In addition to this other related products are identified from photograph and added and properly classified automatically . we could at least save some time and keep out retailer happy and productive too. If any such retailer wants to sell 100 products, he needs to follow this step 1000 times.
+Now the third point is tricky if you see the millions of products and practically thousand of such category can exists. Now got me ?? Its quite tiresome job and time-consuming too. Considering this. If any a retailer wants to sell 100 products, he needs to follow this step 100 times., I have an idea, If that t-shirt was automatically classified into hierarchy upon uploading its image to Amazon portal, nice isn't it??. In addition to this other related products are identified from photograph and added and properly classified automatically . We could at least save some time and keep out retailer happy and productive too.
 
-Training a machine for all product in the world is a computationally expensive task so I did, what ever I could with available resources.
+Training a machine for all products in the world is a computationally expensive task. This tutorial is really complicated than earlier ones. This involves two massive models and lot of information processing to get the desired output. All codes are available on my GitHub page and I will be explaining each block of code step by step here in this blog.
 
-Here in this tutorial, we will practically see, how to not only identify an object in the image but also to locate it where it exists in the image. Before I tell you anything I want you to look at below given image whereby entire concept in pictured. The same thing we want to achieve- technically called as Image Segmentation.
-
-<p align="center">
-<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png/v1/fill/w_945,h_355,al_c,lg_1/884a24_036f7f0c135c451691d576a9548a7f21~mv2.png">
-</p>
-
-`Figure 1. Image segmentation thereby separating different object class wise in picture.`
-
-Techniques for image segmentation/object localization have come a long way. A decade earlier we used to have techniques like Haar, Shift, and Hog for Image segmentation. With invent and advancement of GPU based CNN architecture a revolution in images segmentation started and soon all giant like Facebook and Microsoft jumped into it. It all started with a paper from MIT -“Learning Deep Features for Discriminative Localization
-
-” by Bolei Zhou and coworkers in 2014. Soon after this paper Ross Girshick came up with his research paper “Rich feature hierarchies for accurate object detection and semantic segmentation” simply known as Regions with Convolutional Neural Network or R-CNN. Soon a team at Microsoft came up with more precise and faster algorithm of R-CNN and named it as fast-RCNN. Soon after this facebook came up with more precise Mask R-CNN and few researchers came up with faster R-CNN. Chase to achieve state of art Segmentation still continue but we have achieved a lot in this segment in past 3 years.
-
-In this blog I have started with something basic, basically, I am going to implement technique described in a paper a paper “Learning Deep Features for Discriminative Localization” by Bolei Zhou and coworkers. This will be a starting point for our next set of implementations on Image segmentation.
-
-In this tutorial, we will see, How we can implement and utilize image segmentation for online retails.
-
-<p align="center">
-<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png/v1/fill/w_945,h_555,al_c,usm_0.66_1.00_0.01/884a24_6971eaa576cd44abaa9cfaf4c3ab1694~mv2.png">
-</p>
-
-
-`Figure 2. Approaches and research in field of image segmentation`
-
-This tutorial is really complicated than earlier ones. This involves two massive models and lot of information processing to get the desired output. All codes are available on my GitHub page and I will be explaining each block of code step by step here in this blog.
-
-The over all flow of the blog goes in this way:
-
-It is having following components :
+The over all flow of the blog is having following components :
 
 1) Batch wise Image generator – It's obvious that all Images will not be present in RAM at a time. The job of the batch generator is to load the batch of required Images to RAM and keep it in Numpy format.
 
-2) VGG Network Model, Its famous model generated by Visual Geometry Group - University of Oxford. VGG was trained on 1000 different classes and fine tuning such network on a small specialized dataset (our retail data set) would yield great results.
+2) VGG Network Model,
+Here I am defining famous VGG network which was used by Visual Geometry Group, an academic group focused on [computer vision](https://en.wikipedia.org/wiki/Computer_vision "Computer vision") at [Oxford University](https://en.wikipedia.org/wiki/Oxford_University "Oxford University") and  won [ILSVRC-2014](http://www.image-net.org/challenges/LSVRC/2014/) compitition. VGG was trained on 1000 different classes and fine tuning such network on a small specialized dataset (our retail data set) would yield great results.
 
 3) VGGCAM Model
-
-CAM stands for Class Activation Mapping.This model is special and has specialized layer. In this model, all fully connected layer from the bottom of the VGG model is replaced by a convolutional layer and max pooling with the massive size of $14 * 14$. usually we use pool size of $2 * 2$ or $3 * 3$. but when pulled with such a high pool size the weights heat map actually represents the portion of the image which was actually responsible for the prediction of the class. The pulled filter will be multiplied by factor 16 so that $ [14* 14] $ scale out by multiplying with factor 16 yields heat map of size $[224 * 224]$ (size of the actual image). Such heat map shows higher activation at the portion of the image which is responsible for prediction of given class of in the image.
-
-A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category.
-
-The overall architecture of the VGG model Class Activation Mapping model can be shown by the following image.
-
-<p align="center">
-  <img  class="img-responsive"  src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
+CAM stands for Class Activation Mapping. This model is special and has specialized layer. In this model, all fully connected layer from the bottom of the VGG model is replaced by a convolutional layer and max pooling with the massive size of $14 * 14$. usually we use pool size of $2 * 2$ or $3 * 3$. but when pulled with such a high pool size the weights heat map actually represents the portion of the image which was actually responsible for the prediction of the class. The pulled filter will be multiplied by factor $16$ so that $[14 * 14]$ scale out by multiplying with factor $16$ yields heat map of size $[224 * 224]$ (size of the actual image). Such heat map shows higher activation at the portion of the image which is responsible for prediction of given class of in the image. A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category.
+The overall architecture of the VGG model Class Activation Mapping model can be shown by the following image.<p align="center">
+ <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.jpg/v1/fill/w_945,h_444,al_c,lg_1,q_85/884a24_d33b406f28164dcb8199f0454d5103d0~mv2.webp">
 </p>
 
-`Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”`
+ __Figure 3. Simplified Image showing how Cass activation mapping works by creators of the “Learning Deep Features for Discriminative Localization”__
 
 4) A class activation map generator
-
-A function which takes a particular class and generates 2D heat map for that class taking weight of last convolution layer of VGGCAM
-
-<p align="center">
-<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_766543488dbd414594e3a542b1ebba18~mv2.jpg/v1/fill/w_752,h_584,al_c,lg_1,q_85/884a24_766543488dbd414594e3a542b1ebba18~mv2.webp">
+A function which takes a particular class and generates 2D heat map for that class taking weight of last convolution layer of VGGCAM<p align="center">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_766543488dbd414594e3a542b1ebba18~mv2.jpg/v1/fill/w_752,h_584,al_c,lg_1,q_85/884a24_766543488dbd414594e3a542b1ebba18~mv2.webp">
 </p>
 
-`Figure 4. This flow chart explains all procedure for object localization. 1) A batch generator provides images and labels repetitively. 2) A VGG model with pre-trained wights, get fine tuned on provided images with labels 3) at each iteration, from weights of VGG, last fully connected layers are removed and convolutional layer with pull size $14*14$ introduced. 4) Vgg network will predict the class of the test image pass its weights and predicted class to VGGCAM model. VGGCAM model will produce class activation map and class activation generator plot such weights into the 2D heat map.`
+__Figure 4. This flow chart explains all procedure for object localization. 1) A batch generator provides images and labels repetitively. 2) A VGG model with pre-trained wights, get fine tuned on provided images with labels 3) at each iteration, from weights of VGG, last fully connected layers are removed and convolutional layer with pull size $14*14$ introduced. 4) Vgg network will predict the class of the test image pass its weights and predicted class to VGGCAM model. VGGCAM model will produce class activation map and class activation generator plot such weights into the 2D heat map.__
 
-Having captured entire idea behind working on this technique, let's move to the implementation part.
+Having captured entire idea behind working, let's move to the implementation part.
 
-**1)  VGG NETWORK**
+**1) VGG NETWORK**
 ```python
 def getModelDefination(trainedModelPath=None):
     """
@@ -139,7 +122,7 @@ def getModelDefination(trainedModelPath=None):
     return model
 ```
 
-**2)  VGG CAM model**
+**2) VGG CAM model**
 ```python
 def VGGCAM(nb_classes, num_input_channels):
     """
@@ -188,12 +171,11 @@ def VGGCAM(nb_classes, num_input_channels):
     # VGGCAM.summary()
     return VGGCAM
 ```
-Note that last fully connected layers of the VGG are replaced by large pooling layer $VGGCAM.add(AveragePooling2D((14, 14)))$.
+Note that last fully connected layers of the VGG are replaced by large pooling layer VGGCAM.add(AveragePooling2D((14, 14))).
 
-***3) Fine tuning VGG Model with specialized train set***
+**3) Fine tuning VGG Model with specialized train set**
 
 As explained earlier, at each iteration a new set of images fine tune VGG model and after training, weights are passed to VGGCAM model, where with the help of large pulling a class activation is developed for the given class
-
 ```python
 def train_VGGCAM(trained_weight_path, nb_classes,epoches,batchSize, num_input_channels):
     """
@@ -259,7 +241,7 @@ def get_classmap(model, X, nb_classes, batch_size, num_input_channels, ratio):
     return get_cmap([X])
 ```
 
-***5) Potting heat map***
+**5) Potting heat map**
 
 ```python
 def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,nb_classes, num_input_channels, ratio=16):
@@ -294,14 +276,12 @@ def plot_classmap(VGGCAM_weight_path, trainedModel,img_path, label,nb_classes, n
     plt.show()
 
 ```
-
 When I progressively checked performance improvement in the model epoch by epoch, I got following result, It is very clear that if such large amount of specific examples are provided it can actually perform great.
 
-
 <p align="center">
-<img  class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_728,h_728,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_700e66406e174b4bb337c04db223cf11~mv2.jpg/v1/fill/w_728,h_728,al_c,q_85,usm_0.66_1.00_0.01/884a24_700e66406e174b4bb337c04db223cf11~mv2.webp">
 </p>
 
-`Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)`
+__Figure 5. Progressive object localization with VGGCAM to localize T-shirt in the picture (Red flare represents region being responsible for prediction of class T-shirt)__
 
 I do understand, that this requires a lot of training, I have tried to develop a prototype. To this prototype, one can provide N number images and M number of classes to make the prediction. To train such model it would require highly powerful, state of art GPUs.
