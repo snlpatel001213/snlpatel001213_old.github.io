@@ -60,53 +60,52 @@ A) Overview
       + Supply chain management
       + release of a new product in market
 
-	This is a much wider topic to deal with, almost all part of market research aims for actionable competitive intelligence.
-	Such entities of interest may of two type
-	1) Definite: when we keep watch over definite known entities. This makes our task simpler, few examples are :
+    This is a much wider topic to deal with, almost all part of market research aims for actionable competitive intelligence.Such entities of interest may of two type
+1) Definite: when we keep watch over definite known entities. This makes our task simpler, few examples are :
 a) Name of all public companies registered in Nasdaq or NSE or BSE.
 b) Narrowing our interest. Out of all politician in India, we keep watch over some of them. If we keep watch over all of them, we end up with an indefinite list and such list changes time by time.
-	2) Indefinite (variable): keeping our scope limited (definite) may make our task easy but often do not provide information about factor may be passively influencing out task out of scope.
+2) Indefinite (variable): keeping our scope limited (definite) may make our task easy but often do not provide information about factor may be passively influencing out task out of scope.
 Few example of indefinite scope are :
-			a) Keeping watch over new medicine compound invented by some company for some disease. You may argue whats new in that because billions of compounds in the world exists and new are invented day by day. It's really hard to keep watch on. If we keep a list of such entities then one must iterate through all stored chemical in order to find out one present in news/tweet. Such loop iterate over billions of chemical name each time a tweet or newsfeed arrives in the system. One cannot keep watch over newly invented chemical compounds by keeping a stationary list.
-			b) name of a place where some incidence happened. The World is full of places and its never a good idea to keep list of all places and apply string matching whenever a new news/tweet arrives in the system
+            a) Keeping watch over new medicine compound invented by some company for some disease. You may argue whats new in that because billions of compounds in the world exists and new are invented day by day. It's really hard to keep watch on. If we keep a list of such entities then one must iterate through all stored chemical in order to find out one present in news/tweet. Such loop iterate over billions of chemical name each time a tweet or newsfeed arrives in the system. One cannot keep watch over newly invented chemical compounds by keeping a stationary list.
+            b) name of a place where some incidence happened. The World is full of places and its never a good idea to keep list of all places and apply string matching whenever a new news/tweet arrives in the system
 
-	**B) Technology**
-	Now comes how to identify such entities to at least separate data of our use form the huge amount of streaming or stationary data.
-	Named entity recognition is a bigger task, and cannot be accomplished by string matching and regex because of following reasons:
-	1) An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
-	2) Use of regex makes the overall system slower. it is practically impossible to design a regular expression which takes care of all wild cases.
-	3) Although fuzzy searching with a threshold by applying distance measure algorithm is little bit practical idea but do not provide required control.
+    **B) Technology**
+    Now comes how to identify such entities to at least separate data of our use form the huge amount of streaming or stationary data.
+    Named entity recognition is a bigger task, and cannot be accomplished by string matching and regex because of following reasons:
+    1) An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
+    2) Use of regex makes the overall system slower. it is practically impossible to design a regular expression which takes care of all wild cases.
+    3) Although fuzzy searching with a threshold by applying distance measure algorithm is little bit practical idea but do not provide required control.
 
-	At the end we are left with one thing in hand, to design such a system which is having sufficient knowledge about domain, syntax, and grammar of the language to identify such entities without any predefined list. Such system should also be capable of predict new entities which were unknown the time of training.
-	Named entity recognition(NER) is addressed by NLTK and SPACY like toolbox by providing NER for companies, locations, organizations, and products. In practice, this functionality never made for industrial grade NER and to achieve greater perfection one must train their own NER on custom data.
-	Named entity resolution mainly solved by the application of Conditional Random Field (CRF). A CRF is a discriminative, batch, tagging model, in the same general family as a Maximum Entropy Markov model.
-	What I have gained practically after using CRF for Named entity recognition is :
-	1) CRF gives around 70% practical accuracy and its false positive rate is much higher.
-	2) Such NER system if trained in ensemble with better deep learning techniques like LSTM and CNN it gives very good results
+    At the end we are left with one thing in hand, to design such a system which is having sufficient knowledge about domain, syntax, and grammar of the language to identify such entities without any predefined list. Such system should also be capable of predict new entities which were unknown the time of training.
+    Named entity recognition(NER) is addressed by NLTK and SPACY like toolbox by providing NER for companies, locations, organizations, and products. In practice, this functionality never made for industrial grade NER and to achieve greater perfection one must train their own NER on custom data.
+    Named entity resolution mainly solved by the application of Conditional Random Field (CRF). A CRF is a discriminative, batch, tagging model, in the same general family as a Maximum Entropy Markov model.
+    What I have gained practically after using CRF for Named entity recognition is :
+    1) CRF gives around 70% practical accuracy and its false positive rate is much higher.
+    2) Such NER system if trained in ensemble with better deep learning techniques like LSTM and CNN it gives very good results
 
-	Logically in an ensemble of CNN, LSTM and CRF each component is having its own purpose
-	1) CNN
-	Convolution networks are made to identify visually similar features. Employing CNN will identifying the entity that may have resemblance with a previously exposed entity and hence explicit training with an entire list of entities is not required.
-	Example:
-	A) Auckland of New Zealand and Oakland, California
-	B) Names of major antibiotics ends with suffix “mycin” such chloromycin, streptomycin etc
-	2) LSTM
-	LSTM is known for language processing, LSTM stands for Long Short-Term Memory. LSTM being a derived form of RNN, it takes care of inter-word dependencies.
-	For example: for to identify name of companies, Microsoft corporation is given as one of the names while training, it will identify Deloitte Corporation also as company name as it would inherently make a rule that something before word corporation can be a name of organization.
-	Bidirectional LSTM applies such logic in both the direction of word; forward and backward direction so most robust results can be obtained.
-	3) CRF
-	CRF takes word level as well as inter-word level feature in consideration.
-	If w1 w2 w3 are three consecutive words in a sentence then CRF takes following features to calculate probability of w2 being an entity.
-	For w1 w2 and w3, it will generate the following feature
-	1) is_capital – [Share name are written in capital in general; e.g. GOOG, MSFT]
-	2) is_small
-	3) is_title case [title case have greater probability of being an entity]
-	4) is_alphanumeric
-	5) is_number
-	6) word length [bioplogical names are longer in general]
-	etc.. one may append such “n” number of relevant feature.
+    Logically in an ensemble of CNN, LSTM and CRF each component is having its own purpose
+    1) CNN
+    Convolution networks are made to identify visually similar features. Employing CNN will identifying the entity that may have resemblance with a previously exposed entity and hence explicit training with an entire list of entities is not required.
+    Example:
+    A) Auckland of New Zealand and Oakland, California
+    B) Names of major antibiotics ends with suffix “mycin” such chloromycin, streptomycin etc
+    2) LSTM
+    LSTM is known for language processing, LSTM stands for Long Short-Term Memory. LSTM being a derived form of RNN, it takes care of inter-word dependencies.
+    For example: for to identify name of companies, Microsoft corporation is given as one of the names while training, it will identify Deloitte Corporation also as company name as it would inherently make a rule that something before word corporation can be a name of organization.
+    Bidirectional LSTM applies such logic in both the direction of word; forward and backward direction so most robust results can be obtained.
+    3) CRF
+    CRF takes word level as well as inter-word level feature in consideration.
+    If w1 w2 w3 are three consecutive words in a sentence then CRF takes following features to calculate probability of w2 being an entity.
+    For w1 w2 and w3, it will generate the following feature
+    1) is_capital – [Share name are written in capital in general; e.g. GOOG, MSFT]
+    2) is_small
+    3) is_title case [title case have greater probability of being an entity]
+    4) is_alphanumeric
+    5) is_number
+    6) word length [bioplogical names are longer in general]
+    etc.. one may append such “n” number of relevant feature.
 
-	An overall system for named entity recognition can be generalized as given in below flow chart.
+    An overall system for named entity recognition can be generalized as given in below flow chart.
 
 <p align="center">
 <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_7efab8a3b2ab4a94badcd05f827e4830~mv2.jpg/v1/fill/w_719,h_445,al_c,q_80,usm_0.66_1.00_0.01/884a24_7efab8a3b2ab4a94badcd05f827e4830~mv2.webp">
@@ -122,55 +121,55 @@ Few example of indefinite scope are :
     Always design a loosely coupled system – never keep a fix list of entity/ entity recognizer in the main program, better prefer to have indexing service like ElasticSearch in docker like container. If you keep such static list of entities hardbound into main program file then to edit such list you need to stop the process. With Elastic search like server, you may edit your list and keeping the main program unaffected and will automatically start working on new entity list.
 --------------
 3) Relationship Mining
-	A) Overview
-	once we identify entities, second comes relations between two entities. I am going to quotes a well-known recent example here “trump2cash - A stock trading bot powered by Trump tweets”. The quoted article suggests effect of trumps speech on the stock exchange with on such occasions actionable insight may benefit us. Here trump and most affected public share can be related and keep such historical incidence in mind profit can be gained.
-	B) Technology
-	This task seems similar to the sentiment analysis. We can think of a single sentence where two entity are present and word connecting to them represent positive or negative effect.
-	Once we have our entity tagged per sentence we need to see what is the relation between them. We have to train a system which can identify a positive and negative relationship between two entities or event and entity. For this e can do two things
-	+ Train a sentiment analyzer larger known pre-tagged sentences
-	+ Generate our own training set: that sentence having positive words like (shoots high, Hits etc) between two entities mark them as 1 and those having negative words (bearish bullish, plummets etc) mark them as 0. train a system with such a training data set.
-	+ Combine approach 1 and 2 for more robust results.
-			Instead of using n-gram or bag of word approach, try to go for more robust approach RNN and LSTM. This is about relationship mining when two things are present in one sentence, what is present in different sentence? Let's see next
+    A) Overview
+    once we identify entities, second comes relations between two entities. I am going to quotes a well-known recent example here “trump2cash - A stock trading bot powered by Trump tweets”. The quoted article suggests effect of trumps speech on the stock exchange with on such occasions actionable insight may benefit us. Here trump and most affected public share can be related and keep such historical incidence in mind profit can be gained.
+    B) Technology
+    This task seems similar to the sentiment analysis. We can think of a single sentence where two entity are present and word connecting to them represent positive or negative effect.
+    Once we have our entity tagged per sentence we need to see what is the relation between them. We have to train a system which can identify a positive and negative relationship between two entities or event and entity. For this e can do two things
+    + Train a sentiment analyzer larger known pre-tagged sentences
+    + Generate our own training set: that sentence having positive words like (shoots high, Hits etc) between two entities mark them as 1 and those having negative words (bearish bullish, plummets etc) mark them as 0. train a system with such a training data set.
+    + Combine approach 1 and 2 for more robust results.
+            Instead of using n-gram or bag of word approach, try to go for more robust approach RNN and LSTM. This is about relationship mining when two things are present in one sentence, what is present in different sentence? Let's see next
 ------------
 4) Co-reference resolutions
-			With more than 70% cases you will find two entity to be related is present in different sentence with the same context. What to do then, here comes co-reference resolution. “Vishal Sikka put down his papers. His action made great fall in Infosys share price” here word “his” indirectly refers to “Vishal Sikka”. Although both things under consideration “Vishal Sikka” and “Infosys” are not in the same sentence but such sentence should also be taken care of. This is called as reference resolution. Co-reference resolution is itself a complex problem yet to be solved. I can think of only one possible approach, that is sentence parsing and resolution.
-			A freely available tool such as spaCy is able to parse grammar in sentence with human-level accuracy. Once summer parsing is done, one can apply rules on such sentences.
+            With more than 70% cases you will find two entity to be related is present in different sentence with the same context. What to do then, here comes co-reference resolution. “Vishal Sikka put down his papers. His action made great fall in Infosys share price” here word “his” indirectly refers to “Vishal Sikka”. Although both things under consideration “Vishal Sikka” and “Infosys” are not in the same sentence but such sentence should also be taken care of. This is called as reference resolution. Co-reference resolution is itself a complex problem yet to be solved. I can think of only one possible approach, that is sentence parsing and resolution.
+            A freely available tool such as spaCy is able to parse grammar in sentence with human-level accuracy. Once summer parsing is done, one can apply rules on such sentences.
 ------------
 5) Clustering
 clustering is essential for to understand “the butterfly effect”. According to this “when a butterfly moves its wings in some part of world it can make tornado in some other part of world”. All entities are connected to all with larger or smaller probability. All those are well-connected falls in the same cluster and affect each other to a greater extent. “Narendra Modi and Indian GDP are closely associated entity”
 the action of ones directly affects another. Such as:
-	1) The New York Stock Exchange opens for business at 9:30 a.m. EST each day. However, prior to the opening trade on the NYSE, equity markets in Asia and Europe have already (or almost) finished their trading day. The point is, if certain stocks and/or sectors have had a particularly good or bad day in those markets, the sentiment could have an impact on trading here in the U.S.
-	2) If there is talk that China may revalue its currency (the yuan), then it may cause shares of exporters to China to trade higher.
-	3)The Internet has transformed the way people invest, as well as the way the public at large obtains news. Therefore, if a Web writer or journalist disseminates a bullish or bearish article about a company throughout the trading day, this can have a huge impact on its stock.
+    1) The New York Stock Exchange opens for business at 9:30 a.m. EST each day. However, prior to the opening trade on the NYSE, equity markets in Asia and Europe have already (or almost) finished their trading day. The point is, if certain stocks and/or sectors have had a particularly good or bad day in those markets, the sentiment could have an impact on trading here in the U.S.
+    2) If there is talk that China may revalue its currency (the yuan), then it may cause shares of exporters to China to trade higher.
+    3)The Internet has transformed the way people invest, as well as the way the public at large obtains news. Therefore, if a Web writer or journalist disseminates a bullish or bearish article about a company throughout the trading day, this can have a huge impact on its stock.
 
-	Keeping watch over such complex and closely associated member in one cluster is essential. The bigger question is how to do such clustering? Yes, we will do it practically with news data.
-	I have used a simple but efficient technique to demonstrate clustering in entities. I have trained a word to vector model with news dumps (129 MB only) of Bloomberg and Reuters. The result I got ,clearly indicates presence of clusters. Results are as follows :
+    Keeping watch over such complex and closely associated member in one cluster is essential. The bigger question is how to do such clustering? Yes, we will do it practically with news data.
+    I have used a simple but efficient technique to demonstrate clustering in entities. I have trained a word to vector model with news dumps (129 MB only) of Bloomberg and Reuters. The result I got ,clearly indicates presence of clusters. Results are as follows :
 
-	- I want to find out, what are other comapanies related to __J P Morgan__. It returned me following list with probabilities.
-		```python
+    - I want to find out, what are other comapanies related to __J P Morgan__. It returned me following list with probabilities.
+        ```python
         [('jpmorgan,', 0.6153316497802734),
-		("jpmorgan's", 0.5839070081710815),
-		('chase', 0.5646278858184814),
-		('citigroup', 0.5529909729957581),
-		('citi', 0.5488744378089905),
-		('morgan', 0.5226957201957703),
-		('ubs', 0.5187379121780396),
-		('citigroup,', 0.5123351812362671),
-		('bear', 0.5042657852172852),
-		('wachovia', 0.5008693337440491)]
+        ("jpmorgan's", 0.5839070081710815),
+        ('chase', 0.5646278858184814),
+        ('citigroup', 0.5529909729957581),
+        ('citi', 0.5488744378089905),
+        ('morgan', 0.5226957201957703),
+        ('ubs', 0.5187379121780396),
+        ('citigroup,', 0.5123351812362671),
+        ('bear', 0.5042657852172852),
+        ('wachovia', 0.5008693337440491)]
         ```
-	- I want to find out what are other companies related to __Microsoft__ and __Google__. It returned me following list with probabilities.
-		```python
+    - I want to find out what are other companies related to __Microsoft__ and __Google__. It returned me following list with probabilities.
+        ```python
         [('yahoo', 0.7744687795639038),
-		("google's", 0.7412586212158203),
-		('oracle', 0.7128864526748657),
-		('apple', 0.7068471908569336),
-		('facebook', 0.7065688371658325),
-		("microsoft's", 0.6984558701515198),
-		('hp', 0.6734104156494141),
-		('microsoft,', 0.6706593036651611),
-		('ebay', 0.6601837277412415),
-		('at&t', 0.6566265225410461)]```
+        ("google's", 0.7412586212158203),
+        ('oracle', 0.7128864526748657),
+        ('apple', 0.7068471908569336),
+        ('facebook', 0.7065688371658325),
+        ("microsoft's", 0.6984558701515198),
+        ('hp', 0.6734104156494141),
+        ('microsoft,', 0.6706593036651611),
+        ('ebay', 0.6601837277412415),
+        ('at&t', 0.6566265225410461)]```
 
 A nonspecific dataset of mere 129MB size can give this information, you may think what a specific dataset of size in Gigabyte can give.
 I am concluding this blog-post for now, I know its not yet complete. I will be keep on updating it as an when I will finish with rest of the data.
