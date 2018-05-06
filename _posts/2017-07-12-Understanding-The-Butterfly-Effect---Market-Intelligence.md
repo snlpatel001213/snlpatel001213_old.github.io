@@ -46,7 +46,9 @@ In this blog post, our discussion will be mostly centered about how to deal with
 
 1) AIM
 Our aim always remains always focused on an entity or group of entities which may help in bringing more profit or popularity in any sense. We may focus on the progress of some public companies for the stock benefit. One may focus on the internal development of a competitor. One country may keep watch over internal politics of others to gain monitory and we as influential benefits.
-----------
+
+---------
+
 2) Entity Recognition
 **A) Overview**
 		As soon as we decide our subject of interest, we decide some entities or factor to keep watch over. Altering state of such entities/ factors may help us in providing “competitive intelligence”
