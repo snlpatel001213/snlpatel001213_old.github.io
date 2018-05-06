@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "My first trip: The wonderful Himalayan"
-img: himalayan.jpg # Add image post (optional)
+title: "Understanding The Butterfly Effect – Market Intelligence"
+img: https://static.wixstatic.com/media/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png/v1/fill/w_435,h_435,al_c,usm_0.66_1.00_0.01/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png # Add image post (optional)
 date: 2017-07-12 12:55:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [Travel, Blogging, Mountains]
