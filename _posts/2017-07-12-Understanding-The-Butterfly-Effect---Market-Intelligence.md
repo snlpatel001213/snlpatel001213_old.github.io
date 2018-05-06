@@ -50,8 +50,8 @@ Our aim always remains always focused on an entity or group of entities which ma
 2) Entity Recognition
 **A) Overview**
 		As soon as we decide our subject of interest, we decide some entities or factor to keep watch over. Altering state of such entities/ factors may help us in providing “competitive intelligence”
- **An entity may be :**
-	 + A political party of the country or another country
+ **An entity may be \:**
+	+ A political party of the country or another country
 	+ A company whose share value is of our interest
 	+ A medicinal agent discovered for particular disease
 	+ Spread of disease and related medicinal sale
