@@ -51,16 +51,16 @@ Our aim always remains always focused on an entity or group of entities which ma
 
 2) Entity Recognition
 A) Overview
-    As soon as we decide our subject of interest, we decide some entities or factor to keep watch over. Altering state of such entities/ factors may help us in providing “competitive intelligence”
-        An entity may be \:
-      + A political party of the country or another country
-      + A company whose share value is of our interest
-      + A medicinal agent discovered for particular disease
-      + Spread of disease and related medicinal sale
-      + Supply chain management
-      + release of a new product in market
+As soon as we decide our subject of interest, we decide some entities or factor to keep watch over. Altering state of such entities/ factors may help us in providing “competitive intelligence”
+An entity may be :
+* A political party of the country or another country
+* A company whose share value is of our interest
+* A medicinal agent discovered for particular disease
+* Spread of disease and related medicinal sale
+* Supply chain management
+* release of a new product in market
 
-    This is a much wider topic to deal with, almost all part of market research aims for actionable competitive intelligence.Such entities of interest may of two type
+  This is a much wider topic to deal with, almost all part of market research aims for actionable competitive intelligence.Such entities of interest may of two type :
 1) Definite: when we keep watch over definite known entities. This makes our task simpler, few examples are :
 a) Name of all public companies registered in Nasdaq or NSE or BSE.
 b) Narrowing our interest. Out of all politician in India, we keep watch over some of them. If we keep watch over all of them, we end up with an indefinite list and such list changes time by time.
