@@ -82,7 +82,6 @@ Few example of indefinite scope are :
     B) Technology
     Now comes how to identify such entities to at least separate data of our use form the huge amount of streaming or stationary data.
     Named entity recognition is a bigger task, and cannot be accomplished by string matching and regex because of following reasons:
-
     1. An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
     2. Use of regex makes the overall system slower. it is practically impossible to design a regular expression which takes care of all wild cases.
     3. Although fuzzy searching with a threshold by applying distance measure algorithm is little bit practical idea but do not provide required control.
@@ -139,11 +138,9 @@ Few example of indefinite scope are :
 3) Relationship Mining
 
     A) Overview
-
     once we identify entities, second comes relations between two entities. I am going to quotes a well-known recent example here “trump2cash - A stock trading bot powered by Trump tweets”. The quoted article suggests effect of trumps speech on the stock exchange with on such occasions actionable insight may benefit us. Here trump and most affected public share can be related and keep such historical incidence in mind profit can be gained.
 
     B) Technology
-
     This task seems similar to the sentiment analysis. We can think of a single sentence where two entity are present and word connecting to them represent positive or negative effect.
     Once we have our entity tagged per sentence we need to see what is the relation between them. We have to train a system which can identify a positive and negative relationship between two entities or event and entity. For this e can do two things
     + Train a sentiment analyzer larger known pre-tagged sentences
@@ -158,12 +155,12 @@ Few example of indefinite scope are :
 ------------
 5) Clustering
 
-    clustering is essential for to understand “the butterfly effect”. According to this “when a butterfly moves its wings in some part of world it can make tornado in some other part of world”. All entities are connected to all with larger or smaller probability. All those are well-connected falls in the same cluster and affect each other to a greater extent. “Narendra Modi and Indian GDP are closely associated entity”.
+   Clustering is essential for to understand “the butterfly effect”. According to this “when a butterfly moves its wings in some part of world it can make tornado in some other part of world”. All entities are connected to all with larger or smaller probability. All those are well-connected falls in the same cluster and affect each other to a greater extent. “Narendra Modi and Indian GDP are closely associated entity”.
 
     The action of ones directly affects another. Such as:
 
     1. The New York Stock Exchange opens for business at 9:30 a.m. EST each day. However, prior to the opening trade on the NYSE, equity markets in Asia and Europe have already (or almost) finished their trading day. The point is, if certain stocks and/or sectors have had a particularly good or bad day in those markets, the sentiment could have an impact on trading here in the U.S.
-    
+
     2. If there is talk that China may revalue its currency (the yuan), then it may cause shares of exporters to China to trade higher.
     3)The Internet has transformed the way people invest, as well as the way the public at large obtains news. Therefore, if a Web writer or journalist disseminates a bullish or bearish article about a company throughout the trading day, this can have a huge impact on its stock.
 
