@@ -143,9 +143,9 @@ Few example of indefinite scope are :
     B) Technology
     This task seems similar to the sentiment analysis. We can think of a single sentence where two entity are present and word connecting to them represent positive or negative effect.
     Once we have our entity tagged per sentence we need to see what is the relation between them. We have to train a system which can identify a positive and negative relationship between two entities or event and entity. For this e can do two things
-    + Train a sentiment analyzer larger known pre-tagged sentences
-    + Generate our own training set: that sentence having positive words like (shoots high, Hits etc) between two entities mark them as 1 and those having negative words (bearish bullish, plummets etc) mark them as 0. train a system with such a training data set.
-    + Combine approach 1 and 2 for more robust results.
+    * Train a sentiment analyzer larger known pre-tagged sentences
+    * Generate our own training set: that sentence having positive words like (shoots high, Hits etc) between two entities mark them as 1 and those having negative words (bearish bullish, plummets etc) mark them as 0. train a system with such a training data set.
+    * Combine approach 1 and 2 for more robust results.
             Instead of using n-gram or bag of word approach, try to go for more robust approach RNN and LSTM. This is about relationship mining when two things are present in one sentence, what is present in different sentence? Let's see next
 ------------
 4) Co-reference resolutions
