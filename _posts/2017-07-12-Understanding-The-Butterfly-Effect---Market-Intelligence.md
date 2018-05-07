@@ -136,7 +136,6 @@ Few example of indefinite scope are :
 --------------
 
 3) Relationship Mining
-
     A) Overview
     once we identify entities, second comes relations between two entities. I am going to quotes a well-known recent example here “trump2cash - A stock trading bot powered by Trump tweets”. The quoted article suggests effect of trumps speech on the stock exchange with on such occasions actionable insight may benefit us. Here trump and most affected public share can be related and keep such historical incidence in mind profit can be gained.
 
