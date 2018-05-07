@@ -50,7 +50,6 @@ Our aim always remains always focused on an entity or group of entities which ma
 ---------
 
 2. Entity Recognition
-
     A) Overview
 As soon as we decide our subject of interest, we decide some entities or factor to keep watch over. Altering state of such entities/ factors may help us in providing “competitive intelligence”
 
@@ -73,8 +72,8 @@ Few example of indefinite scope are :
             a. Keeping watch over new medicine compound invented by some company for some disease. You may argue whats new in that because billions of compounds in the world exists and new are invented day by day. It's really hard to keep watch on. If we keep a list of such entities then one must iterate through all stored chemical in order to find out one present in news/tweet. Such loop iterate over billions of chemical name each time a tweet or newsfeed arrives in the system. One cannot keep watch over newly invented chemical compounds by keeping a stationary list.
             b. name of a place where some incidence happened. The World is full of places and its never a good idea to keep list of all places and apply string matching whenever a new news/tweet arrives in the system
 
-
     B) Technology
+
     Now comes how to identify such entities to at least separate data of our use form the huge amount of streaming or stationary data.
     Named entity recognition is a bigger task, and cannot be accomplished by string matching and regex because of following reasons:
     1) An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
@@ -89,15 +88,18 @@ Few example of indefinite scope are :
     2) Such NER system if trained in ensemble with better deep learning techniques like LSTM and CNN it gives very good results
 
     Logically in an ensemble of CNN, LSTM and CRF each component is having its own purpose
+
     1) CNN
     Convolution networks are made to identify visually similar features. Employing CNN will identifying the entity that may have resemblance with a previously exposed entity and hence explicit training with an entire list of entities is not required.
     Example:
     A) Auckland of New Zealand and Oakland, California
     B) Names of major antibiotics ends with suffix “mycin” such chloromycin, streptomycin etc
+
     2) LSTM
     LSTM is known for language processing, LSTM stands for Long Short-Term Memory. LSTM being a derived form of RNN, it takes care of inter-word dependencies.
     For example: for to identify name of companies, Microsoft corporation is given as one of the names while training, it will identify Deloitte Corporation also as company name as it would inherently make a rule that something before word corporation can be a name of organization.
     Bidirectional LSTM applies such logic in both the direction of word; forward and backward direction so most robust results can be obtained.
+
     3) CRF
     CRF takes word level as well as inter-word level feature in consideration.
     If w1 w2 w3 are three consecutive words in a sentence then CRF takes following features to calculate probability of w2 being an entity.
@@ -124,7 +126,7 @@ Few example of indefinite scope are :
 
 >System Architecture Related Note\:
     Always design a loosely coupled system – never keep a fix list of entity/ entity recognizer in the main program, better prefer to have indexing service like ElasticSearch in docker like container. If you keep such static list of entities hardbound into main program file then to edit such list you need to stop the process. With Elastic search like server, you may edit your list and keeping the main program unaffected and will automatically start working on new entity list.
-    
+
 --------------
 
 3) Relationship Mining
