@@ -73,12 +73,12 @@ Few example of indefinite scope are :
             b. name of a place where some incidence happened. The World is full of places and its never a good idea to keep list of all places and apply string matching whenever a new news/tweet arrives in the system
 
     B) Technology
-
     Now comes how to identify such entities to at least separate data of our use form the huge amount of streaming or stationary data.
     Named entity recognition is a bigger task, and cannot be accomplished by string matching and regex because of following reasons:
-    1) An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
-    2) Use of regex makes the overall system slower. it is practically impossible to design a regular expression which takes care of all wild cases.
-    3) Although fuzzy searching with a threshold by applying distance measure algorithm is little bit practical idea but do not provide required control.
+
+    1. An entity may comprise of multiple words and to each such entity arrangement of words in data and in the list where it is present must be same. According to this approach, Barack Obama and Obama Barack will not match, think of such millions of names, then you will be able to understand the complexity we are talking about.
+    2. Use of regex makes the overall system slower. it is practically impossible to design a regular expression which takes care of all wild cases.
+    3. Although fuzzy searching with a threshold by applying distance measure algorithm is little bit practical idea but do not provide required control.
 
     At the end we are left with one thing in hand, to design such a system which is having sufficient knowledge about domain, syntax, and grammar of the language to identify such entities without any predefined list. Such system should also be capable of predict new entities which were unknown the time of training.
     Named entity recognition(NER) is addressed by NLTK and SPACY like toolbox by providing NER for companies, locations, organizations, and products. In practice, this functionality never made for industrial grade NER and to achieve greater perfection one must train their own NER on custom data.
@@ -89,27 +89,30 @@ Few example of indefinite scope are :
 
     Logically in an ensemble of CNN, LSTM and CRF each component is having its own purpose
 
-    1) CNN
-    Convolution networks are made to identify visually similar features. Employing CNN will identifying the entity that may have resemblance with a previously exposed entity and hence explicit training with an entire list of entities is not required.
+    1. CNN
+
+        Convolution networks are made to identify visually similar features. Employing CNN will identifying the entity that may have resemblance with a previously exposed entity and hence explicit training with an entire list of entities is not required.
     Example:
     A) Auckland of New Zealand and Oakland, California
     B) Names of major antibiotics ends with suffix “mycin” such chloromycin, streptomycin etc
 
-    2) LSTM
-    LSTM is known for language processing, LSTM stands for Long Short-Term Memory. LSTM being a derived form of RNN, it takes care of inter-word dependencies.
-    For example: for to identify name of companies, Microsoft corporation is given as one of the names while training, it will identify Deloitte Corporation also as company name as it would inherently make a rule that something before word corporation can be a name of organization.
+    2. LSTM
+
+        LSTM is known for language processing, LSTM stands for Long Short-Term Memory. LSTM being a derived form of RNN, it takes care of inter-word dependencies.
+        For example: for to identify name of companies, Microsoft corporation is given as one of the names while training, it will identify Deloitte Corporation also as company name as it would inherently make a rule that something before word corporation can be a name of organization.
     Bidirectional LSTM applies such logic in both the direction of word; forward and backward direction so most robust results can be obtained.
 
-    3) CRF
-    CRF takes word level as well as inter-word level feature in consideration.
+    3. CRF
+
+        CRF takes word level as well as inter-word level feature in consideration.
     If w1 w2 w3 are three consecutive words in a sentence then CRF takes following features to calculate probability of w2 being an entity.
     For w1 w2 and w3, it will generate the following feature
-    1) is_capital – [Share name are written in capital in general; e.g. GOOG, MSFT]
-    2) is_small
-    3) is_title case [title case have greater probability of being an entity]
-    4) is_alphanumeric
-    5) is_number
-    6) word length [bioplogical names are longer in general]
+    1. is_capital – [Share name are written in capital in general; e.g. GOOG, MSFT]
+    2. is_small
+    3. is_title case [title case have greater probability of being an entity]
+    4. is_alphanumeric
+    5. is_number
+    6. word length [bioplogical names are longer in general]
     etc.. one may append such “n” number of relevant feature.
 
     An overall system for named entity recognition can be generalized as given in below flow chart.
