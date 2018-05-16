@@ -169,7 +169,7 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 
 * I want to find out, what are other companies related to JP Morgan. It returned me following list of probabilities.
 
-    ```python
+    ```Python
 [('jpmorgan,', 0.6153316497802734),
 ("jpmorgan's", 0.5839070081710815),
 ('chase', 0.5646278858184814),
