@@ -13,7 +13,7 @@ tag: [Travel, Blogging, Mountains]
 Indefinite amount of data is available for each segment of the market.
 For example, if you look at this site of us government, you may find a dump of twitter data. Each days dump is around 45GB [huge huge huge amount of data]. All though share markets data is not available for public use but can be estimated of same volume each day.
 To handle this amount of data from storing to pre-processing to analytics is a mammoth task. We will also see how one can design a robust system that can practically deal with such volume.
-
+ 
 ## B. Variety ##
 Based on variety, data can be classified into three major type.
 
