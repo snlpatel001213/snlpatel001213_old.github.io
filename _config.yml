@@ -1,4 +1,4 @@
-logo: # add logo name
+logo: "favicon.ico" # add logo name
 title: "Sunil.Patel"
 description: >
   I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. /#DeepLearningEnthusiastic /#Opportunistic # this means to ignore newlines until "baseurl:"

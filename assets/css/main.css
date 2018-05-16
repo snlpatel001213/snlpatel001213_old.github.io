@@ -3857,10 +3857,11 @@ body {
 
 p {
   /* font-size: 1.1rem; */
-  line-height: 1.75rem;
+  font-size: 1.25rem;
+  line-height: 1.8;
   margin: 0 0 1.75rem;
   color: #3b4044;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 blockquote {
