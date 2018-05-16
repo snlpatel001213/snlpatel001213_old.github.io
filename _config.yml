@@ -4,8 +4,7 @@ description: >
   I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. /#DeepLearningEnthusiastic /#Opportunistic # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description."
-  
+  Google search results) and in your feed.xml site description.
 permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -37,21 +36,55 @@ discus_identifier: sunil-patel # add your discus identifier
 # Newsletter
 mailchimp: chimpstatic.com/mcjs-connected/js/users/abc58f5ada13cb9f41394b48c/53df519e533af755cd2deb9da # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
-# Newsletter
-mailchimp: # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
-
 # Tracker
 analytics:
-
-# Paginate
-paginate: 12
-paginate_path: /page:num/
-
-# Build settings
+timezone:    Asia/Dhaka
+future:      true
+pygments:    true
+highlighter: pygments
 markdown: kramdown
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
+paginate:    12
+paginate_path: "/page:num/"
 
-include: [_pages]
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+  coderay:
+    coderay_line_numbers:
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+# Paginate
+# paginate: 12
+# paginate_path: /page:num/
+#
+# # Build settings
+# markdown: kramdown
+# # highlighter:
+# kramdown:
+#   auto_ids: true
+#   footnote_nr: 1
+#   entity_output: as_char
+#   toc_levels: 1..6
+#   use_coderay: false
+#
+#   coderay:
+#     coderay_line_numbers:
+#     coderay_line_numbers_start: 1
+#     coderay_tab_width: 4
+#     coderay_bold_every: 10
+#     coderay_css: class
+# plugins:
+#   - jekyll-paginate
+#   - jekyll-sitemap
+#
+# include: [_pages]
+# exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
