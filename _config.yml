@@ -45,6 +45,13 @@ markdown: kramdown
 paginate:    12
 paginate_path: "/page:num/"
 
+# Paginate
+paginate: 12
+paginate_path: /page:num/
+
+# Build settings
+markdown: kramdown
+# highlighter:
 kramdown:
   auto_ids: true
   footnote_nr: 1
@@ -58,32 +65,9 @@ kramdown:
     coderay_tab_width: 4
     coderay_bold_every: 10
     coderay_css: class
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
-# Paginate
-# paginate: 12
-# paginate_path: /page:num/
-#
-# # Build settings
-# markdown: kramdown
-# # highlighter:
-# kramdown:
-#   auto_ids: true
-#   footnote_nr: 1
-#   entity_output: as_char
-#   toc_levels: 1..6
-#   use_coderay: false
-#
-#   coderay:
-#     coderay_line_numbers:
-#     coderay_line_numbers_start: 1
-#     coderay_tab_width: 4
-#     coderay_bold_every: 10
-#     coderay_css: class
-# plugins:
-#   - jekyll-paginate
-#   - jekyll-sitemap
-#
-# include: [_pages]
-# exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+include: [_pages]
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
