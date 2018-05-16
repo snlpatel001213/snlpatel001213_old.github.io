@@ -35,15 +35,11 @@ discus_identifier: sunil-patel # add your discus identifier
 # Newsletter
 mailchimp: chimpstatic.com/mcjs-connected/js/users/abc58f5ada13cb9f41394b48c/53df519e533af755cd2deb9da # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
+# Newsletter
+mailchimp: # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+
 # Tracker
 analytics:
-timezone:    Asia/Dhaka
-future:      true
-pygments:    true
-highlighter: pygments
-markdown: kramdown
-paginate:    12
-paginate_path: "/page:num/"
 
 # Paginate
 paginate: 12
@@ -51,20 +47,6 @@ paginate_path: /page:num/
 
 # Build settings
 markdown: kramdown
-# highlighter:
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-
-  coderay:
-    coderay_line_numbers:
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
