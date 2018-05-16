@@ -3848,7 +3848,8 @@ template {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
+  text-align: justify;
   -webkit-font-smoothing: antialiased;
   background-color: #262626;
   margin: 0;
