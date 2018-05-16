@@ -13,7 +13,7 @@ tag: [Travel, Blogging, Mountains]
 Indefinite amount of data is available for each segment of the market.
 For example, if you look at this site of us government, you may find a dump of twitter data. Each days dump is around 45GB [huge huge huge amount of data]. All though share markets data is not available for public use but can be estimated of same volume each day.
 To handle this amount of data from storing to pre-processing to analytics is a mammoth task. We will also see how one can design a robust system that can practically deal with such volume.
- 
+
 ## B. Variety ##
 Based on variety, data can be classified into three major type.
 
@@ -46,11 +46,11 @@ We are done with discussing nature of our big data in context with market intell
 
 In this blog post, our discussion will be mostly centered about how to deal with unstructured data. Unstructured data mostly comprises of text. Textual data is the way of communication for humans and hence mostly textual data is of use.
 
-#AIM#
+# AIM #
 
 Our aim always remains always focused on an entity or group of entities which may help in bringing more profit or popularity in any sense. We may focus on the progress of some public companies for the stock benefit. One may focus on the internal development of a competitor. One country may keep watch over internal politics of others to gain monitory and we as influential benefits.
 
-#Entity Recognition#
+# Entity Recognition #
 
 1. Overview
 
@@ -136,7 +136,7 @@ etc.. one may append such “n” number of relevant feature.
 
 > Always design a loosely coupled system – never keep a fix list of entity/ entity recognizer in the main program, better prefer to have indexing service like ElasticSearch in docker like container. If you keep such static list of entities hardbound into main program file then to edit such list you need to stop the process. With Elastic search like server, you may edit your list and keeping the main program unaffected and will automatically start working on new entity list.
 
-#Relationship Mining#
+# Relationship Mining #
 A) Overview
 once we identify entities, second comes relations between two entities. I am going to quotes a well-known recent example here “trump2cash - A stock trading bot powered by Trump tweets”. The quoted article suggests effect of trumps speech on the stock exchange with on such occasions actionable insight may benefit us. Here trump and most affected public share can be related and keep such historical incidence in mind profit can be gained.
 B) Technology
