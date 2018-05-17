@@ -29,16 +29,16 @@ let's say one wants to keep watch on the activity and public profile of particul
 Unstructured data usually included everything that is not structured, simple!!. Unstructured data comes many challenges and in this blog post, I will be practically explaining you, how to deal with such data.
 We will see what are all steps and type of analytics can be applied to such data.
 
-## C) Velocity ##
+## C. Velocity ##
 Perhaps this is just a repetition of what is said while discussing regarding the volume of the data. People are continuously generating data, be it with their mobile device or IOT device or chat services or video streaming or audio streaming or satellite data. For example, Twitter is dumping per day data of 45 GB. I have practically worked on a banking data stream of 20GB/day. According to an estimation, Every day 2.5 Quintillion bytes of data are created. It's tremendous!!. let's say out of this data only 1% is of our business then also is a huge amount of data to deal with.
 
  Figure 1. Showing overall data generation in one minute by at different portal
 
-## D) Veracity ##
+## D. Veracity ##
 
 Veracity actually refers to the part of the data which is actually of our interest, Person may have access to data from all public companies but on which company he is focusing is of more importance. To get data of our business from the 95% of irrelevant data is also a challenging task. One person may be interested in medical field related tweets but out of all dumps of twitter data how much is of use and how to extract this is much important.
 
-## E) Volatility ##
+## E. Volatility ##
 
 When data is used for “Actionable intelligence”, it is required that as soon as such data is generated, should be consumed and intelligence should be derived. Example again is stock exchange data, it cost much to get live streaming of such data. BSE and NSE provide such live stream at a cost of INR 20,00,000 as per their official rates. As the huge amount of data keeps coming to our systems, it is important to note how much time such data should be discarded or after how much time such data is of no use. I gave you an example that live-feed of stock exchange data in India costs INR 20,00,000 and same data is provided by NSE and BSE after 15 minutes of delay cost almost negligible. It's always necessary to decide a limit when data is useful and can help in “Actionable intelligence” and then after it's of no use and should be discarded.
 
