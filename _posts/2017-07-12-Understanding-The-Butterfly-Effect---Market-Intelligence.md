@@ -169,7 +169,7 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 
 * I want to find out, what are other companies related to JP Morgan. It returned me following list of probabilities.
 
-    ``` python
+```python
 [('jpmorgan,', 0.6153316497802734),
 ("jpmorgan's", 0.5839070081710815),
 ('chase', 0.5646278858184814),
@@ -179,11 +179,11 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 ('ubs', 0.5187379121780396),
 ('citigroup,', 0.5123351812362671),
 ('bear', 0.5042657852172852),
-('wachovia', 0.5008693337440491)]```
+('wachovia', 0.5008693337440491)] ```
 
 * I want to find out what are other companies related to Microsoft and Google. It returned me following list with probabilities.
 
-    ``` python
+```python
 [('yahoo', 0.7744687795639038),
 ("google's", 0.7412586212158203),
 ('oracle', 0.7128864526748657),
@@ -193,7 +193,7 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 ('hp', 0.6734104156494141),
 ('microsoft,', 0.6706593036651611),
 ('ebay', 0.6601837277412415),
-('at&t', 0.6566265225410461)]'''
+('at&t', 0.6566265225410461)] ```
 
 A nonspecific dataset of mere 129MB size can give this information, you may think what a specific dataset of size Gigabyte can give.
 
