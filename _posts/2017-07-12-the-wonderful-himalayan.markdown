@@ -6,10 +6,222 @@ date: 2017-07-12 12:55:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [Travel, Blogging, Mountains]
 ---
-Flexitarian hella quinoa, stumptown chillwave squid heirloom pop-up church-key. Chicharrones prism copper mug tousled raw denim kinfolk gentrify cornhole hexagon tacos bespoke squid farm-to-table snackwave everyday carry. Vaporware chicharrones activated charcoal jianbing pok pok. Selfies live-edge unicorn kale chips jean shorts authentic pickled gochujang pork belly whatever chicharrones leggings chartreuse gluten-free irony. Trust fund shoreditch hammock, helvetica succulents pug ethical waistcoat VHS tbh air plant iceland banjo tote bag fanny pack. Ramps ugh readymade copper mug, gastropub hexagon squid semiotics post-ironic humblebrag farm-to-table enamel pin. Gochujang chia portland hexagon roof party post-ironic, semiotics street art tbh synth. Air plant vinyl sustainable pork belly. Chicharrones cronut raw denim listicle flexitarian franzen. Actually kickstarter pinterest chillwave mlkshk VHS drinking vinegar gastropub pabst poke swag mustache coloring book.
 
-Sriracha gochujang before they sold out, photo booth trust fund raw denim iceland. Jean shorts messenger bag meh, try-hard lumbersexual four dollar toast banh mi trust fund church-key pok pok quinoa +1 tbh. Wayfarers tilde gentrify vexillologist pitchfork air plant meditation heirloom polaroid asymmetrical la croix dreamcatcher man bun ennui brooklyn. Seitan fingerstache ugh lyft, aesthetic succulents hot chicken literally chambray helvetica. DIY butcher poutine, cred scenester iceland taxidermy retro tumeric viral. Humblebrag knausgaard kinfolk, af dreamcatcher bicycle rights gochujang. Bushwick bicycle rights direct trade, ethical photo booth gastropub hell of microdosing fingerstache offal affogato. Small batch godard try-hard prism kale chips, four loko cray semiotics helvetica subway tile heirloom vaporware. Venmo VHS keytar succulents chambray.
 
-> Brunch hella poutine authentic farm-to-table. Stumptown craft beer lomo, heirloom single-origin coffee synth PBR&B post-ironic. <cite>- Lorem Ipsum</cite>
+Today Machine Learning and approaches to conquer the state of AI is The Hottest topic in the world, and actually driving the whole world. We can find 1000 of website talking about how to do machine learning. Basically every-one talks about how to prepare data and input to model and get predictions out. for smaller known data-set this works fine but when applied to larger data-set it may not perform well. To efficiently conquer problem, model designing should be considered as most critical step in the operation. something very similar to Abraham Lincoln's saying "If I had 8 hours to chop down a tree, I would spend 6 of those hours sharpening my axes."
 
-Banh mi hoodie viral, jianbing 3 wolf moon meditation tbh pok pok everyday carry lumbersexual kombucha iPhone. Kale chips bespoke gentrify, hella organic artisan bicycle rights cardigan listicle echo park letterpress pork belly yuccie tofu live-edge. Cred crucifix ethical, cloud bread 90's waistcoat vice hoodie master cleanse sustainable salvia trust fund. Ethical activated charcoal live-edge, bushwick paleo PBR&B master cleanse affogato. Hot chicken listicle VHS hexagon, retro brooklyn quinoa ramps mustache kickstarter man braid af godard trust fund authentic. Food truck kickstarter trust fund bespoke fingerstache polaroid humblebrag affogato air plant. Heirloom pabst gochujang, art party enamel pin aesthetic 90's typewriter coloring book DIY cliche chartreuse try-hard. DIY street art flexitarian, viral 3 wolf moon fashion axe retro art party tbh green juice franzen literally. Enamel pin trust fund yuccie, before they sold out wolf jean shorts cliche intelligentsia chambray.
+Here we will deep dive in to "How to design a machine learning model?". First we will start with the simplest on XOR gate.
+
+XOR gate is an ideal example because there is no single function that produces a hyper-plane capable of separating the points of the XOR function. The curve in the image separates the points, but it is not a function.
+
+Figure 1. Function to solve xor gate.
+To separate the points of XOR, you'll have to use at least two lines (or any other shaped functions). This will require two separate perceptrons. Then, you could use a third perceptron to separate the intermediate results on the basis of sign.
+
+
+Figure 2. Two separate linear Function to solve xor gate.
+Its very clear that one perceptron that cannot solve XOR function, we will design the smallest network that solves this function.I am a great fan of keras, Lets do some coding then
+
+```python
+import keras
+import numpy as np
+from keras.utils import np_utils
+from keras.utils.np_utils import to_categorical
+from keras.models import Sequential
+from keras.layers.core import Flatten, Dense, Dropout,Activation , initializations, regularizers, constraints
+x=[[0,0],[0,1],[1,0],[1,1]]
+y=[0,1,1,0]
+#multiplying dataset 1000 times
+X = []
+Y = []
+for i in range (0,1000):
+    for SignalNo in range(0,len(x)):
+        X.append(x[SignalNo])
+        Y.append(y[SignalNo])
+#converting to numpy array as keras is numpy array hungry
+X = np.asarray(X,dtype="int8")
+Y = np.asarray(Y,dtype="int8")
+# converting to one hot vector
+Y = np_utils.to_categorical(Y, 2)
+print X.shape, Y.shape
+#defining model
+model1 = Sequential()
+model1.add(Dense(1, input_dim=2, init='uniform', activation='sigmoid'))
+model1.add(Dense(2, activation='softmax'))
+model1.summary()
+model1.compile(optimizer='adam', loss='categorical_crossentropy',metrics=['accuracy'])
+```
+
+The overall network is as given below
+
+ Figure 3. Simple Network with one hidden perceptron to solve xor gate.
+
+The graph for error and accuracy is as given below, The accuracy will newer improve beyond 75%(It can predict 3/4 cases perfectly but not all)
+
+ Figure 4. Loss and Accuracy when simple Network with one hidden perceptron used to solve xor gate.
+
+Now lets change this line model1.add(Dense(1, input_dim=2, init='uniform', activation='sigmoid'))
+to model1.add(Dense(2, input_dim=2, init='uniform', activation='sigmoid'))
+Now the network is like this.
+
+ Figure 5. Simple Network with two hidden perceptron to solve xor gate.
+
+After running for 100 epochs we will get following graph
+
+Figure 6. Loss and accuracy when simple Network with two hidden perceptron used to solve xor gate.
+
+At 84 th epoch we got consistent 100% accuracy with lot less error then previous network.
+So this topology of the network is said to be perfect.
+
+We will see one more example, which is very complex but it will certainly will provide intuition for modelling a better network not the random one.
+I have used a data from news domain where aim is to identify name of the PERSON from text. I have used data from diverse sources one of them was from Cognitive Computing Group. here Clinton and Lazio are name of two persons and so labelled as 1. if such data is provided to deep neural network, Deep Neural Network shold be able to learn adn predict name of person from unknown sources.
+
+```python
+Clinton    1
+and    0
+Lazio    1
+would    0
+also    0
+appeal    0
+to    0
+independent    0
+groups    0
+supporting    0
+them    0
+to    0
+refrain    0
+from    0
+broadcasting    0
+ads    0
+on    0
+their    0
+behalf    0
+,    0
+leaving    0
+the    0
+campaign    0
+committees    0
+as    0
+the    0
+only    0
+advertisers    0
+in    0
+the    0
+contest    0
+.    0
+```
+
+After trying many typologies, I fixed the one which is designed taking human nature in consideration. Looking at data set given above in order to tag one word as person, we require to focus on three aspect of sentence.
+1)    The linguistics aspect
+How language is organized, what is the probability of one word being a PERSON, given semantic meaning of the entire sentence. This can be better modeled using a LSTM model.
+
+2)    Features those we can see - Many feature can be given as far as Named entity recognition is concerned. For a particulate word in a sentence. The probability of one word being a PERSON can be decided by following features of the word. for example if word is not the first word in sentence but it in Title case, there is some prbability thet such word can be named entity (Person or Place or Car etc..)
+is_upper
+is_lower
+is_title
+any(is_upper ) and any(is_lower) # combination of upper and lower case letter in word
+is_alphanumeric
+is_numeric
+any(is_upper ) and any(is_alphanumeric) # combination of upper and alphanumeric  letter in word
+any(is_lower ) and any(is_alphanumeric) # combination of lower and alphanumeric letter in word
+sufiix (if present from list of suffix)
+prefix (if present from list of prefix)
+grammer tagging (such as Noun, pronoun, adjective etc.)
+You can have many more features considering nature of your problem
+
+3)    Word similarity  -  Word similarity is a meaningful feature, but we don' t want to use it by implementing distance based algorithms. Best thing would be to convert a word to 2 dimensional sparse matrix and feed to convolution network as it is in native form and let the network to figure out similarity.
+
+lets design the network considering 1,2,3 points
+1)   The linguistics aspect  : sub-network -1
+
+```python
+model1 = Sequential()
+model1.add(Convolution1D(64, 3, border_mode='same', input_shape=(12,63)))
+model1.add(MaxPooling1D(pool_length=4))
+model1.add(Convolution1D(nb_filter=32,filter_length=3,border_mode='valid',activation='relu'))
+model1.add(LSTM(256))
+model1.add(Activation('relu'))
+model1.add(Dropout(0.5))
+model1.add(Dense(2))
+model1.add(Activation('softmax'))
+model1.summary()
+```
+
+above given sub-network -1 will deal with the linguistic aspect. First layer is of convolution network, which will take 2d matrix as input, will pool out required feature from each maxpooling layer. second layer will again do the same work and provide condensed features to the LSTM (Long Short-Term Memory) layer.
+
+2)    Features those we can see:  sub-network -2
+Typically a word is Person[Entity] or not also depends on a word previous and after to it. Lets say we have identified 12 (as shown above ) features for a particular word. We will take 3 deep belief network each one will take input for the one word for which predictions are to be made a word before and after. Here I have kept input dimension as 12, we have discussed 12 features for a word earlier. those all can be fed here. Its always better to keep track of word before and after the word on which prediction to be made. For the same purpose I have taken three network; 1) one for word before word for which prediction to be made  2) one for word it self for which prediction to be made and 3)  one for word after word for which prediction to be made
+
+```python
+model2 = Sequential()# for previous word
+model2.add(Dense(12, input_dim=12, init='uniform', activation='relu'))
+model2.add(Dense(8, init='uniform', activation='relu'))
+model2.add(Dense(1, init='uniform', activation='sigmoid'))
+
+model3 = Sequential() # for a given word
+model3.add(Dense(12, input_dim=12, init='uniform', activation='relu'))
+model3.add(Dense(8, init='uniform', activation='relu'))
+model3.add(Dense(1, init='uniform', activation='sigmoid'))
+
+model4 = Sequential() # for the next word
+model4.add(Dense(12, input_dim=12, init='uniform', activation='relu'))
+model4.add(Dense(8, init='uniform', activation='relu'))
+model4.add(Dense(1, init='uniform', activation='sigmoid'))
+```
+
+It takes 12 features as input and have 2 hidden layers gives one output.
+
+```python
+3)     Word Similarity -  sub-network -3
+Here also we are going to use 3 network to track word similarity/ patterns similarity for tagging a particular word as Person. To see details of how to represent a word so that network is able to identify similarity/ patterns, goto section 2 of my language representation tutorial.
+model5 = Sequential()# for previous word
+model5.add(Convolution2D(nb_filters, kernel_size[0], kernel_size[1],
+                        input_shape=(1, img_rows, img_cols)))
+model5.add(MaxPooling2D(pool_size=(3, 3)))
+model5.add(Flatten())
+model5.add(Dense(10))
+model5.add(Activation('tanh'))
+# model5.summary()
+model6 = Sequential()# for a given word
+model6.add(Convolution2D(nb_filters, kernel_size[0], kernel_size[1],
+                        border_mode='valid',
+                        input_shape=(1, img_rows, img_cols)))
+model6.add(MaxPooling2D(pool_size=(3, 3)))
+model6.add(Flatten())
+model6.add(Dense(10))
+model6.add(Activation('tanh'))
+# model6.summary()
+model7 = Sequential()# for the next word
+model7.add(Convolution2D(nb_filters, kernel_size[0], kernel_size[1],
+                        border_mode='valid',
+                        input_shape=(1, img_rows, img_cols)))
+model7.add(MaxPooling2D(pool_size=(3, 3)))
+model7.add(Flatten())
+model7.add(Dense(10))
+model7.add(Activation('tanh'))
+# model7.summary()
+```
+
+A larger Network
+A larger network that will keep all sub-networks in sync and flow of error from larger network will flow to all other network through back propagation.
+Lets merge all of them
+
+```python
+merged = Merge([model1, model2, model3, model4, model5, model6, model7], mode='concat')
+final_model = Sequential()
+final_model.add(merged)
+final_model.add(Dense(30))
+final_model.add(Activation('tanh'))
+final_model.add(Dense(10))
+final_model.add(Activation('tanh'))
+final_model.add(Dense(2, activation='softmax'))
+```
+
+It will add up [concatenate]  all the output from smaller sub-networks and then apply smaller fully connected network on the so produced vector.
+
+This network was trained with Adedelta optimizer and categorical cross entropy as loss function.  The F1 score is reported for all networks when trained for 10 epochs and tested on 30% of unexposed test data. It clearly says Ensemble networks are best technique to conquer such problems.
+
+Figure 7. Confusion Matrix, showing comparison of performance of individual networks and combination of all three (Ensemble)
+
+Figure 8. A plot , showing performance of individual networks and combination of all three (Ensemble)
+
+The key take away is to model the network in a way human sense the data not just stacking Perceptrons layer by layer and hoping something to come out as result as miracle.
