@@ -31,9 +31,10 @@ We will see what are all steps and type of analytics can be applied to such data
 
 ## C. Velocity ##
 Perhaps this is just a repetition of what is said while discussing regarding the volume of the data. People are continuously generating data, be it with their mobile device or IOT device or chat services or video streaming or audio streaming or satellite data. For example, Twitter is dumping per day data of 45 GB. I have practically worked on a banking data stream of 20GB/day. According to an estimation, Every day 2.5 Quintillion bytes of data are created. It's tremendous!!. let's say out of this data only 1% is of our business then also is a huge amount of data to deal with.
-![](https://static.wixstatic.com/media/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png/v1/fill/w_435,h_435,al_c,usm_0.66_1.00_0.01/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png)
-
- Figure 1. Showing overall data generation in one minute by at different portal
+<p align="center">
+<img class="img-responsive" src="https://static.wixstatic.com/media/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png/v1/fill/w_435,h_435,al_c,usm_0.66_1.00_0.01/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png">
+</p>
+    _Figure 1. Showing overall data generation in one minute by at different portal_
 
 ## D. Veracity ##
 
@@ -125,7 +126,10 @@ etc.. one may append such “n” number of relevant feature.
 
     An overall system for named entity recognition can be generalized as given in below flow chart.
 
-    Figure 2. A named entity recognition system comprises of ensemble of 1) Convolution Network 2) LSTM and 3) CRF
+    <p align="center">
+    <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_7efab8a3b2ab4a94badcd05f827e4830~mv2.jpg/v1/fill/w_719,h_445,al_c,q_80,usm_0.66_1.00_0.01/884a24_7efab8a3b2ab4a94badcd05f827e4830~mv2.webp">
+    </p>
+    _Figure 2. A named entity recognition system comprises of ensemble of 1) Convolution Network 2) LSTM and 3) CRF_
 
     To gain practical experience on how to design custom NER refer following links:
 
@@ -194,58 +198,8 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 ('hp', 0.6734104156494141),
 ('microsoft,', 0.6706593036651611),
 ('ebay', 0.6601837277412415),
-('at&t', 0.6566265225410461)] ```
-
-
-```python
-def VGGCAM(nb_classes, num_input_channels):
-    """
-    Build Convolution Neural Network
-    nb_classes : nb_classes (int) number of classes
-    num_input_channels : number of channel to be kept in last convolutional model of VGGCAM
-    returns : Neural Net model
-    """
-    VGGCAM = Sequential()
-    VGGCAM.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
-    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
-    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
-    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
-    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    VGGCAM.add(ZeroPadding2D((1, 1)))
-    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
-    # Add another conv layer with ReLU + GAP
-    VGGCAM.add(Convolution2D(num_input_channels, 3, 3, activation='relu', border_mode="same"))
-    VGGCAM.add(AveragePooling2D((14, 14)))
-    VGGCAM.add(Flatten())
-    # Add the W layer
-    VGGCAM.add(Dense(nb_classes, activation='softmax'))
-    # VGGCAM.summary()
-    return VGGCAM
+('at&t', 0.6566265225410461)]
 ```
-
 A nonspecific dataset of mere 129MB size can give this information, you may think what a specific dataset of size Gigabyte can give.
 
 I am concluding this blog-post for now, I know it's not yet complete. I will be kept on updating it as an when I will finish with rest of the data.
