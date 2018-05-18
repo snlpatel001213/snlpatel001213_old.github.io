@@ -1,7 +1,7 @@
 logo: # add logo name
 title: Sunil.Patel
 description: > # this means to ignore newlines until "baseurl:"
-  I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. /#DeepLearningEnthusiastic /#Opportunistic # this means to ignore newlines until "baseurl:"
+  I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community.     #DeepLearningEnthusiastic #Opportunistic
 permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -13,11 +13,11 @@ banner-desc: # add banner description
 
 # Author settings
 author-pic: face.jpg # your photo
-author-name: # your name
+author-name: Sunil Patel # your name
 about-author: # about author
-email: your-email@domain.com # your email
-phone: (496)-169-6557 # your pnone number
-website: https://dwayne.example.com # you website
+email: snlpatel001213@hotmail.com # your email
+phone: +91-(886)-633-696O # your pnone number
+website: https://linkedin.com/in/linus1 # you website
 
 # Social link
 google_url:    # add url link
@@ -42,6 +42,22 @@ paginate_path: /page:num/
 
 # Build settings
 markdown: kramdown
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+  input: GFM
+  syntax_highlighter: rouge
+
+  coderay:
+    coderay_line_numbers:
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
 plugins:
   - jekyll-paginate
   - jekyll-sitemap

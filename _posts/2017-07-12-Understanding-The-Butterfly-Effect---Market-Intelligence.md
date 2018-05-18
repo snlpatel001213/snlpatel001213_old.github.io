@@ -3,7 +3,7 @@ layout: post
 title: "Understanding The Butterfly Effect – Market Intelligence"
 img: market-intelligence.png # Add image post (optional)
 date: 2017-07-12 12:55:00 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+description: # Add post description (optional)
 tag: [Travel, Blogging, Mountains]
 ---
 “Money matters to all, the most”. I am working in Market intelligence for 1.5 years and today I am going to share some of the techniques for market research. Any market research task is a perfect example of big data processing. Hence market research can be characterized by five "V"s namely volume. veracity, velocity, variety, and Volatility.
@@ -31,6 +31,7 @@ We will see what are all steps and type of analytics can be applied to such data
 
 ## C. Velocity ##
 Perhaps this is just a repetition of what is said while discussing regarding the volume of the data. People are continuously generating data, be it with their mobile device or IOT device or chat services or video streaming or audio streaming or satellite data. For example, Twitter is dumping per day data of 45 GB. I have practically worked on a banking data stream of 20GB/day. According to an estimation, Every day 2.5 Quintillion bytes of data are created. It's tremendous!!. let's say out of this data only 1% is of our business then also is a huge amount of data to deal with.
+![](https://static.wixstatic.com/media/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png/v1/fill/w_435,h_435,al_c,usm_0.66_1.00_0.01/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png)
 
  Figure 1. Showing overall data generation in one minute by at different portal
 
