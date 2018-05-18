@@ -196,6 +196,56 @@ I have used a simple but efficient technique to demonstrate clustering in entiti
 ('ebay', 0.6601837277412415),
 ('at&t', 0.6566265225410461)] ```
 
+
+```python
+def VGGCAM(nb_classes, num_input_channels):
+    """
+    Build Convolution Neural Network
+    nb_classes : nb_classes (int) number of classes
+    num_input_channels : number of channel to be kept in last convolutional model of VGGCAM
+    returns : Neural Net model
+    """
+    VGGCAM = Sequential()
+    VGGCAM.add(ZeroPadding2D((1, 1), input_shape=(3, 224, 224)))
+    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(64, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(128, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(256, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(MaxPooling2D((2, 2), strides=(2, 2)))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    VGGCAM.add(ZeroPadding2D((1, 1)))
+    VGGCAM.add(Convolution2D(512, 3, 3, activation='relu'))
+    # Add another conv layer with ReLU + GAP
+    VGGCAM.add(Convolution2D(num_input_channels, 3, 3, activation='relu', border_mode="same"))
+    VGGCAM.add(AveragePooling2D((14, 14)))
+    VGGCAM.add(Flatten())
+    # Add the W layer
+    VGGCAM.add(Dense(nb_classes, activation='softmax'))
+    # VGGCAM.summary()
+    return VGGCAM
+```
+
 A nonspecific dataset of mere 129MB size can give this information, you may think what a specific dataset of size Gigabyte can give.
 
 I am concluding this blog-post for now, I know it's not yet complete. I will be kept on updating it as an when I will finish with rest of the data.
