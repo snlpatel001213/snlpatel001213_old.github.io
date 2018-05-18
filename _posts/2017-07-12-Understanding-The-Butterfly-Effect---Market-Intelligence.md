@@ -32,7 +32,8 @@ We will see what are all steps and type of analytics can be applied to such data
 ## C. Velocity ##
 Perhaps this is just a repetition of what is said while discussing regarding the volume of the data. People are continuously generating data, be it with their mobile device or IOT device or chat services or video streaming or audio streaming or satellite data. For example, Twitter is dumping per day data of 45 GB. I have practically worked on a banking data stream of 20GB/day. According to an estimation, Every day 2.5 Quintillion bytes of data are created. It's tremendous!!. let's say out of this data only 1% is of our business then also is a huge amount of data to deal with.
 
- Figure 1. Showing overall data generation in one minute by at different portal
+    ![](https://static.wixstatic.com/media/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png/v1/fill/w_435,h_435,al_c,usm_0.66_1.00_0.01/884a24_662a6388fadd46cabb383f9560c1e2c4~mv2.png)
+    Figure 1. Showing overall data generation in one minute by at different portal
 
 ## D. Veracity ##
 
