@@ -1,13 +1,12 @@
-logo: "favicon.ico" # add logo name
-title: "Sunil.Patel"
-description: >
-  I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. \#DeepLearningEnthusiastic \#Opportunistic # this means to ignore newlines until "baseurl:"
+logo: # add logo name
+title: Bef - Enjoy Freedom
+description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 permalink: ':title/'
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "http://learningdeep.xyz" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/bef" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Banner settings
 video: mountains.mp4 # add banner video. Add your video file to the folder video
@@ -16,11 +15,11 @@ banner-desc: # add banner description
 
 # Author settings
 author-pic: face.jpg # your photo
-author-name: Sunil Patel # your name
+author-name: # your name
 about-author: # about author
-email: snlpatel001213@hotmail.com # your email
-phone: +91-(886)-633-696O # your pnone number
-website: https://linkedin.com/in/linus1 # you website
+email: your-email@domain.com # your email
+phone: (496)-169-6557 # your pnone number
+website: https://dwayne.example.com # you website
 
 # Social link
 google_url:    # add url link
@@ -31,55 +30,85 @@ dribbble_url:  # add url link
 facebook_url:  # add url link
 
 # Disqus
-discus_identifier: sunil-patel # add your discus identifier
+discus_identifier: mr-brown # add your discus identifier
 
 # Newsletter
-mailchimp: chimpstatic.com/mcjs-connected/js/users/abc58f5ada13cb9f41394b48c/53df519e533af755cd2deb9da # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+mailchimp: # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
 # Tracker
 analytics:
-timezone:    Asia/Dhaka
-future:      true
-pygments:    true
-highlighter: pygments
-markdown: kramdown
-paginate:    12
-paginate_path: "/page:num/"
 
-markdown: kramdown
-
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-  input: GFM
-  syntax_highlighter: rouge
-
-  coderay:
-    coderay_line_numbers:
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
-
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
-# http://artemsheludko.pw/bef/
 # Paginate
-# paginate: 12
-# paginate_path: /page:num/
+paginate: 12
+paginate_path: /page:num/
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+
+include: [_pages]
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+
+# logo: "favicon.ico" # add logo name
+# title: "Sunil.Patel"
+# description: >
+#   I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. \#DeepLearningEnthusiastic \#Opportunistic # this means to ignore newlines until "baseurl:"
+#   Write an awesome description for your new site here. You can edit this
+#   line in _config.yml. It will appear in your document head meta (for
+#   Google search results) and in your feed.xml site description.
+# permalink: ':title/'
+# baseurl: "/" # the subpath of your site, e.g. /blog
+# url: "http://learningdeep.xyz" # the base hostname & protocol for your site, e.g. http://example.com
 #
-# # Build settings
+# # Banner settings
+# video: mountains.mp4 # add banner video. Add your video file to the folder video
+# banner-title: # add banner title
+# banner-desc: # add banner description
+#
+# # Author settings
+# author-pic: face.jpg # your photo
+# author-name: Sunil Patel # your name
+# about-author: # about author
+# email: snlpatel001213@hotmail.com # your email
+# phone: +91-(886)-633-696O # your pnone number
+# website: https://linkedin.com/in/linus1 # you website
+#
+# # Social link
+# google_url:    # add url link
+# twitter_url:   # add url link
+# instagram_url: # add url link
+# pinterest_url: # add url link
+# dribbble_url:  # add url link
+# facebook_url:  # add url link
+#
+# # Disqus
+# discus_identifier: sunil-patel # add your discus identifier
+#
+# # Newsletter
+# mailchimp: chimpstatic.com/mcjs-connected/js/users/abc58f5ada13cb9f41394b48c/53df519e533af755cd2deb9da # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+#
+# # Tracker
+# analytics:
+# timezone:    Asia/Dhaka
+# future:      true
+# pygments:    true
+# highlighter: pygments
 # markdown: kramdown
-# # highlighter:
+# paginate:    12
+# paginate_path: "/page:num/"
+#
+# markdown: kramdown
+#
 # kramdown:
 #   auto_ids: true
 #   footnote_nr: 1
 #   entity_output: as_char
 #   toc_levels: 1..6
 #   use_coderay: false
+#   input: GFM
+#   syntax_highlighter: rouge
 #
 #   coderay:
 #     coderay_line_numbers:
@@ -87,9 +116,33 @@ exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "l
 #     coderay_tab_width: 4
 #     coderay_bold_every: 10
 #     coderay_css: class
-# plugins:
-#   - jekyll-paginate
-#   - jekyll-sitemap
 #
-# include: [_pages]
-# exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+# include: [".htaccess"]
+# exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+# # http://artemsheludko.pw/bef/
+# # Paginate
+# # paginate: 12
+# # paginate_path: /page:num/
+# #
+# # # Build settings
+# # markdown: kramdown
+# # # highlighter:
+# # kramdown:
+# #   auto_ids: true
+# #   footnote_nr: 1
+# #   entity_output: as_char
+# #   toc_levels: 1..6
+# #   use_coderay: false
+# #
+# #   coderay:
+# #     coderay_line_numbers:
+# #     coderay_line_numbers_start: 1
+# #     coderay_tab_width: 4
+# #     coderay_bold_every: 10
+# #     coderay_css: class
+# # plugins:
+# #   - jekyll-paginate
+# #   - jekyll-sitemap
+# #
+# # include: [_pages]
+# # exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
