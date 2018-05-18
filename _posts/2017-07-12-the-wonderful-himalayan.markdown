@@ -170,8 +170,10 @@ model4.add(Dense(1, init='uniform', activation='sigmoid'))
 
 It takes 12 features as input and have 2 hidden layers gives one output.
 
-```python
+
 3)     Word Similarity -  sub-network -3
+
+```python
 Here also we are going to use 3 network to track word similarity/ patterns similarity for tagging a particular word as Person. To see details of how to represent a word so that network is able to identify similarity/ patterns, goto section 2 of my language representation tutorial.
 model5 = Sequential()# for previous word
 model5.add(Convolution2D(nb_filters, kernel_size[0], kernel_size[1],
