@@ -6,7 +6,7 @@ description: >
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 permalink: ':title/'
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: " http://learningdeep.xyz" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Banner settings
@@ -66,6 +66,7 @@ kramdown:
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+# http://artemsheludko.pw/bef/
 # Paginate
 # paginate: 12
 # paginate_path: /page:num/
