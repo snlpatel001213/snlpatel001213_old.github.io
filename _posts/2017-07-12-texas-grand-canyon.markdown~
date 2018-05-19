@@ -111,9 +111,8 @@ It’s very clear from the discussion that we are not going to train a model, we
 
    This architecture can be visually represented by image given below:
 
-    <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png/v1/fill/w_658,h_386,al_c,lg_1/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png"></p>
-
-    <p align="center">Figure 1. VGG16 model architecture</p>
+    <p align=   "center"><img class="img-responsive" src=""></p>
+*Figure 1. VGG16 model architecture*
 
 3. **Arrange all weights in network so constrructed**
 
@@ -141,7 +140,7 @@ It’s very clear from the discussion that we are not going to train a model, we
     ```python
     img = image.load\_img(img\_path, target_size=(224, 224))
     x = image.img\_to\_array(img)
-    x = x.reshape(1,x.shape[0],x.shape[1],x.shape[2])
+    x = x.reshape(1,x.shape\[0\],x.shape\[1\],x.shape\[2\])
     \# print "SHAPE OF THE IMAGE", x.shape
     ```
 
@@ -154,15 +153,15 @@ It’s very clear from the discussion that we are not going to train a model, we
     tempDict = {}
     count = 0
     for eachprob in probabilities:
-        tempDict[eachprob] = count
+        tempDict\[eachprob\] = count
         count = count +1
     top = 0
     # sorting to get top 5 predictions
     topPredictions={}
     for eachkey in sorted(tempDict,reverse=True):
-        Name = class_names[tempDict[eachkey]]
+        Name = class_names\[tempDict\[eachkey\]\]
         Percentage = eachkey
-        topPredictions[Name]=round(Percentage*100,3)
+        topPredictions\[Name\]=round(Percentage*100,3)
         if top == 5:
             break
         top = top +1
@@ -182,8 +181,8 @@ It’s very clear from the discussion that we are not going to train a model, we
     predictedClassSorted = {v: k for k, v in predictedClass.iteritems()}
     # Writing on image 
     for eachkey in sorted(predictedClassSorted,reverse=True):
-         # print eachkey, predictedClassSorted[eachkey]
-         draw.text((0, verticleDistance), str(eachkey)+" %" + " : "+str(predictedClassSorted[eachkey]) , (0, 0, 0), font=font)
+         # print eachkey, predictedClassSorted\[eachkey\]
+         draw.text((0, verticleDistance), str(eachkey)+" %" + " : "+str(predictedClassSorted\[eachkey\]) , (0, 0, 0), font=font)
          # maintaining verticle distance betweeen two consecutive prediction while writting on image
          verticleDistance = verticleDistance+fontHeight
     img.save('processedImages/'+filename)
@@ -193,64 +192,66 @@ It’s very clear from the discussion that we are not going to train a model, we
 
 I have tried to predict on some of the images. We will see each image one by one.
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_491a14aa5e8e49379373af565d9c55df~mv2.jpg/v1/fill/w_749,h_497,al_c,lg_1,q_85/884a24_491a14aa5e8e49379373af565d9c55df~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
 <p align="center">Figure 2. Object Detection with Convolution Neural Network. (Prediction are correct)</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_1ad1b2c235f84cf6bd484805794c8b73~mv2.jpg/v1/fill/w_565,h_662,al_c,q_85/884a24_1ad1b2c235f84cf6bd484805794c8b73~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
 <p align="center">Figure 3. Object Detection with Convolution Neural Network. (Prediction is correct, this flower is known as yellow lady slipper)</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_38fc8454707d47559b90a30aeba889e1~mv2.jpg/v1/fill/w_600,h_559,al_c,lg_1,q_80/884a24_38fc8454707d47559b90a30aeba889e1~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
 <p align="center">Figure 4. Object Detection with Convolution Neural Network. (well this picture was little confusing, still it is predicted correctly. although it looks like ice but very much simmilar to sea shore)</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_85e238cea9434fa79db708d50cf81006~mv2.jpg/v1/fill/w_900,h_545,al_c,lg_1,q_85/884a24_85e238cea9434fa79db708d50cf81006~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 5. Object Detection with Convolution Neural Network. [very precisely identified as half track jeep]</p>
+<p align="center">Figure 5. Object Detection with Convolution Neural Network. \[very precisely identified as half track jeep\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_d12afc3331a245f8831dfc953edfcee0~mv2.jpg/v1/fill/w_640,h_640,al_c,q_85/884a24_d12afc3331a245f8831dfc953edfcee0~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 6. Object Detection with Convolution Neural Network. [Relatively correct prediction, although it's a phone but very much similar to mentioned electronics devices.]</p>
+<p align="center">Figure 6. Object Detection with Convolution Neural Network. \[Relatively correct prediction, although it's a phone but very much similar to mentioned electronics devices.\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_f2811c97f30c4715a57e37541b7d4343~mv2_d_1827_1500_s_2.jpg/v1/fill/w_945,h_776,al_c,q_85,usm_0.66_1.00_0.01/884a24_f2811c97f30c4715a57e37541b7d4343~mv2_d_1827_1500_s_2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 7. Object Detection with Convolution Neural Network. [First prediction is "triceratop", which is an animal with horn on head. this object is similar to it. Piggy bank is also correct]</p>
+<p align="center">Figure 7. Object Detection with Convolution Neural Network. \[First prediction is "triceratop", which is an animal with horn on head. this object is similar to it. Piggy bank is also correct\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_79812a599f754af2bcfb3d6f0e8aaa8d~mv2.jpg/v1/fill/w_385,h_256,al_c,lg_1,q_80/884a24_79812a599f754af2bcfb3d6f0e8aaa8d~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 8. Object Detection with Convolution Neural Network. [Well this was a confusing image and it seems was predicted correctly, although it is a bottle but the way it is kept looks like teapot.]</p>
+<p align="center">Figure 8. Object Detection with Convolution Neural Network. \[Well this was a confusing image and it seems was predicted correctly, although it is a bottle but the way it is kept looks like teapot.\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_2632638067c64cf2abfdd66b9edd2993~mv2.jpg/v1/fill/w_696,h_449,al_c,lg_1,q_80/884a24_2632638067c64cf2abfdd66b9edd2993~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 9. Object Detection with Convolution Neural Network. [Predicted correctly. although it is white crow but still predictions are very much relevant.]</p>
+<p align="center">Figure 9. Object Detection with Convolution Neural Network. \[Predicted correctly. although it is white crow but still predictions are very much relevant.\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_6bce6e9a17104ba28cb0ec5e484c746d~mv2.jpg/v1/fill/w_945,h_630,al_c,q_85,usm_0.66_1.00_0.01/884a24_6bce6e9a17104ba28cb0ec5e484c746d~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 10. Object Detection with Convolution Neural Network [Tougher image with lot of interference . old truck was detected correctly but could not detect human.]</p>
+<p align="center">Figure 10. Object Detection with Convolution Neural Network \[Tougher image with lot of interference . old truck was detected correctly but could not detect human.\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_90e6573fe5b049fd988f0818ea90c209~mv2.jpg/v1/fill/w_945,h_623,al_c,q_85,usm_0.66_1.00_0.01/884a24_90e6573fe5b049fd988f0818ea90c209~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 11. Object Detection with Convolution Neural Network [Predicted correctly]</p>
+<p align="center">Figure 11. Object Detection with Convolution Neural Network \[Predicted correctly\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_ce8c7227c6424590912f69577b5af902~mv2.jpg/v1/fill/w_363,h_272,al_c,lg_1,q_80/884a24_ce8c7227c6424590912f69577b5af902~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-**Figure 12. Object Detection with Convolution Neural Network [Little tough image, ambiguous prediction]
+**Figure 12. Object Detection with Convolution Neural Network \[Little tough image, ambiguous prediction\]
 **
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_58691bd084e84c56847ce807bdb2994d~mv2.jpg/v1/fill/w_416,h_238,al_c,lg_1,q_80/884a24_58691bd084e84c56847ce807bdb2994d~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 13. Object Detection with Convolution Neural Network [wrong]</p>
+<p align="center">Figure 13. Object Detection with Convolution Neural Network \[wrong\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_fb59519d5dd64449a606150b8f40d372~mv2.jpg/v1/fill/w_319,h_309,al_c,lg_1,q_80/884a24_fb59519d5dd64449a606150b8f40d372~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-**Figure 14. Object Detection with Convolution Neural Network [wrong]
+**Figure 14. Object Detection with Convolution Neural Network \[wrong\]
 **
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_e70c10e0471949499e4d4c17362224ae~mv2.jpg/v1/fill/w_703,h_454,al_c,lg_1,q_80/884a24_e70c10e0471949499e4d4c17362224ae~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 15. Object Detection with Convolution Neural Network [wrong]</p>
+<p align="center">Figure 15. Object Detection with Convolution Neural Network \[wrong\]</p>
 
-<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_5bdb089c7bf04847b2c2739ebb756431~mv2.jpg/v1/fill/w_768,h_412,al_c,lg_1,q_80/884a24_5bdb089c7bf04847b2c2739ebb756431~mv2.webp"></p>
+<p align=   "center"><img class="img-responsive" src=""></p>
 
-<p align="center">Figure 16. Object Detection with Convolution Neural Network [wrong]</p>
+<p align="center">Figure 16. Object Detection with Convolution Neural Network \[wrong\]</p>
 
 It is quite evident that, although we have taken great leap in image processing with CNN. We are still not able to identify multiple objects clearly in the same picture. Image quality obviously matter most, small images with clear objects are not labelled properly.
+
+I am not sure but I will try to train VGG16 on my baby GPU. Let’s hope I will get success. If I will get success, I will surely share with you.
