@@ -70,7 +70,7 @@ The graph for error and accuracy is as given below, The accuracy will newer impr
 </p>
 <p align="center"> Figure 4. Loss and Accuracy when simple Network with one hidden perceptron used to solve xor gate.</p>
 
-Now lets change this line 
+Now lets change this line model
 
 ```python
 model1.add(Dense(1, input_dim=2, init='uniform', activation='sigmoid'))
@@ -81,9 +81,6 @@ to
 ```python
 model1.add(Dense(2, input_dim=2, init='uniform', activation='sigmoid'))
 ```
-
-
-Now the network is like this.
 
 <p align=   "center">
 <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_9cbdadb60dc846e88d16fc162bdd3e70~mv2.png/v1/fill/w_341,h_199,al_c,lg_1/884a24_9cbdadb60dc846e88d16fc162bdd3e70~mv2.png">
