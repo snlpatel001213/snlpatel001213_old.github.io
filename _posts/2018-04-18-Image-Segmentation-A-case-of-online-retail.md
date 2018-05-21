@@ -5,6 +5,8 @@ img: image_segmentation_1.webp # Add image post (optional)
 date: 2017-07-03 12:55:00 +0300
 description: Understanding Image Segmentation. Image Segmentation done using VGG-CAM technique. # Add post description (optional)
 tag: [Image Segmentation, Python]
+comments: true
+share: true
 ---
 
 >All codes related to this blog can be found on my [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/vggcam) page

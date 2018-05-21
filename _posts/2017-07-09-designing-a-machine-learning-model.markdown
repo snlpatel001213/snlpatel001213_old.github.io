@@ -5,6 +5,8 @@ img: designing-ml-model.png # Add image post (optional)
 date: 2017-07-9 12:55:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [NLP]
+comments: true
+share: true
 ---
 
 Today Machine Learning and approaches to conquer the state of AI is The Hottest topic in the world, and actually driving the whole world. We can find 1000 of website talking about how to do machine learning. Basically every-one talks about how to prepare data and input to model and get predictions out. for smaller known data-set this works fine but when applied to larger data-set it may not perform well. To efficiently conquer problem, model designing should be considered as most critical step in the operation. something very similar to Abraham Lincoln's saying "If I had 8 hours to chop down a tree, I would spend 6 of those hours sharpening my axes."

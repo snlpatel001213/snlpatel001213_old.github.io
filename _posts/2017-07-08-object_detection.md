@@ -5,6 +5,8 @@ img: objectDetection.webp # Add image post (optional)
 date: 2017-07-9 12:54:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [keras, GPU, Python, Machine Learning Advance]
+comments: true
+share: true
 ---
 
 All codes discusses in this blog post are placed at [GitHub](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/objectDetect) repository

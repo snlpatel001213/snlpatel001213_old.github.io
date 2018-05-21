@@ -5,7 +5,7 @@ description: "Just about everything you'll need to style in the theme: headings,
 modified: 2017-07-17
 category: articles
 tags: [Elastic Search]
-imagefeature: elasticsearch.png
+img: elasticsearch.png
 comments: true
 share: true
 ---

@@ -5,6 +5,8 @@ img: market-intelligence.png # Add image post (optional)
 date: 2017-07-12 12:55:00 +0300
 description: # Add post description (optional)
 tag: [Travel, Blogging, Mountains]
+comments: true
+share: true
 ---
 “Money matters to all, the most”. I am working in Market intelligence for 1.5 years and today I am going to share some of the techniques for market research. Any market research task is a perfect example of big data processing. Hence market research can be characterized by five "V"s namely volume. veracity, velocity, variety, and Volatility.
 
