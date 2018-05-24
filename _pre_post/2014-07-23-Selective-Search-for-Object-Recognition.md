@@ -3,36 +3,40 @@ layout: post
 title: "Selective Search for Object Recognition"
 description:
 headline:
-modified: 2014-07-23
+modified: 2018-05-23
 category: webdevelopment
 tags: [jekyll]
 imagefeature:
-mathjax:
+mathjax: true
 chart:
 comments: true
 featured: true
 ---
 
-This paper addresses the problem of generating possible object locations for use in object recognition.
+<!-- This paper addresses the problem of generating possible object locations for use in object recognition. -->
 
 Given an image, previously It "was" very hard to identify number of different object present.
 
-**A lot has been changes in object recognition and  object localisation space since last 4-5 years. Thanks following papers and one man "Ross B. Girshick"(http://www.rossgirshick.info/).**
+**A lot has been changes in object recognition and  object localisation space since last 4-5 years. Thanks following papers and one man "Ross B. Girshick [http://www.rossgirshick.info/](http://www.rossgirshick.info/).**
 
-1) R-CNN: https://arxiv.org/abs/1311.2524​
-2) Fast R-CNN: https://arxiv.org/abs/1504.08083​
-3) Faster R-CNN: https://arxiv.org/abs/1506.01497​
+  1. R-CNN: [https://arxiv.org/abs/1311.2524​](https://arxiv.org/abs/1311.2524​)
+  2. Fast R-CNN: [https://arxiv.org/abs/1504.08083](https://arxiv.org/abs/1504.08083)​
+  3. Faster R-CNN: [https://arxiv.org/abs/1506.01497​](https://arxiv.org/abs/1506.01497​)
+
+[R-CNN](https://github.com/rbgirshick/rcnn)  (Region-based Convolutional Neural Networks) was one of the approach to identify/locate each of the object present in the given Image.
+
 Genuinely, R-CNN was the first step leap forward in the challenging space of object localisation. R-CNN outperforms OverFeat by a large margin on the 200-class ILSVRC2013 detection dataset.
 
-"OverFeat" is an approach for Integrated Recognition, Localization and Detection using Convolutional Networks  proposed by Pierre  and coworkers in 2014.
+> ["OverFeat"](https://arxiv.org/abs/1312.6229) is an approach for Integrated Recognition, Localization and Detection using Convolutional Networks  proposed by Pierre  and coworkers in 2014.
 
-Selective Search was the first step and the most important step in R-CNN. This makes understanding Selective Search more important.
+Selective Search was the one of the most important component in R-CNN. This makes understanding Selective Search more important.
 
 Given an image Selective Search suggest locations where there is very high probability of presence of an object. Selective Search combines the strength of both an exhaustive search and segmentation.
 
 As in exhaustive search, to capture all possible object locations. Instead of a single technique to generate possible object locations, Selective Search diversify the search and use a variety of complementary image partitioning to deal with as many image conditions as possible.
+
 Selective Search uses image structure to guide sampling process, as segmentation does.
-Well......... Above sentences may be tough to understand but we will shortly understand everything. Just hold on .. keep going for while.
+Well. Above sentences may be tough to understand but we will shortly understand everything. Just hold on .. keep going for while.
 
 Before we go forward to understand Selective search we must understand challenges in locating objects in a given Image. Below given is an original example from "Selective Search" paper to highlight challenges in object localization.
 
@@ -51,7 +55,7 @@ vertices, and any vertex of $G(Z)$ has at most 8 neighbors.
 
 Well Well Well... this is bit complicated, lets simplify a lot.
 1) Lets say we have an image X. Generally image have 3 channels and it is made up of pixels as shown in image below.
-2) Lets consider all pixels as all vertices of the graph.
+2) Lets consider all pixels as all vertex of the graph.
 3) calculate distance between all adjacent vertices in directed manner. For that, start form upper left corner of the image
 and continue to the lower right corner of the image. While traversing in this manner you can calculate distance
 between selected pixel and other three pixels 1) Pixel right to selected one, 2)Pixel bottom to selected one, and 3) Pixel diagonally bottom-right to selected one.
@@ -68,7 +72,6 @@ seem confusing at this point of time but you will get clear picture soon. I appl
 Original Picture
 
 I applied various threshold and all picture are as follows:
-
 
 It is clearly visible that background and foreground are perfectly separated at some threshold level.
 This is what it looks like after applying MST.
