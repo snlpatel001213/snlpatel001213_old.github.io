@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "String Matching using Convolution Networks"
-img: stringMatching.png # Add image post (optional)
+title: String Matching using Convolution Networks
 date: 2017-07-9 12:54:00 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-tag: [keras, GPU, Python, Machine Learning Advance]\
+tag: [keras, GPU, Python, Machine Learning Advance]
+img: stringMatching.png
 comments: true
 share: true
 ---
@@ -23,9 +23,13 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
 1. **Data-set Generation**
     Data-set is constituted by Original string and a Mutated string:
     Original string is made up of random 100 characters e.g.
+
     TSKCG498ZTQR7F5VFI59CSVKFY3XG98OG762HYDF82XB1LM87WNNM5Z57L9DIHFI64W4MSYJ2KK3B17HMJBQZJNVKDVAL0I42ZOX
+
     Mutated string is made from  Original string with some noise introduced
+
     TJKCG4BqQTZzmF5VlI59CSnKZE3Tk98OG76iHYDF8ZXBcbM8cWNNM5s5FQ9DWHFI6PWnPSEJpmwlB1qAMJIZZGxjKDmAJGI42ZkS
+
     In above example  Original string and a Mutated string are 50% similar, it means out of 100 character in original string 50 are changed randomly (point mutation)
     for to constitute data-set, alphanumeric original and mutated strings are randomly generated with random 1 to 100 % mutation.
     For to generate data-set.  I have taken only capital letters (26) + digits (10). The combination for Number of sample points in set = 100  and Number of sample points in each combination = 36 turn out to be 1.97720458214493E+27. The combination so achieved is an astronomic number and probability of getting a string repeated is absolutely nill. 
