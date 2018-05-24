@@ -5,11 +5,10 @@ description: "Just about everything you'll need to style in the theme: headings,
 modified: 2017-05-27
 category: articles
 tags: [Deep Neural Network]
-imagefeature: neural_net.png
+img: neural_net.png
 comments: true
 share: true
 ---
-
 
 Artificial neural networks were invented in 1943 but could not get popular for application in wider areas. Few reasons Behind failure of ANN are summarized below:
 

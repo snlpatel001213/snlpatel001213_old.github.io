@@ -16,7 +16,7 @@ t-SNE is a tool for data visualization. It reduces the dimension of data to 2 o
 
 Human cannot visualize data more than 3-4 dimension easily. so by somehow we need to reduce such data into two or three dimensional data.
 
-For t-SNE implementation in language of your choice, you  may visit [ Laurens van der Matten’s site.](https://lvdmaaten.github.io/tsne/)
+For t-SNE implementation in language of your choice, you  may visit [Laurens van der Matten’s site.](https://lvdmaaten.github.io/tsne/)
 
 For Python users, there is a PyPI package called tsne. You can install it easily with pip install tsne.
 
@@ -59,7 +59,7 @@ For Python users, there is a PyPI package called tsne. You can install it easil
     Y = np.asarray(XY)[:, 4:]  # taking only class column
     # converting to numerical values
     Y = reduce(lambda x, y: x + y, Y.tolist())  # flattening class values [[X],[Y],[X]] == > [X,Y,X]
-    Uniquelabels = list(set(Y))  
+    Uniquelabels = list(set(Y))
     # Finding Number of unique labels  [X,Y] will be having something this Set('Iris-setosa','Iris-versicolor','Iris-virginica')
     # converting categorical class value to numerical one
     YNumeric = []
@@ -73,21 +73,18 @@ For Python users, there is a PyPI package called tsne. You can install it easil
     X_tsne = TSNE(learning_rate=100).fit_transform(X)
     plt.<p align="center">figure(figsize=(10, 5))</p>
     plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=YNumeric)
-    plt.show()  
+    plt.show()
     ```
 
     I have plotted the 2D graph obtained after running above code and  it clearly shows 3 classes very distinctly separated from each other. For to cross verify I have kept only 5 samples of  Iris-virginica. Five Iris-virginica samples are separated correctly with violet colour in the below shown figure.
 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_220c3717c4aa496799b6e8b9cd5b3427~mv2.png/v1/fill/w_728,h_364,al_c,usm_0.66_1.00_0.01/884a24_220c3717c4aa496799b6e8b9cd5b3427~mv2.png"></p>
 
-
- <p align="center">Figure 1, Applying T-SNE to iris dataset </p>
-
+    <p align="center">Figure 1, Applying T-SNE to iris dataset </p>
 
 2. MNIST Data-set
 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_90fa01ac15f949f9b96cf5d370605602~mv2.png/v1/fill/w_520,h_244,al_c,usm_0.66_1.00_0.01/884a24_90fa01ac15f949f9b96cf5d370605602~mv2.png"></p>
-
 
     <p align="center">Figure 2. MNIST data-set representation</p>
 
@@ -115,7 +112,7 @@ For Python users, there is a PyPI package called tsne. You can install it easil
         for eachrow in eachDigit:
             temp.extend(eachrow)
         flatten.append(temp)
-    # plotting with t-nse 
+    # plotting with t-nse
     X_tsne = TSNE(learning_rate=100).fit_transform(flatten)
     plt.figure(figsize=(10, 5))
     plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=digits['target'])
@@ -126,8 +123,6 @@ For Python users, there is a PyPI package called tsne. You can install it easil
 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_254a389a82e94d6ea48b7c9a79f9e1ec~mv2.png/v1/fill/w_662,h_331,al_c,usm_0.66_1.00_0.01/884a24_254a389a82e94d6ea48b7c9a79f9e1ec~mv2.png"></p>
 
-
     <p align="center">Figure 2. MNIST data-set processed with TSNE</p>
 
     We will be  using the same visualization technique in upcoming tutorial of [SMOTE](https://www.machinelearningpython.org/single-post/SMOTE-Synthetic-Minority-Over-sampling-Technique).
-
