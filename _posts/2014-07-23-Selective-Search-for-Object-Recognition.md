@@ -4,7 +4,8 @@ title: Selective Search for Object Recognition
 description: null
 headline: null
 modified: {}
-category: webdevelopment
+category:
+  - object segmentation
 tags:
   - jekyll
 imagefeature: null
