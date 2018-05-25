@@ -1,21 +1,22 @@
 ---
 layout: post
-title: "Selective Search for Object Recognition"
-description:
-headline:
-modified: 2014-07-23
+title: Selective Search for Object Recognition
+description: null
+headline: null
+modified: {}
 category: webdevelopment
-tags: [jekyll]
-imagefeature:
-mathjax:
-chart:
+tags:
+  - jekyll
+imagefeature: null
+mathjax: null
+chart: null
 comments: true
 featured: true
+published: true
 ---
 
-This paper addresses the problem of generating possible object locations for use in object recognition.
 
-Given an image, previously It "was" very hard to identify number of different object present.
+Its very easy task for human to identify number of different object from given scene.For computers, Given an image, previously It "was" very hard to identify number of different objects present.
 
 **A lot has been changes in object recognition and  object localisation space since last 4-5 years. Thanks following papers and one man "Ross B. Girshick"(http://www.rossgirshick.info/).**
 
