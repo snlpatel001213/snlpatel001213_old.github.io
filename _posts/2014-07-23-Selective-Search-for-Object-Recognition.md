@@ -16,7 +16,8 @@ published: true
 ---
 
 
-Its very easy task for human to identify number of different object from given scene.For computers, Given an image, previously It "was" very hard to identify number of different objects present.
+Its very easy task for human to identify number of different objects in the given scene.For computers, Given an image, It "was" very hard to identify number of different objects present.  Yes its past now. With invern of RCNN, fast-RCNN, faster-RCNN, mask-RCNN and YOLO like techniques its very easy* to perform this task.  
+/* huge amount of computing power is invested though.
 
 **A lot has been changes in object recognition and  object localisation space since last 4-5 years. Thanks following papers and one man "Ross B. Girshick"(http://www.rossgirshick.info/).**
 
