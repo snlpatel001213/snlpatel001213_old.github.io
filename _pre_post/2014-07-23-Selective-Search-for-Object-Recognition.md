@@ -1,6 +1,5 @@
 ---
 layout: post
-<<<<<<< HEAD:_pre_post/2014-07-23-Selective-Search-for-Object-Recognition.md
 title: "Selective Search for Object Recognition"
 description:
 headline:
@@ -10,33 +9,14 @@ tags: [jekyll]
 imagefeature:
 mathjax: true
 chart:
-=======
-title: Selective Search for Object Recognition
-description: null
-headline: null
-modified: {}
-category:
-  - object segmentation
-tags:
-  - jekyll
-imagefeature: null
-mathjax: null
-chart: null
->>>>>>> 57b8c614569fd3e0424086af5978ac843ee12291:_posts/2014-07-23-Selective-Search-for-Object-Recognition.md
-comments: true
-featured: true
-published: true
----
+----
 
-<<<<<<< HEAD:_pre_post/2014-07-23-Selective-Search-for-Object-Recognition.md
 <!-- This paper addresses the problem of generating possible object locations for use in object recognition. -->
 =======
->>>>>>> 57b8c614569fd3e0424086af5978ac843ee12291:_posts/2014-07-23-Selective-Search-for-Object-Recognition.md
 
 Its very easy task for human to identify number of different objects in the given scene.For computers, Given an image, It "was" very hard to identify number of different objects present.  Yes its past now. With invern of RCNN, fast-RCNN, faster-RCNN, mask-RCNN and YOLO like techniques its very easy* to perform this task.  
 \* huge amount of computing power is invested though.
 
-<<<<<<< HEAD:_pre_post/2014-07-23-Selective-Search-for-Object-Recognition.md
 **A lot has been changes in object recognition and  object localisation space since last 4-5 years. Thanks following papers and one man "Ross B. Girshick [http://www.rossgirshick.info/](http://www.rossgirshick.info/).**
 
   1. R-CNN: [https://arxiv.org/abs/1311.2524​](https://arxiv.org/abs/1311.2524​)
@@ -53,7 +33,6 @@ Ross B. Girshick has greatly contributed to RCNN, fast-RCNN, faster-RCNN.
 2) Fast R-CNN: https://arxiv.org/abs/1504.08083​
 3) Faster R-CNN: https://arxiv.org/abs/1506.01497​
 
->>>>>>> 57b8c614569fd3e0424086af5978ac843ee12291:_posts/2014-07-23-Selective-Search-for-Object-Recognition.md
 Genuinely, R-CNN was the first step leap forward in the challenging space of object localisation. R-CNN outperforms OverFeat by a large margin on the 200-class ILSVRC2013 detection dataset.
 
 > ["OverFeat"](https://arxiv.org/abs/1312.6229) is an approach for Integrated Recognition, Localization and Detection using Convolutional Networks  proposed by Pierre  and coworkers in 2014.
