@@ -65,7 +65,7 @@ Self Organizing Map Algorithm involves following steps:
 
     new learning rate = initial Learning Rate * (math.exp(-time Or Iterations / rateOfDecay))
 
-    Once step-3 is completed as described, the radius of circle and learning rate are exponentially decreased.     new radius = initialRadius * (math.exp(-timeOrIterations / rateOfDecay))Radius is decreased as follow : Learning rate is decreased as follow : 
+    Once step-3 is completed as described, the radius of circle and learning rate are exponentially decreased.	 new radius = initialRadius * (math.exp(-timeOrIterations / rateOfDecay))Radius is decreased as follow : Learning rate is decreased as follow : 
 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_76d07d75a7a541a5bb0de42a41fc839b~mv2.png/v1/fill/w_511,h_286,al_c,usm_0.66_1.00_0.01/884a24_76d07d75a7a541a5bb0de42a41fc839b~mv2.png"></p>
 

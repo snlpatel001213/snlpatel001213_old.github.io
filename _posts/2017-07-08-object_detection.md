@@ -27,29 +27,29 @@ You can detect objects using a variety of methods, including:
 
 1. **Feature-based object detection**
 
-    Random sample consensus, or RANSAC. RANSAC works by estimating mathematical model of data contains outlier. Then it ignores outlier and predict using rest of the data.
-    RANSAC is accomplished with the following steps : 
+	Random sample consensus, or RANSAC. RANSAC works by estimating mathematical model of data contains outlier. Then it ignores outlier and predict using rest of the data.
+	RANSAC is accomplished with the following steps : 
 
-    1. Randomly selecting a subset or subspace of the data set
-    2. Fitting a predefined model to the selected subset
-    3. Determining the number of outliers
-    4. Repeating steps 1-3 for a prescribed number of iterations
+	1. Randomly selecting a subset or subspace of the data set
+	2. Fitting a predefined model to the selected subset
+	3. Determining the number of outliers
+	4. Repeating steps 1-3 for a prescribed number of iterations
 
-    RANSAC is primarily used in generating stereo vision.
+	RANSAC is primarily used in generating stereo vision.
 
 2. **Viola-Jones object detection**
 
-    This method is popularly used in face detection. All human faces share similar property, these regularity can be matched using Haar features. For more information regarding these features, refer Wikipedia.
+	This method is popularly used in face detection. All human faces share similar property, these regularity can be matched using Haar features. For more information regarding these features, refer Wikipedia.
 
 3. **Image segmentation and blob analysis**
 
-    Image segmentation is the process of dividing an image into multiple parts. This is usually used to identify objects or other relevant information from images. Segmentation can be performed using any of the relevant algorithm from below given list 1. Otsu’s method 2. K-means clustering 3. watershed segmentation 4. texture filters
+	Image segmentation is the process of dividing an image into multiple parts. This is usually used to identify objects or other relevant information from images. Segmentation can be performed using any of the relevant algorithm from below given list 1. Otsu’s method 2. K-means clustering 3. watershed segmentation 4. texture filters
 
-    With invent of Convolution Neural Network and GPU computing, many things became past. CNN is proved to be of Ace in area of image processing. CNN eliminated roughly 80% of manual feature selection and mathematical tuning.
+	With invent of Convolution Neural Network and GPU computing, many things became past. CNN is proved to be of Ace in area of image processing. CNN eliminated roughly 80% of manual feature selection and mathematical tuning.
 
-    Visual Geometry group form Department of Engineering Science, University of Oxford applied CNN on [ImageNet](http://www.image-net.org/) dataset and achieved state of are [results](http://www.robots.ox.ac.uk/~vgg/research/very_deep/). Image Net is a huge dataset with 14,197,122 labelled images. As a part of competition [ILSVRC-2014](http://www.image-net.org/challenges/LSVRC/2014/), provided images of ImageNet subset had to be classified in to 1000 classes. A convolution network based architecture known as VGG16 achieved highest accuracy in the above said compaction.
+	Visual Geometry group form Department of Engineering Science, University of Oxford applied CNN on [ImageNet](http://www.image-net.org/) dataset and achieved state of are [results](http://www.robots.ox.ac.uk/~vgg/research/very_deep/). Image Net is a huge dataset with 14,197,122 labelled images. As a part of competition [ILSVRC-2014](http://www.image-net.org/challenges/LSVRC/2014/), provided images of ImageNet subset had to be classified in to 1000 classes. A convolution network based architecture known as VGG16 achieved highest accuracy in the above said compaction.
 
-    Training VGG16 network form ImageNet dataset would require state of art GPUs, unfortunately I cannot afford those, so I found a shortcut. Whenever we train a model, model memorize it in the form of weight in connecting layers. Fortunately, Visual Geometry Group at oxford had provided trained weights in form of model on their official site.
+	Training VGG16 network form ImageNet dataset would require state of art GPUs, unfortunately I cannot afford those, so I found a shortcut. Whenever we train a model, model memorize it in the form of weight in connecting layers. Fortunately, Visual Geometry Group at oxford had provided trained weights in form of model on their official site.
 
 So our task to identify object goes in this way.
 
@@ -65,132 +65,132 @@ It’s very clear from the discussion that we are not going to train a model, we
 
 1. **Get Keras compatible model of VGG16.**
 
-    I got the model form some known source and kept it in my personal drive. You may obtain the model form my google drive.
+	I got the model form some known source and kept it in my personal drive. You may obtain the model form my google drive.
 
 2. **Construct VGG16 network in Keras**
 
    In Keras VGG16 can be defined as follow.
-    
-    ```python
-    model = Sequential()
-    model.add(ZeroPadding2D((1, 1), batch\_input\_shape=(1,3, 224,224)))
-    model.add(Convolution2D(64, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(64, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(128, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(128, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1, 1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
-    model.add(Flatten())
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(1000, activation='softmax'))
-    ```
+	
+	```python
+	model = Sequential()
+	model.add(ZeroPadding2D((1, 1), batch\_input\_shape=(1,3, 224,224)))
+	model.add(Convolution2D(64, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(64, 3, 3, activation='relu'))
+	model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(128, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(128, 3, 3, activation='relu'))
+	model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(256, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(256, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(256, 3, 3, activation='relu'))
+	model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(ZeroPadding2D((1, 1)))
+	model.add(Convolution2D(512, 3, 3, activation='relu'))
+	model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+	model.add(Flatten())
+	model.add(Dense(4096, activation='relu'))
+	model.add(Dropout(0.5))
+	model.add(Dense(4096, activation='relu'))
+	model.add(Dropout(0.5))
+	model.add(Dense(1000, activation='softmax'))
+	```
 
    This architecture can be visually represented by image given below:
 
-    <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png/v1/fill/w_658,h_386,al_c,lg_1/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png"></p>
+	<p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png/v1/fill/w_658,h_386,al_c,lg_1/884a24_c506f4dce6fd4163b84355297f4a2a3a~mv2.png"></p>
 
-    <p align="center">Figure 1. VGG16 model architecture</p>
+	<p align="center">Figure 1. VGG16 model architecture</p>
 
 3. **Arrange all weights in network so constrructed**
 
-    weights are present in *.h5 file, which is standard model file compatible to Keras. Before putting weights to the model, we need to compile the model. Once weight are places at proper place we are good to go with prediction utilizing this model.
+	weights are present in *.h5 file, which is standard model file compatible to Keras. Before putting weights to the model, we need to compile the model. Once weight are places at proper place we are good to go with prediction utilizing this model.
 
-    ```python
-    # defining sgd
-    sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
-    # compiling model
-    model.compile(optimizer=sgd, loss='categorical_crossentropy')
-    # loading pre-trained weights into model
-    model.load\_weights('model/vgg16\_weights.h5')
-    ```
+	```python
+	# defining sgd
+	sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+	# compiling model
+	model.compile(optimizer=sgd, loss='categorical_crossentropy')
+	# loading pre-trained weights into model
+	model.load\_weights('model/vgg16\_weights.h5')
+	```
 
 4. **Take a random image**
 
-    I have taken few random images, we will see those images and prediction made on those images shortly.
+	I have taken few random images, we will see those images and prediction made on those images shortly.
 
 5. **Resize and reshape the image as per required dimension by model**
 
-    I have taken images of any shape (random images from image search). To input in to CNN, we need to resize it to require dimension i.e. 224*224 pixel.
+	I have taken images of any shape (random images from image search). To input in to CNN, we need to resize it to require dimension i.e. 224*224 pixel.
 
-    A simple snippet of code does this. Image is reshaped in to as (1,3,224,224). where 1 represents one image. 3 represents RGB channel of image.
+	A simple snippet of code does this. Image is reshaped in to as (1,3,224,224). where 1 represents one image. 3 represents RGB channel of image.
 
-    ```python
-    img = image.load\_img(img\_path, target_size=(224, 224))
-    x = image.img\_to\_array(img)
-    x = x.reshape(1,x.shape[0],x.shape[1],x.shape[2])
-    \# print "SHAPE OF THE IMAGE", x.shape
-    ```
+	```python
+	img = image.load\_img(img\_path, target_size=(224, 224))
+	x = image.img\_to\_array(img)
+	x = x.reshape(1,x.shape[0],x.shape[1],x.shape[2])
+	\# print "SHAPE OF THE IMAGE", x.shape
+	```
 
 6. **Get objects in the image identified**
 
-    This step is not a big job to do. Just provide your resized and reshaped image to model and model will provide you with probability of all 1000 classes for given image. It is not necessary that image should have 1000 objects in it. Object which are present in image, model will assign higher probability to these objects compared to others. Out task is to find out such top 5 classes with highest probability.
+	This step is not a big job to do. Just provide your resized and reshaped image to model and model will provide you with probability of all 1000 classes for given image. It is not necessary that image should have 1000 objects in it. Object which are present in image, model will assign higher probability to these objects compared to others. Out task is to find out such top 5 classes with highest probability.
 
-    ```python
-    # making a dictionary of class and corresponding probability
-    tempDict = {}
-    count = 0
-    for eachprob in probabilities:
-        tempDict[eachprob] = count
-        count = count +1
-    top = 0
-    # sorting to get top 5 predictions
-    topPredictions={}
-    for eachkey in sorted(tempDict,reverse=True):
-        Name = class_names[tempDict[eachkey]]
-        Percentage = eachkey
-        topPredictions[Name]=round(Percentage*100,3)
-        if top == 5:
-            break
-        top = top +1
-    ```
+	```python
+	# making a dictionary of class and corresponding probability
+	tempDict = {}
+	count = 0
+	for eachprob in probabilities:
+	    tempDict[eachprob] = count
+	    count = count +1
+	top = 0
+	# sorting to get top 5 predictions
+	topPredictions={}
+	for eachkey in sorted(tempDict,reverse=True):
+	    Name = class_names[tempDict[eachkey]]
+	    Percentage = eachkey
+	    topPredictions[Name]=round(Percentage*100,3)
+	    if top == 5:
+	        break
+	    top = top +1
+	```
 
 7. **Last and optional step, Print name of top 5 object on image with their percentage of confidence as provided by network.**
 
-    This can be accomplished by using Python Image Library (PIL). PIL requires fonts, those which are to be used to write on image, I have provided the same on GitHub along with rest of the code.
+	This can be accomplished by using Python Image Library (PIL). PIL requires fonts, those which are to be used to write on image, I have provided the same on GitHub along with rest of the code.
 
-    ```python
-    path, filename = os.path.split(imagePath)
-    img = Image.open(imagePath)
-    draw = ImageDraw.Draw(img)
-    fontHeight = 24
-    font = ImageFont.truetype("fonts/adventpro-bold.ttf", fontHeight)
-    verticleDistance = 0
-    predictedClassSorted = {v: k for k, v in predictedClass.iteritems()}
-    # Writing on image 
-    for eachkey in sorted(predictedClassSorted,reverse=True):
-         # print eachkey, predictedClassSorted[eachkey]
-         draw.text((0, verticleDistance), str(eachkey)+" %" + " : "+str(predictedClassSorted[eachkey]) , (0, 0, 0), font=font)
-         # maintaining verticle distance betweeen two consecutive prediction while writting on image
-         verticleDistance = verticleDistance+fontHeight
-    img.save('processedImages/'+filename)
-    ```
+	```python
+	path, filename = os.path.split(imagePath)
+	img = Image.open(imagePath)
+	draw = ImageDraw.Draw(img)
+	fontHeight = 24
+	font = ImageFont.truetype("fonts/adventpro-bold.ttf", fontHeight)
+	verticleDistance = 0
+	predictedClassSorted = {v: k for k, v in predictedClass.iteritems()}
+	# Writing on image 
+	for eachkey in sorted(predictedClassSorted,reverse=True):
+	     # print eachkey, predictedClassSorted[eachkey]
+	     draw.text((0, verticleDistance), str(eachkey)+" %" + " : "+str(predictedClassSorted[eachkey]) , (0, 0, 0), font=font)
+	     # maintaining verticle distance betweeen two consecutive prediction while writting on image
+	     verticleDistance = verticleDistance+fontHeight
+	img.save('processedImages/'+filename)
+	```
 
 **Conclusion**
 

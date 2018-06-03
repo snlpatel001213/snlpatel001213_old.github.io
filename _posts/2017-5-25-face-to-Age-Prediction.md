@@ -43,40 +43,40 @@ We will choose year from date of birth (DOB)  and difference between date of up
 
 ```python
 def imageResize(basename,imageName):
-    """
-    resize image
-    basename : eg. /home/username/XYZFolder
-    image name : xyz.jpg
-    New folder in the working directory will be created with '_resized' as suffix
-    """
-    new_width  = 128
-    new_height = 128
-    try:  
-        img = Image.open(basename+"/"+imageName) # image extension *.png,*.jpg
-        img = img.resize((new_width, new_height), Image.ANTIALIAS)
-        img.save(basename+'_resized/'+imageName)
-    except:
-        os.mkdir(basename+'_resized/')
-        img = Image.open(basename+"/"+imageName) # image extension *.png,*.jpg
-        img = img.resize((new_width, new_height), Image.ANTIALIAS)
-        img.save(basename+'_resized/'+imageName)
+	"""
+	resize image
+	basename : eg. /home/username/XYZFolder
+	image name : xyz.jpg
+	New folder in the working directory will be created with '_resized' as suffix
+	"""
+	new_width  = 128
+	new_height = 128
+	try:  
+		img = Image.open(basename+"/"+imageName) # image extension *.png,*.jpg
+		img = img.resize((new_width, new_height), Image.ANTIALIAS)
+		img.save(basename+'_resized/'+imageName)
+	except:
+		os.mkdir(basename+'_resized/')
+		img = Image.open(basename+"/"+imageName) # image extension *.png,*.jpg
+		img = img.resize((new_width, new_height), Image.ANTIALIAS)
+		img.save(basename+'_resized/'+imageName)
 
 def resizer(folderPath):
-    """
-    to resize all files present in a folder
-    resizer('/home/username/XYZFolder')
-    """
+	"""
+	to resize all files present in a folder
+	resizer('/home/username/XYZFolder')
+	"""
 
-    for subdir, dirs, files in os.walk(folderPath):
-        for fileName in files:
-            try:
-                #  print os.path.join(subdir, file)
-                filepath = subdir + os.sep + fileName
-                #  print filepath
-                if filepath.endswith(".jpg" or ".jpeg" or ".png" or ".gif"):
-                    imageResize(subdir,fileName)
-            except:
-                print traceback.print_exc()
+	for subdir, dirs, files in os.walk(folderPath):
+		for fileName in files:
+			try:
+				#  print os.path.join(subdir, file)
+				filepath = subdir + os.sep + fileName
+				#  print filepath
+				if filepath.endswith(".jpg" or ".jpeg" or ".png" or ".gif"):
+					imageResize(subdir,fileName)
+			except:
+				print traceback.print_exc()
     # to resize all images in given folder, run below given line
 
 resizer('imdb_crop')
@@ -166,22 +166,22 @@ def myGeneratorEX(samples_per_epoch,epoch):
         for i in range(len(fileNames)/samples_per_epoch): 
             #All files (~438189) are loaded in memory with batch of size  'samples_per_epoch' e.g.1000
             try:
-                # loaded images are converted to numpy array
-                x_batch,y_batch = turnToNumpy(fileNames[i\*samples_per_epoch:(i+1)\*samples_per_epoch])
+				# loaded images are converted to numpy array
+				x_batch,y_batch = turnToNumpy(fileNames[i\*samples_per_epoch:(i+1)\*samples_per_epoch])
 
-                # such all images are made up of numpy array of range integer 0 - 255(8 bit image)
-                # all images are normalised between 0-1 float
-                x_batch = x_batch/255.0
-                # to check wheather or not our algorithm is learning. to cheack wheather our algorith started differentiating between age.
-                x_batch_test,y_batch_test = turnToNumpy(initialFileNames)
-                x_batch_test = x_batch_test/255.0
-                # fit the data on model
-                model.fit(x_batch,y_batch,batch_size=50,nb_epoch=1, verbose=1,validation_split=0.2)
-                # test on initial 100 files at each iteration
-                test_output = model.predict_classes(x_batch_test)
-                print test_output
+				# such all images are made up of numpy array of range integer 0 - 255(8 bit image)
+				# all images are normalised between 0-1 float
+				x_batch = x_batch/255.0
+				# to check wheather or not our algorithm is learning. to cheack wheather our algorith started differentiating between age.
+				x_batch_test,y_batch_test = turnToNumpy(initialFileNames)
+				x_batch_test = x_batch_test/255.0
+				# fit the data on model
+				model.fit(x_batch,y_batch,batch_size=50,nb_epoch=1, verbose=1,validation_split=0.2)
+				# test on initial 100 files at each iteration
+				test_output = model.predict_classes(x_batch_test)
+				print test_output
             except IndexError:
-                print traceback.print_exc()
+				print traceback.print_exc()
         k = k+1
 ```
 
