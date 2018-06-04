@@ -3,6 +3,7 @@ import feedparser
 import json
 d = feedparser.parse('https://www.artificial-intelligence.blog/news?format=rss')
 
+
 title_string = '---\nlayout: default\ntitle: feeds\npermalink: /feeds/\n---\n\n'
 template_text  = open("_pages/feed_template.html").read()
 print(template_text)
