@@ -6,7 +6,6 @@ permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-
 # Banner settings
 video: banner.jpeg # add banner video. Add your video file to the folder video
 banner-title: # add banner title
