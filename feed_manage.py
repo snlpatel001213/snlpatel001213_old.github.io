@@ -9,7 +9,6 @@ template_text  = open("_pages/feed_template.html").read()
 print(template_text)
 template_text = template_text.replace("!!! FEED_PAGE_TITLE !!!",title_string)    
 
-
 card_string = ""
 for each_entry_no in range(len(d.entries)):
     try:
