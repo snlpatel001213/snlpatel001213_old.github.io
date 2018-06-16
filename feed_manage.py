@@ -21,7 +21,6 @@ for each_entry_no in range(len(d.entries)):
         # print(feed_title)
         feed_published = json.dumps(d.entries[each_entry_no]['published'])
         # print(feed_published)
-
         FEED_POST_TRMPLATE = '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+'s><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
         card_string = card_string + FEED_POST_TRMPLATE
         
