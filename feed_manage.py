@@ -120,7 +120,7 @@ master_html += sub_html
     
 FEED_POST_TRMPLATE = ""
 for some_sample in newlist:    
-    if (some_sample['week_difference'] == 2) and (some_sample['week_difference'] == 3) :
+    if (some_sample['week_difference'] == 2) or (some_sample['week_difference'] == 3) :
         feed_link = some_sample["feed_link"]
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
