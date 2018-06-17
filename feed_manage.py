@@ -118,6 +118,17 @@ for some_sample in newlist:
 sub_html = '<section class="chapters cf"><h1 class="sub_title">A Week Ago</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
+FEED_POST_TRMPLATE = ""
+for some_sample in newlist:    
+    if (some_sample['week_difference'] == 2) and (some_sample['week_difference'] == 3) :
+        feed_link = some_sample["feed_link"]
+        feed_image = some_sample["feed_image"]
+        feed_title = some_sample["feed_title"]
+        feed_published = some_sample["feed_published"]
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+'s><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+sub_html = '<section class="chapters cf"><h1 class="sub_title">Older</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
+master_html += sub_html
+    
 
 title_string = '---\nlayout: default\ntitle: feeds\npermalink: /feeds/\n---\n\n'
 template_text  = open("_pages/feed_template.html").read()
