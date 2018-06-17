@@ -28,7 +28,7 @@ def get_relevant_fields(parsed_feed):
             # print(feed_image)
             feed_link = json.dumps(parsed_feed.entries[each_entry_no]['link'])
             dict_["feed_link"] = feed_link.replace('"',"")
-            # print(feed_link)
+            # print(dict_["feed_link"])
             feed_title = json.dumps(parsed_feed.entries[each_entry_no]['title'])
             dict_["feed_title"] = feed_title.replace('"',"") 
             # print(feed_title)
@@ -67,7 +67,7 @@ def science_daily_parser():
         dict_ = {}
         try:
             dict_["feed_image"] = str(each_entry['media_thumbnail'][0]['url'])
-            dict_["feed_link"] = str(each_entry['links'])
+            dict_["feed_link"] = str(each_entry['links'][0]['href'])
             struct_to_normal_date = struct_time_corrector(str(each_entry['published_parsed']))
             # print ("struct_to_normal_date : ",struct_to_normal_date )
             struct_to_normal_date = dateparser.parse(struct_to_normal_date, settings={'TIMEZONE': 'UTC'}).strftime("%Y-%m-%d")
@@ -103,7 +103,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+'s><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "_blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title">This Week</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
@@ -114,7 +114,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+'s><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "_blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "_blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title">A Week Ago</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
@@ -125,7 +125,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+'s><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "_blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "_blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title">Older</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
