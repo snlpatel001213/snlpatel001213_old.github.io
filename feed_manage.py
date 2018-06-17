@@ -133,7 +133,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3 class="chapter_title"  style="background-color: rgba(196, 201, 2, 0.87);">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title" style="text-align: center; color: aliceblue;">This Week</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
@@ -144,7 +144,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3  class="chapter_title"  style="background-color: rgba(196, 201, 2, 0.87);">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title" style="text-align: center; color: aliceblue;">A Week Ago</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
@@ -155,7 +155,7 @@ for some_sample in newlist:
         feed_image = some_sample["feed_image"]
         feed_title = some_sample["feed_title"]
         feed_published = some_sample["feed_published"]
-        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3 class="chapter_title">'+feed_title+'</h3></a></div></div>'
+        FEED_POST_TRMPLATE += '<div class="chapter"><a href='+feed_link+'  target = "blank"><img src='+feed_image+' alt='+feed_title+'></a><div class="chapter_inner"><p class="chapter_number"'+feed_published+'</p><a href='+feed_link+' target = "blank"><h3  class="chapter_title"  style="background-color: rgba(196, 201, 2, 0.87);">'+feed_title+'</h3></a></div></div>'
 sub_html = '<section class="chapters cf"><h1 class="sub_title" style="text-align: center; color: aliceblue;">Older</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
