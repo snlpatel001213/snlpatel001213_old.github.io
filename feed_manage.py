@@ -6,6 +6,7 @@ import traceback
 import datetime
 from datetime import timedelta
 import time
+import re
 
 
 def get_feed_parsed(rss_feed_url):
@@ -83,6 +84,34 @@ def science_daily_parser():
             ""
     return feed_array
 
+def get_url_images_in_text(text):
+    '''finds image urls'''
+    return str(re.findall(r'\bhttps?:[^)''"]+\.(?:jpg|jpeg|gif|png)(?![a-z/])', text)[0])
+
+def reddit_parser(): 
+    feed_array = []  
+    parsed_feeds = feedparser.parse("https://www.reddit.com/r/artificial/.rss")
+    for each_entry in parsed_feeds['entries']:
+        dict_ = {}
+        try:
+            sumamry = each_entry["summary"]
+            dict_["feed_image"] =get_url_images_in_text(sumamry)
+            dict_["feed_link"] = str(each_entry['link'])
+            struct_to_normal_date = struct_time_corrector(str(each_entry['updated_parsed']))
+            # print ("struct_to_normal_date : ",struct_to_normal_date )
+            struct_to_normal_date = dateparser.parse(struct_to_normal_date, settings={'TIMEZONE': 'UTC'}).strftime("%Y-%m-%d")
+            dict_["feed_published"] = struct_to_normal_date
+            dict_["feed_title"] =  str(each_entry['title'])
+            current_date_time = dateparser.parse(str(datetime.datetime.now()), settings={'TIMEZONE': 'UTC'}).strftime("%Y-%m-%d")
+            delta = days_between(current_date_time , struct_to_normal_date)
+            dict_["day_difference"] = delta
+            dict_["week_difference"] = int(delta/7)
+            # print (dict_)
+            feed_array.append(dict_)
+        except:
+            ""
+    return feed_array
+
 feed_list  = ['https://www.artificial-intelligence.blog/news?format=rss','http://news.mit.edu/rss/topic/artificial-intelligence2']
 master_dict = []
 for each_feed in feed_list:
@@ -91,6 +120,7 @@ for each_feed in feed_list:
     master_dict.extend(feed_arry)
 
 master_dict.extend(science_daily_parser())
+master_dict.extend(reddit_parser())
 
 master_html = ""
 newlist = sorted(master_dict, key=lambda k: k['week_difference']) 
@@ -129,6 +159,8 @@ for some_sample in newlist:
 sub_html = '<section class="chapters cf"><h1 class="sub_title" style="text-align: center; color: aliceblue;">Older</h1><div class="wrapper flex-row">'+FEED_POST_TRMPLATE+'</div></section>'
 master_html += sub_html
     
+
+
 
 title_string = '---\nlayout: default\ntitle: feeds\npermalink: /feeds/\n---\n\n'
 template_text  = open("_pages/feed_template.html").read()
