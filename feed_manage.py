@@ -67,7 +67,7 @@ def science_daily_parser():
         dict_ = {}
         try:
             dict_["feed_image"] = str(each_entry['media_thumbnail'][0]['url'])
-            dict_["feed_link"] = str(each_entry['links'][0]['href'])
+            dict_["feed_link"] = str(each_entry['links'])
             struct_to_normal_date = struct_time_corrector(str(each_entry['published_parsed']))
             # print ("struct_to_normal_date : ",struct_to_normal_date )
             struct_to_normal_date = dateparser.parse(struct_to_normal_date, settings={'TIMEZONE': 'UTC'}).strftime("%Y-%m-%d")
