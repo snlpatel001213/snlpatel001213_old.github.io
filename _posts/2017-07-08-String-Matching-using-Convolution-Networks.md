@@ -20,19 +20,20 @@ String matching is a very conventional problem in computational science. String 
 The purpose behind this tutorial is to train machine for matching string having any type of differences (e.g. insertion, deletion and fragment translocation).
 I have not used any specialized data-set for this tutorial, in fact synthetic data-set was generated for training.
 
-1. **Data-set Generation**
+1. **Data-set Generation :** 
     Data-set is constituted by Original string and a Mutated string:
     Original string is made up of random 100 characters e.g.
 
-    TSKCG498ZTQR7F5VFI59CSVKFY3XG98OG762HYDF82XB1LM87WNNM5Z57L9DIHFI64W4MSYJ2KK3B17HMJBQZJNVKDVAL0I42ZOX
+    `TSKCG498ZTQR7F5VFI59CSVKFY3XG98OG762HYDF82XB1LM87WNNM5Z57L9DIHFI64W4MSYJ2KK3B17HMJBQZJNVKDVAL0I42ZOX`
 
     Mutated string is made from  Original string with some noise introduced
 
-    TJKCG4BqQTZzmF5VlI59CSnKZE3Tk98OG76iHYDF8ZXBcbM8cWNNM5s5FQ9DWHFI6PWnPSEJpmwlB1qAMJIZZGxjKDmAJGI42ZkS
+    `TJKCG4BqQTZzmF5VlI59CSnKZE3Tk98OG76iHYDF8ZXBcbM8cWNNM5s5FQ9DWHFI6PWnPSEJpmwlB1qAMJIZZGxjKDmAJGI42ZkS`
 
     In above example  Original string and a Mutated string are 50% similar, it means out of 100 character in original string 50 are changed randomly (point mutation)
     for to constitute data-set, alphanumeric original and mutated strings are randomly generated with random 1 to 100 % mutation.
-    For to generate data-set.  I have taken only capital letters (26) + digits (10). The combination for Number of sample points in set = 100  and Number of sample points in each combination = 36 turn out to be 1.97720458214493E+27. The combination so achieved is an astronomic number and probability of getting a string repeated is absolutely nill. 
+    For to generate data-set.  I have taken only capital letters (26) + digits (10). The combination for Number of sample points in set = 100  and Number of sample points in each combination = 36 turn out to be 1.97720458214493E+27. The combination so achieved is an astronomic number and probability of getting a string repeated is absolutely null. 
+
     ```python
     stringSize = 100 # defining string size 
     maxWordLength = 100 
@@ -58,9 +59,11 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
             originalStringArray[randomPlace] = randomLetter 
         return "".join(originalStringArray)
     ```
-2. **String Representation**
+
+2. **String Representation :**
     In present tutorial we are going to utilize convolution network. Convolution network are found to produce state of are result in area of image processing. As per my intuition, if strings are represented in form of image then convolution network should performs better there too. 
     Similar images often having point or local differences, still Convolution network perform better. Similarly string  may have point local differences. Convolution network also perform better on images with horizontal/vertical shifts and rotational difference. These difference are similar to string with transnational differences.
+
     ```python
     def giveWordmatrix(word): 
         """ 
@@ -104,14 +107,17 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     pyplot.imshow(toimage(mutatedStringMatrix)) #showing first image 
     pyplot.show()
     ```
+
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_9710badc39f845ccaeb32da04803727e~mv2.png/v1/fill/w_532,h_378,al_c,lg_1/884a24_9710badc39f845ccaeb32da04803727e~mv2.png"></p>
     <p align="center">Figure 1. Original and mutated string is shown as in form of image</p>
     Above image was generated with about 50% mutation, you can clearly see, about 50% points are same and remaining are different. For each such 2D representation, on vertical axis 0 - 100 represent each character in string, each character is mapped to corresponding number between 0 – 63 as defined in dictionary above.
-3. **Model Architecture**
+
+3. **Model Architecture :**
     I always believe in designing model, in the similar way as human thinks. Consider an scenario when we have been given two strings as above and asked to find similarity between them. How we think?  Repetitively see two strings and try to find out difference between them. Right??. 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_a532eda2af6244069ac128e419300632~mv2.png/v1/fill/w_945,h_434,al_c,lg_1/884a24_a532eda2af6244069ac128e419300632~mv2.png"></p>
     <p align="center">Figure 2. Model Architecture for string matching task</p>
-    Our model architecture is having two model works in parallel. Each model using convolution network generate a condensed representation of the given strings and finally such representation are merged to final model which is stacked dense layer of deep neural network. The final out put is class value between 0 to 100, class value also represents similarity between two strings.
+    Our model architecture is having two model works in parallel. Each model using convolution network generate a condensed representation of the given strings and finally such representation are merged to final model which is stacked dense layer of deep neural network. The final out put is class value between 0 to 100, class value also represents similarity between two strings. By the way this network architecture is known as [Siamese Network](https://www.coursera.org/lecture/convolutional-neural-networks/siamese-network-bjhmj).
+
     While training such model, two strings are provided, one to each model. Lets say string 1 was provided to model A and mutated string 2 with 20% mutation is provided to model B. The reference class value provide in such case would be 80 (100 – 20), represents similarity between two strings.
     The overall model definition in keras is as given below :
 
@@ -156,6 +162,7 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     Unlike other tutorial we do not have exact data-set on which we iterate repeatedly and try to fit.
     New data-set is generated at each iteration by repeatedly calling   string_generator and random mutations are performed on it. In this manner no data is repeated for training. This practice makes model versatile, however takes longer training time.
     Please go though below given code, it is to the point and easily understandable
+
     ```python
     # file to watch intermediate results 
     testFileOut = open("intermediate_results.txt","w") 
@@ -228,7 +235,9 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
             # training 
             final_model.fit([originalStringArray,mutatedStringArray],response,batch\_size=10000,nb\_epoch=1, verbose=1,validation_split=0.2)
     ```
+
     When I stated training, initially model was clueless about data and ended up predicting one similarity value for all combination of original and mutated strings.
+
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_227dcfb4d0ca4881b34f29a8e4f13cf8~mv2.jpg/v1/fill/w_726,h_408,al_c,lg_1,q_80/884a24_227dcfb4d0ca4881b34f29a8e4f13cf8~mv2.webp"></p>
     <p align="center">Figure 3. Represents predicted and actual difference in strings with un-trained model</p>
     After training model was well learned about the task given and predicted very well on  randomly generated original and mutated strings.
@@ -236,16 +245,17 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
      <p align="center">Figure 4. Represents predicted and actual difference in strings with trained model</p>
 5. **Drill Down**
     I have conducted an experiment to compare performance of our neural network based string match and Levenshtein distance algorithm. A set of 100 original and mutated string was generated randomly and given to  neural network based string match and Levenshtein distance algorithm. I have sorted the result obtained in ascending order of similarity. It is great to note that Levenshtein algorithm fails with string having higher dissimilarity (>75% dissimilarity). However  neural network based string match performed equally well for strings with extreme similarity and dissimilarity.
+
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_74770b21e7754b2caf81a2f6f0ab9f67~mv2.png/v1/fill/w_917,h_485,al_c,usm_0.66_1.00_0.01/884a24_74770b21e7754b2caf81a2f6f0ab9f67~mv2.png"></p>
     <p align="center">Figure 5. A comparison of predicted string  match with predicted match by Levenshtein Algorithm [two string with insertion deletion and updates] </p>
     In above given tutorial I have used only point mutation. To see the adaptability of the algorithm I have conducted another set of experiment. Along with point mutation, in the next part of tutorial I have applied random translocation in mutated string.
     Below is the example of two string having nearly 80% similarity  with point mutation [In Maroon]  and translocation difference [Red and Green].
 
     Original String :
-    TQITTPC8RVRX6PUSP0782COJV3IHTBDS9KNFSAPS8RI30F5BEYGFCLRH06UF2KTK1EUM776OIITVWM2MDJCKQ6GBACSHTSZ85XOP
+    `TQITTPC8RVRX6PUSP0782COJV3IHTBDS9KNFSAPS8RI30F5BEYGFCLRH06UF2KTK1EUM776OIITVWM2MDJCKQ6GBACSHTSZ85XOP`
 
     Muated String :
-    KTKrVjMU76yIITwWM2SAPS8RI30F5BEYGFCLRH06UF28wCOJV3IHTBDS9KNFTQITTPC8RVRX6PUSP07MDJCKQ6kBAuSHTSZ85XOP
+    `KTKrVjMU76yIITwWM2SAPS8RI30F5BEYGFCLRH06UF28wCOJV3IHTBDS9KNFTQITTPC8RVRX6PUSP07MDJCKQ6kBAuSHTSZ85XOP`
 
     To generate such strings I have modified mutator function a little and have added  makeRandomFragments which will make random fragment  of given string and randomly concatenate these fragments to form a new string.
 
@@ -281,5 +291,6 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     To train a new model to adapt to learn translocation related changes in the string, I have trained a new model by a method called as transfer learning. In transfer learning some previous model which was trained for the similar task to the current one is taken and weight are readjusted  by retraining . This method takes less time in comparison to make model learn from beginning.
     After completing the training I have compared result of neural network based method  with Levenshtein algorithm. What i found was amazing ,  Levenshtein algorithm performed very poorly on randomly string having high simillarity but randomly trans-located and on string having high mutation. But our method worked well on both parts. 
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_7b9c1ddb0a5e49e48a796925565b988a~mv2.png/v1/fill/w_945,h_493,al_c,usm_0.66_1.00_0.01/884a24_7b9c1ddb0a5e49e48a796925565b988a~mv2.png"></p>
+    
     <p align="center">Figure 6. A comparison of predicted string  match with predicted match by Levenshtein Algorithm [two string with translation if fragments along with insertion deletion and updates]</p>
     You can clearly see yellow line [Levenshtein method] fails on strings having 1) High similarity but random translocation and; 2) Strings having high mutation. In both the cases our method was better adapted.
