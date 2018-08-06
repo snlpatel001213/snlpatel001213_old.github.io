@@ -293,4 +293,4 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_7b9c1ddb0a5e49e48a796925565b988a~mv2.png/v1/fill/w_945,h_493,al_c,usm_0.66_1.00_0.01/884a24_7b9c1ddb0a5e49e48a796925565b988a~mv2.png"></p>
     
     <p align="center">Figure 6. A comparison of predicted string  match with predicted match by Levenshtein Algorithm [two string with translation if fragments along with insertion deletion and updates]</p>
-    You can clearly see yellow line [Levenshtein method] fails on strings having 1) High similarity but random translocation and; 2) Strings having high mutation. In both the cases our method was better adapted.
+    You can clearly see yellow line [Levenshtein method](https://en.wikipedia.org/wiki/Levenshtein_distance)  fails on strings having 1) High similarity but random translocation and; 2) Strings having high mutation. In both the cases our method was better adapted.
