@@ -24,90 +24,101 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     Data-set is constituted by Original string and a Mutated string:
     Original string is made up of random 100 characters e.g.
 
-    `TSKCG498ZTQR7F5VFI59CSVKFY3XG98OG762HYDF82XB1LM87WNNM5Z57L9DIHFI64W4MSYJ2KK3B17HMJBQZJNVKDVAL0I42ZOX`
+    *TSKCG498ZTQR7F5VFI59CSVKFY3XG98OG762HYDF82XB1LM87WNNM5Z57L9DIHFI64W4MSYJ2KK3B17HMJBQZJNVKDVAL0I42ZOX*
 
     Mutated string is made from  Original string with some noise introduced
 
-    `TJKCG4BqQTZzmF5VlI59CSnKZE3Tk98OG76iHYDF8ZXBcbM8cWNNM5s5FQ9DWHFI6PWnPSEJpmwlB1qAMJIZZGxjKDmAJGI42ZkS`
+    *TJKCG4BqQTZzmF5VlI59CSnKZE3Tk98OG76iHYDF8ZXBcbM8cWNNM5s5FQ9DWHFI6PWnPSEJpmwlB1qAMJIZZGxjKDmAJGI42ZkS*
 
     In above example  Original string and a Mutated string are 50% similar, it means out of 100 character in original string 50 are changed randomly (point mutation)
     for to constitute data-set, alphanumeric original and mutated strings are randomly generated with random 1 to 100 % mutation.
     For to generate data-set.  I have taken only capital letters (26) + digits (10). The combination for Number of sample points in set = 100  and Number of sample points in each combination = 36 turn out to be 1.97720458214493E+27. The combination so achieved is an astronomic number and probability of getting a string repeated is absolutely null. 
 
     ```python
-    stringSize = 100 # defining string size 
+    stringSize = 100  # defining string size
     maxWordLength = 100 
-    # lets consider 63 basic character, those occur the most 
-    # character to integer mapping dictionary 
-    charToInt = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'A':10,'a':11,'B':12,'b':13,'C':14,'c':15,'D':16,'d':17,'E':18,'e':19,'F':20,'f':21,'G':22,'g':23,'H':24,'h':25,'I':26,'i':27,'J':28,'j':29,'K':30,'k':31,'L':32,'l':33,'M':34,'m':35,'N':36,'n':37,'O':38,'o':39,'P':40,'p':41,'Q':42,'q':43,'R':44,'r':45,'S':46,'s':47,'T':48,'t':49,'U':50,'u':51,'V':52,'v':53,'W':54,'w':55,'X':56,'x':57,'Y':58,'y':59,'Z':60,'z':61 ,' ':62,'.':63}
+    # lets consider 63 basic character, those occur the most
+    # character to integer mapping dictionary
+    charToInt = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10, 'a': 11, 'B': 12,
+                'b': 13, 'C': 14, 'c': 15, 'D': 16, 'd': 17, 'E': 18, 'e': 19, 'F': 20, 'f': 21, 'G': 22, 'g': 23, 'H': 24,
+                'h': 25, 'I': 26, 'i': 27, 'J': 28, 'j': 29, 'K': 30, 'k': 31, 'L': 32, 'l': 33, 'M': 34, 'm': 35, 'N': 36,
+                'n': 37, 'O': 38, 'o': 39, 'P': 40, 'p': 41, 'Q': 42, 'q': 43, 'R': 44, 'r': 45, 'S': 46, 's': 47, 'T': 48,
+                't': 49, 'U': 50, 'u': 51, 'V': 52, 'v': 53, 'W': 54, 'w': 55, 'X': 56, 'x': 57, 'Y': 58, 'y': 59, 'Z': 60,
+                'z': 61, ' ': 62, '.': 63}
     # integer to character mapping dictionary 
     intToChar = {v: k for k, v in charToInt.iteritems()}
-    def string\_generator(size=stringSize, chars=string.ascii\_uppercase + string.digits): 
-      """ 
-      will generate random string 
-      """ 
-      return ''.join(random.choice(chars) for _ in range(size))
-    def mutator(originalString, percentageMutation): 
-      """ 
-      will take a string and mutate it as per percentage specified 
-      """ 
-      originalStringArray = list(originalString) 
-      for i in range(percentageMutation): 
-        # print originalStringArray 
-        randomPlace = random.randint(0,len(originalString)-1) 
-        randomLetter = random.choice(string.letters) 
-        originalStringArray[randomPlace] = randomLetter 
-      return "".join(originalStringArray)
+
+    def string_generator(size=stringSize, chars=string.ascii_uppercase + string.digits):
+        """
+        will generate random string
+        """
+        return ''.join(random.choice(chars) for _ in range(size))
+    def mutator(originalString, percentageMutation):
+        """
+        will take a string and mutate it as per percentage specified
+        """
+        originalStringArray = list(originalString)
+        for i in range(percentageMutation):
+            # print originalStringArray
+            randomPlace = random.randint(0, len(originalString) - 1)
+            randomLetter = random.choice(string.letters)
+            originalStringArray[randomPlace] = randomLetter
+        return "".join(originalStringArray)
+
+
     ```
+
 
 2. **String Representation :**
     In present tutorial we are going to utilize convolution network. Convolution network are found to produce state of are result in area of image processing. As per my intuition, if strings are represented in form of image then convolution network should performs better there too. 
     Similar images often having point or local differences, still Convolution network perform better. Similarly string  may have point local differences. Convolution network also perform better on images with horizontal/vertical shifts and rotational difference. These difference are similar to string with transnational differences.
 
     ```python
-    def giveWordmatrix(word): 
-      """ 
-      will generate 2d matrix of the string, which will be an input to convolutional network 
-      word : is a string given to function 
-      """ 
-      #2d matrix of size 100*63 initilaized with all cell having value "false" 
-      tempMatrix = np.zeros((maxWordLength, 63),dtype=bool) 
-      charNo=0 
-    \tfor charNo in range (0,len(word)): 
-        if charNo < maxWordLength: 
-          try: 
-            try: 
-              # for above defined 63 character, if character exists then "true" is placed in place  
-              characterToIndex = int(word[charNo]) 
-              tempMatrix[charNo][characterToIndex]=True 
-              charNo += 1 
-            except: 
-              characterToIndex = charToInt[word[charNo]] 
-              tempMatrix[charNo][characterToIndex]=True 
-              charNo += 1 
-          except: 
-            tempMatrix[charNo][0]=False 
-      return tempMatrix
+    def giveWordmatrix(word):
+        """
+        will generate 2d matrix of the string, which will be an input to convolutional network
+        word : is a string given to function
+        """
+        # 2d matrix of size 100*63 initilaized with all cell having value "false"
+        tempMatrix = np.zeros((maxWordLength, 63), dtype=bool)
+        charNo = 0
+
+
+        for charNo in range(0, len(word)):
+            if charNo < maxWordLength:
+                try:
+                    try:
+                        # for above defined 63 character, if character exists then "true" is placed in place 
+                        characterToIndex = int(word[charNo])
+                        tempMatrix[charNo][characterToIndex] = True
+                        charNo += 1
+                    except:
+                        characterToIndex = charToInt[word[charNo]]
+                        tempMatrix[charNo][characterToIndex] = True
+                        charNo += 1
+                except:
+                    tempMatrix[charNo][0] = False
+        return tempMatrix
+
     # lets do little visualization
-    # generating new string 
-    originalString = string_generator() 
-    # print originalString 
-    # mutating the same string randomly 
-    prcentageMutation = random.randint(0,100) 
-    mutatedString = mutator(originalString,prcentageMutation)
-    # genearting 2d matrix for original string 
-    originalStringMatrix = giveWordmatrix(originalString) 
-    # genearting 2d matrix for mutated string 
+    # generating new string
+    originalString = string_generator()
+    # print originalString
+    # mutating the same string randomly
+    prcentageMutation = random.randint(0, 100)
+    mutatedString = mutator(originalString, prcentageMutation)
+    # genearting 2d matrix for original string
+    originalStringMatrix = giveWordmatrix(originalString)
+    # genearting 2d matrix for mutated string
     mutatedStringMatrix = giveWordmatrix(mutatedString)
-    # visualizing original and muataed string 
-    print ("Original String") 
-    pyplot.imshow(toimage(originalStringMatrix)) #showing first image 
-    pyplot.show() 
-    print ("Mutated String") 
-    pyplot.imshow(toimage(mutatedStringMatrix)) #showing first image 
+    # visualizing original and muataed string
+    print ("Original String")
+    pyplot.imshow(toimage(originalStringMatrix))  # showing first image
+    pyplot.show()
+    print ("Mutated String")
+    pyplot.imshow(toimage(mutatedStringMatrix))  # showing first image
     pyplot.show()
     ```
-
     <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_9710badc39f845ccaeb32da04803727e~mv2.png/v1/fill/w_532,h_378,al_c,lg_1/884a24_9710badc39f845ccaeb32da04803727e~mv2.png"></p>
     <p align="center">Figure 1. Original and mutated string is shown as in form of image</p>
     Above image was generated with about 50% mutation, you can clearly see, about 50% points are same and remaining are different. For each such 2D representation, on vertical axis 0 - 100 represent each character in string, each character is mapped to corresponding number between 0 – 63 as defined in dictionary above.
@@ -163,77 +174,82 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     New data-set is generated at each iteration by repeatedly calling   string_generator and random mutations are performed on it. In this manner no data is repeated for training. This practice makes model versatile, however takes longer training time.
     Please go though below given code, it is to the point and easily understandable
 
-    ```python
-    # file to watch intermediate results 
-    testFileOut = open("intermediate_results.txt","w") 
+    ```python  # file to watch intermediate results 
+    testFileOut = open("intermediate_results.txt", "w") 
     # repeate for 5000 iterations, you may change this 
-    for times in range(10000): 
-      originalStringArray  = [] # to keep original strings 
-      mutatedStringArray = [] # to keep mutated strings 
-      percentageSameArray = [] 
-      response = [] # to keep percentage simillarity between original and mutated strings 
-      print times  
-      # every time new 10000 strings and their mutated strings are generated and kept in RAM 
-      for batchOf in range(10000): 
-        # generating origianl string 
-        originalString = string_generator() 
-        #randomly deciding percentage mutation 
-        prcentageMutation = random.randint(1,100) 
-        #100(stringSize) - mutation = percentage simillarity between original and muatated string 
-        percentageSame = 100-prcentageMutation 
-        percentageSameArray.append(percentageSame) 
-        #generating mutated string 
-        mutatedString = mutator(originalString,prcentageMutation)  
-        #generating original string matrix 
-        originalStringMatrix = giveWordmatrix(originalString) 
-        #appending original string matrix to originalStringArray 
-        #after 10000 loops, originalStringArray will be having marix for 10000 original strings 
-        originalStringArray.append(originalStringMatrix)  
-        #generating mutated string matrix 
-        mutatedStringMatrix = giveWordmatrix(mutatedString) 
-        #appending mutated string matrix to mutatedStringArray 
-        #after 10000 loops, mutatedStringArray will be having marix for 10000 muated strings 
-        mutatedStringArray.append(mutatedStringMatrix)  
-        #response vector is having %simillarity  between original and muatated string 
-        #after 10000 loops, response will be having % for above geenrated 10000 original and  
-        #corrosponding mutated strings 
-        response.append(percentageSame)  
-      if times%1000 == 0: 
-        # at every 1000 iteration it will dump output to testFileOut; this is to see progress of learning 
-        #converting originalStringArray having 10000 strings to numpy boolean array 
-        originalStringArray =  np.asarray(originalStringArray,dtype = 'bool') 
-        # changed nothing in reshape; precautionary  
-        originalStringArray = originalStringArray.reshape(originalStringArray.shape[0],originalStringArray.shape[1],originalStringArray.shape[2])  
-        #converting mutatedStringArray having 10000 mutated strings to numpy boolean array 
-        mutatedStringArray =  np.asarray(mutatedStringArray,dtype = 'bool') 
-        # changed nothing in reshape; precautionary  
-        mutatedStringArray = mutatedStringArray.reshape(mutatedStringArray.shape[0], mutatedStringArray.shape[1],mutatedStringArray.shape[2])  
-        #converting respose vector to categorical "one hot encoding"  
-        #when we use categorical_crossentropy as loss function, converting to "one hot encoding" is must. 
-        response = np\_utils.to\_categorical(response,100)  
-        # training 
-        final_model.fit([originalStringArray,mutatedStringArray],response,batch\_size=10000,nb\_epoch=1, verbose=2,validation_split=0.2) 
-        # getting probability for intermediate inspection 
-        prob =  final\_model.predict\_classes([originalStringArray,mutatedStringArray],verbose=0)  
-        # writting to file 
-        for eachNo in range(0,len(list(prob))): 
-          testFileOut.write(str(prob[eachNo])+"\\t"+str(percentageSameArray[eachNo])+"\\n") 
-        testFileOut.flush() 
-      else: 
-        # When in pection is not required 
-        #converting originalStringArray having 10000 strings to numpy boolean array 
-        originalStringArray =  np.asarray(originalStringArray,dtype = 'bool') 
-        # changed nothing in reshape; precautionary  
-        originalStringArray = originalStringArray.reshape(originalStringArray.shape[0],originalStringArray.shape[1],originalStringArray.shape[2]) 
-        #converting mutatedStringArray having 10000 mutated strings to numpy boolean array 
-        mutatedStringArray =  np.asarray(mutatedStringArray,dtype = 'bool') 
-        # changed nothing in reshape; precautionary  
-        mutatedStringArray = mutatedStringArray.reshape(mutatedStringArray.shape[0], mutatedStringArray.shape[1],mutatedStringArray.shape[2])  
-        #converting respose vector to categorical "one hot encoding"  
-        #when we use categorical_crossentropy as loss function, converting to "one hot encoding" is must. 
-        response = np\_utils.to\_categorical(response,100) 
-        # training 
-        final_model.fit([originalStringArray,mutatedStringArray],response,batch\_size=10000,nb\_epoch=1, verbose=1,validation_split=0.2)
+    for times in range(10000):
+        originalStringArray  = []  # to keep original strings 
+        mutatedStringArray = []  # to keep mutated strings 
+        percentageSameArray = []
+        response = []  # to keep percentage simillarity between original and mutated strings 
+        print times
+        # every time new 10000 strings and their mutated strings are generated and kept in RAM 
+        for batchOf in range(10000):
+            # generating origianl string 
+            originalString = string_generator()
+            # randomly deciding percentage mutation 
+            prcentageMutation = random.randint(1, 100)
+            # 100(stringSize) - mutation = percentage simillarity between original and muatated string 
+            percentageSame = 100 - prcentageMutation
+            percentageSameArray.append(percentageSame)
+            # generating mutated string 
+            mutatedString = mutator(originalString, prcentageMutation)
+            # generating original string matrix 
+            originalStringMatrix = giveWordmatrix(originalString)
+            # appending original string matrix to originalStringArray 
+            # after 10000 loops, originalStringArray will be having marix for 10000 original strings 
+            originalStringArray.append(originalStringMatrix)
+            # generating mutated string matrix 
+            mutatedStringMatrix = giveWordmatrix(mutatedString)
+            # appending mutated string matrix to mutatedStringArray 
+            # after 10000 loops, mutatedStringArray will be having marix for 10000 muated strings 
+            mutatedStringArray.append(mutatedStringMatrix)
+            # response vector is having %simillarity  between original and muatated string 
+            # after 10000 loops, response will be having % for above geenrated 10000 original and  
+            # corrosponding mutated strings 
+            response.append(percentageSame)
+        if times % 1000 == 0:
+            # at every 1000 iteration it will dump output to testFileOut; this is to see progress of learning 
+            # converting originalStringArray having 10000 strings to numpy boolean array 
+            originalStringArray =  np.asarray(originalStringArray, dtype='bool')
+            # changed nothing in reshape; precautionary  
+            originalStringArray = originalStringArray.reshape(originalStringArray.shape[0], originalStringArray.shape[1],
+                                                              originalStringArray.shape[2])
+            # converting mutatedStringArray having 10000 mutated strings to numpy boolean array 
+            mutatedStringArray =  np.asarray(mutatedStringArray, dtype='bool')
+            # changed nothing in reshape; precautionary  
+            mutatedStringArray = mutatedStringArray.reshape(mutatedStringArray.shape[0], mutatedStringArray.shape[1],
+                                                            mutatedStringArray.shape[2])
+            # converting respose vector to categorical "one hot encoding"  
+            # when we use categorical_crossentropy as loss function, converting to "one hot encoding" is must. 
+            response = np_utils.to_categorical(response, 100)
+            # training 
+            final_model.fit([originalStringArray, mutatedStringArray], response,
+                            batch_size = 10000, nb_epoch = 1, verbose = 2, validation_split = 0.2)
+            # getting probability for intermediate inspection 
+            prob =  final_model.predict_classes([originalStringArray, mutatedStringArray], verbose=0)
+            # writting to file 
+            for eachNo in range(0, len(list(prob))):
+                testFileOut.write(str(prob[eachNo]) + "t" + str(percentageSameArray[eachNo]) + "n")
+            testFileOut.flush()
+        else:
+            # When in pection is not required 
+            # converting originalStringArray having 10000 strings to numpy boolean array 
+            originalStringArray =  np.asarray(originalStringArray, dtype='bool')
+            # changed nothing in reshape; precautionary  
+            originalStringArray = originalStringArray.reshape(originalStringArray.shape[0], originalStringArray.shape[1],
+                                                              originalStringArray.shape[2])
+            # converting mutatedStringArray having 10000 mutated strings to numpy boolean array 
+            mutatedStringArray =  np.asarray(mutatedStringArray, dtype='bool')
+            # changed nothing in reshape; precautionary  
+            mutatedStringArray = mutatedStringArray.reshape(mutatedStringArray.shape[0], mutatedStringArray.shape[1],
+                                                            mutatedStringArray.shape[2])
+            # converting respose vector to categorical "one hot encoding"  
+            # when we use categorical_crossentropy as loss function, converting to "one hot encoding" is must. 
+            response = np_utils.to_categorical(response, 100)
+            # training 
+            final_model.fit([originalStringArray, mutatedStringArray], response,
+                            batch_size = 10000, nb_epoch = 1, verbose = 1, validation_split = 0.2)
     ```
 
     When I stated training, initially model was clueless about data and ended up predicting one similarity value for all combination of original and mutated strings.
@@ -252,40 +268,43 @@ I have not used any specialized data-set for this tutorial, in fact synthetic da
     Below is the example of two string having nearly 80% similarity  with point mutation [In Maroon]  and translocation difference [Red and Green].
 
     Original String :
-    `TQITTPC8RVRX6PUSP0782COJV3IHTBDS9KNFSAPS8RI30F5BEYGFCLRH06UF2KTK1EUM776OIITVWM2MDJCKQ6GBACSHTSZ85XOP`
+    TQITTPC8RVRX6PUSP0782COJV3IHTBDS9KNFSAPS8RI30F5BEYGFCLRH06UF2KTK1EUM776OIITVWM2MDJCKQ6GBACSHTSZ85XOP
 
     Muated String :
-    `KTKrVjMU76yIITwWM2SAPS8RI30F5BEYGFCLRH06UF28wCOJV3IHTBDS9KNFTQITTPC8RVRX6PUSP07MDJCKQ6kBAuSHTSZ85XOP`
+    KTKrVjMU76yIITwWM2SAPS8RI30F5BEYGFCLRH06UF28wCOJV3IHTBDS9KNFTQITTPC8RVRX6PUSP07MDJCKQ6kBAuSHTSZ85XOP
 
     To generate such strings I have modified mutator function a little and have added  makeRandomFragments which will make random fragment  of given string and randomly concatenate these fragments to form a new string.
 
     ```python
-    def makeRandomFragments(string): 
-      """ 
-      will make random fragment  of given string and randomly concatenate these fragments to form a new string. 
-      :param string:  
-      :return:  
-      """ 
-      splitted = [] 
-      prev = 0 
-      while True: 
-        n = random.randint(10,25) 
-        splitted.append(string[prev:prev+n]) 
-        prev = prev + n 
-        if prev >= len(string)-1: 
-          break 
-      return "".join(list(set(splitted)))
-    def mutator(originalString, percentageMutation): 
-      """ 
-      will take a string and mutate it as per percentage specified 
-      """ 
-      originalStringArray = list(originalString) 
-      for i in range(percentageMutation): 
-        # print originalStringArray 
-        randomPlace = random.randint(0,len(originalString)-1) 
-        randomLetter = random.choice(string.letters) 
-        originalStringArray[randomPlace] = randomLetter 
-      return makeRandomFragments("".join(originalStringArray))
+    def makeRandomFragments(string):
+        """ 
+        will make random fragment  of given string and randomly concatenate these fragments to form a new string. 
+        :param string:  
+        :return:  
+        """
+        splitted = []
+        prev = 0
+        while True:
+            n = random.randint(10, 25)
+            splitted.append(string[prev:prev + n])
+            prev = prev + n
+            if prev >= len(string) - 1:
+                break
+        return "".join(list(set(splitted)))
+
+
+    def mutator(originalString, percentageMutation):
+        """ 
+        will take a string and mutate it as per percentage specified 
+        """
+        originalStringArray = list(originalString)
+        for i in range(percentageMutation):
+            # print originalStringArray 
+            randomPlace = random.randint(0, len(originalString) - 1)
+            randomLetter = random.choice(string.letters)
+            originalStringArray[randomPlace] = randomLetter
+        return makeRandomFragments("".join(originalStringArray))
+
     ```
 
     To train a new model to adapt to learn translocation related changes in the string, I have trained a new model by a method called as transfer learning. In transfer learning some previous model which was trained for the similar task to the current one is taken and weight are readjusted  by retraining . This method takes less time in comparison to make model learn from beginning.
