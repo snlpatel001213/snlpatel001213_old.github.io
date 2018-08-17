@@ -140,10 +140,8 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: Monaco;
+  font-size: 1.1em;
 }
 
 /**
@@ -3845,6 +3843,8 @@ template {
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+          font-size: 1.1rem;  
+          color: #3b4044
 }
 
 body {
@@ -3862,6 +3862,7 @@ p {
   /* margin: 0 0 1.75rem; */
   color: #3b4044;
   font-weight: 300;
+  font-size: 1.1rem;
 }
 
 blockquote {
@@ -4004,6 +4005,10 @@ cite {
   width: 32.333%;
   margin: 0 0.5% 1% 0.5%;
   overflow: hidden;
+  border-radius: 8px;
+  border: #111111;
+  border-style: ridge;
+  cursor: cell;
   -webkit-transition: -webkit-transform 0.4s;
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
@@ -4036,7 +4041,10 @@ cite {
 
 .chapters .chapter_inner .chapter_number, .chapters .chapter_inner .chapter_title {
     color: #000000;
-    text-shadow: 2px 2px 2px #00a6ff;
+    background-color: rgba(255, 255, 255, 0.83);
+    border-style: double;
+    border-width: 1px;
+    border-radius: 3px;
 }
 
 .chapters .chapter_inner .chapter_number {
@@ -4447,6 +4455,10 @@ cite {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  border-style: double;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: black;
 }
 
 .recent_box .recent_list .recent_item:hover {
@@ -4457,8 +4469,12 @@ cite {
   position: absolute;
   bottom: 10%;
   left: 2.5%;
-  color: white;
+  color: black;
   font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 3px;
+  border-style: double;
+  border-width: 1px;
 }
 
 .recent_box .recent_list .recent_item_post_1 {

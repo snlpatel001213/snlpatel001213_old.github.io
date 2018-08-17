@@ -5,7 +5,7 @@ description: "Just about everything you'll need to style in the theme: headings,
 modified: 2017-07-17
 category: articles
 tags: [Artificial Neural Network]
-img: neural_neural.png
+img: neural_network.png
 comments: true
 share: true
 ---
@@ -56,19 +56,19 @@ $$X = \sum_{i=1}^n xiwi
 \right.$$
 </center>
 
-<p align="center">Figure 4. General Meaning of activation function</p>
+<p align="center">General Meaning of activation function</p>
 
 Beside sign activation function there are other activation function exist as given below:
 
 <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_b2d44f33d5324bdf8d2467c7d5ad4e03~mv2.png/v1/fill/w_700,h_378,al_c,lg_1/884a24_b2d44f33d5324bdf8d2467c7d5ad4e03~mv2.png"></p>
 
-<p align="center">Figure. 5 Activation functions of a neuron</p>
+<p align="center">Figure. 4 Activation functions of a neuron</p>
 
 In 1958, Frank Rosenblatt  introduced a training algorithm that provided the first procedure for training a simple ANN: a perceptron.  The perceptron is the simplest form of a neural network.  It consists of a single neuron with adjustable synaptic weights and a hard limiter (activation used).
 
 <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_a92492af71784fdda7adf7d72fcd5a6a~mv2.png/v1/fill/w_700,h_371,al_c,lg_1/884a24_a92492af71784fdda7adf7d72fcd5a6a~mv2.png"></p>
 
-<p align="center">Figure. 6 Single-layer two-input perceptron</p>
+<p align="center">Figure. 5 Single-layer two-input perceptron</p>
 
 The operation of Rosenblatt’s perceptron is based on the McCulloch and Pitts neuron model.  The model consists of a linear combiner followed by a hard limiter (a type of activation function).
 The weighted sum of the inputs is applied to the hard limiter, which produces an output equal to +1 if its input is positive and 1 if it is negative.
@@ -80,7 +80,7 @@ We will also see one example as what is the impact of having smaller network try
 
 <p align="center"><img class="img-responsive" src="https://static.wixstatic.com/media/884a24_107ec9e048b14750b2531c6397b3cb6a~mv2.png/v1/fill/w_700,h_397,al_c/884a24_107ec9e048b14750b2531c6397b3cb6a~mv2.png"></p>
 
-<p align="center">Figure 7. Linear separability in the perceptrons</p>
+<p align="center">Figure 6. Linear separability in the perceptrons</p>
 
 **How does the perceptron learn its classification tasks?**
 This is done by making small adjustments in the weights to reduce the difference between the actual and desired outputs of the perceptron.  The initial weights are randomly assigned, usually in the range [-0.5, 0.5], and then updated to obtain the output consistent with the training examples.
@@ -98,7 +98,7 @@ If at iteration p, the actual output is Y(p) and the desired output is Yd (p), t
 
 $ e(p) = Y_d(p) - Y(p)$
 </center>
-<p align="center">Figure 8. Error calculation</p>
+<p align="center">Error calculation</p>
 
 where p = 1, 2, 3, . . .
 Iteration p here refers to the pth training example presented to the perceptron. If the error, $e(p)$ , is positive, we need to increase perceptron output $Y(p)$, but if it is negative, we need to decrease $Y(p)$ .
@@ -108,7 +108,7 @@ Iteration p here refers to the pth training example presented to the perceptron.
 $\Delta W_i(p) = \alpha*X_i(p)*e(p)$
 </center>
 
-<p align="center">Figure 9. updates to weights to decrease error Δw</p>
+<p align="center">Updates to weights to decrease error Δw</p>
 
 where $p$ = 1, 2, 3, . . .
 α is the learning rate, a positive constant less than unity.The perceptron learning rule was first proposed by Rosenblatt in 1960. Using this rule we can derive  the perceptron training algorithm for classification  tasks.
