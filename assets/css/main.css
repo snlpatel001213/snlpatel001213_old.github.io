@@ -3843,7 +3843,7 @@ template {
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-          font-size: 1.1rem;  
+          font-size: 1.0rem;
           color: #3b4044
 }
 
@@ -3862,7 +3862,7 @@ p {
   /* margin: 0 0 1.75rem; */
   color: #3b4044;
   font-weight: 300;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
 }
 
 blockquote {
