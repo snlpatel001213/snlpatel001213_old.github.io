@@ -3845,6 +3845,7 @@ template {
           box-sizing: border-box;
           font-size: 1.0rem;
           color: #3b4044
+          border-radius: 10px;
 }
 
 body {
