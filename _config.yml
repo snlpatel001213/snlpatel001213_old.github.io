@@ -1,68 +1,93 @@
-logo: # add logo name
-title: Sunil.Patel
-description: > # this means to ignore newlines until "baseurl:"
-  I'm Sunil Patel, to me working with Deep Learning is a part of hobby more than just a "job". With this blog, I am keeping all my experience with AI open to entire Community. \#DeepLearningEnthusiastic \#Opportunistic
-permalink: ':title/'
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+paginate: 100 # it will paginate after this number
+language: 'en-uk'
 
-# Banner settings
-video: banner.jpeg # add banner video. Add your video file to the folder video
-banner-title: # add banner title
-banner-desc: # add banner description
+# edit baseurl to simply '/' if using as your personal page (instead of a project page)
+baseurl: /jasper2/
 
-# Author settings
-author-pic: face.jpg # your photo
-author-name: Sunil Patel # your name
-about-author: # about author
-email: snlpatel001213@hotmail.com # your email
-phone: +91-(886)-633-696O # your pnone number
-website: https://linkedin.com/in/linus1 # you website
+# Website info
+title: Ghost
+description: The professional publishing platform
+cover: assets/images/blog-cover.jpg
+logo: assets/images/blog-icon.png
+logo_dark: assets/images/favicon.png
+favicon: assets/images/favicon.png
+production_url: https://jekyller.github.io/jasper2/
+source_url: https://github.com/jekyller/jasper2/
 
-# Social link
-google_url:    # add url link
-twitter_url:   # add url link
-instagram_url: # add url link
-pinterest_url: # add url link
-dribbble_url:  # add url link
-stackoverflow_url:  https://stackexchange.com/users/3284421/patel-sunil?tab=accounts
-github_url: https://github.com/snlpatel001213/
+# Social info
+navigation: True # show the navbar links
+subscribers: True # you need to connect an external service for this to work,
+# if 'True' the submit button is disabled for now, but you can change that
+# by editing `_includes/subscribe-form.html`
+twitter: tryghost # replace by your username
+facebook: ghost # replace by your username
 
 # Disqus
-discus_identifier: sunil-patel # add your discus identifier
+disqus: False
+disqus_shortname: jekyller # replace with your disqus username
 
-# Newsletter
-mailchimp: # add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+# Google Analytics
+google_analytics: UA-69281367-1 # replace with your GA tracking identifier
 
-# Tracker
-analytics:
+# Permalinks
+permalink: /:title
+# permalink: /author/:author
+# permalink: /tag/:tag
 
-# Paginate
-paginate: 12
-paginate_path: /page:num/
+# Authors' info in `_data/authors.yml`
+# Tags' info in `_data/tags_info.yml`
 
-# Build settings
-markdown: kramdown
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-  input: GFM
-  syntax_highlighter: rouge
+# gems and other configs
+plugins: [jekyll-paginate, jekyll-feed]
 
-  coderay:
-    coderay_line_numbers:
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
+feed:
+  path: feed.xml
 
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-mermaid
+# Additional settings available on the front-matter
+# Site logo in the index.html (as in demo.ghost.io)
+# Author's page cover in _layouts/author.html
+# The same for page.html and tag.html layouts
+# Post's page cover as a per-post basis _posts/...
+# Disqus comments as a per-post basis
+# ...
 
-include: [_pages]
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+# Settings for builing master branch with travis-ci
+# with jekyll-travis
+
+# Settings for deploy rake task
+# Username and repo of Github repo, e.g.
+# https://github.com/USERNAME/REPO.git
+# username defaults to ENV['GIT_NAME'] used by Travis
+# repo defaults to USERNAME.github.io
+# Branch defaults to "source" for USERNAME.github.io
+# or "master" otherwise
+safe: False
+lsi: False
+username: jekyller
+repo: jasper2
+branch: master
+relative_source: ../jasper2/
+destination: ../jasper2-pages/
+production_url:  https://jekyller.github.io/jasper2/
+source_url:  https://github.com/jekyller/jasper2/
+
+exclude:
+  - assets/css
+  - node_modules
+  - vendor
+  - .travis.yml
+  - Gemfile
+  - Gemfile.lock
+  - GHOST.txt
+  - gulpfile.js
+  - LICENSE
+  - package.json
+  - Rakefile
+  - README.md
+  - script.py
+  - changelog.md
+  - "*.Rmd"
+  - .git*
