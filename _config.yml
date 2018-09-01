@@ -5,7 +5,7 @@ paginate: 100 # it will paginate after this number
 language: 'en-uk'
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /jasper2/
+baseurl: /
 
 # Website info
 title: Ghost
@@ -33,7 +33,7 @@ disqus_shortname: jekyller # replace with your disqus username
 google_analytics: UA-69281367-1 # replace with your GA tracking identifier
 
 # Permalinks
-permalink: /:title
+permalink: /:title.html
 # permalink: /author/:author
 # permalink: /tag/:tag
 
