@@ -5,9 +5,16 @@ description: "Just about everything you'll need to style in the theme: headings,
 modified: 2017-05-25
 category: articles
 tags: [keras, GPU, Python, Machine learning Advance]
-img: assets/images/face2age.png
+cover: assets/img/face2age.png
 comments: true
 share: true
+layout: post
+current: post
+author: Sunil
+logo: assets/images/ghost.png
+navigation: True
+class: post-template
+subclass: 'post tag-fables'
 ---
 -------
 1.  Codes discussed in this blog post can be found at my [GITHUB](https://github.com/snlpatel001213/algorithmia/tree/master/convnet/face2agePrediciton) repository

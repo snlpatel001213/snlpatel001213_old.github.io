@@ -5,9 +5,16 @@ description: "Just about everything you'll need to style in the theme: headings,
 modified: 2017-07-17
 category: articles
 tags: [Artificial Neural Network]
-img: neural_network.png
+cover: assets/img/neural_network.png
 comments: true
 share: true
+layout: post
+current: post
+author: Sunil
+logo: assets/images/ghost.png
+navigation: True
+class: post-template
+subclass: 'post tag-fables'
 ---
 
 ---
