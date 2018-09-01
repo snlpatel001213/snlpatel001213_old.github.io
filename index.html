@@ -15,7 +15,8 @@ into the {body} of the default.hbs template -->
         <div class="site-header-content">
             <h1 class="site-title">
                 {% if site.logo %}
-                    <img class="site-logo" src="/{{ site.logo }}" alt="{{ site.title }}"/>
+                    <!-- <img class="site-logo" src="/{{ site.logo }}" alt="{{ site.title }}"/>title -->
+                    <h1 class="site-description">{% if page.title %}{{ page.title }}{% endif %}</h1>
                 {% else %}
                     {{ site.title }}
                 {% endif %}
