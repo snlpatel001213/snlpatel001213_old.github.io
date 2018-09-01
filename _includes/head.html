@@ -5,6 +5,7 @@
 
     {% if page.content and page.current == 'post' or page.current == 'about' %}
         {% assign excerpt = page.content | strip_html | truncatewords: 50, "" %}
+        {% assign site.baseurl = "/" %}
      {% endif %} <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="{{ site.title }}" />
     <meta property="og:type" content="website" />
