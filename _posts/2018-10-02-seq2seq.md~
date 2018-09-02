@@ -11,7 +11,7 @@ share: true
 ---
 There are many implementtion of the sequence to sequence on internet, Then why this one even exist? Because I believe in "What I cannot create, I do not understand.". I have put my efforts in understanding it from scratch and finished its implementation.I have taken care and made this implementation easy to understand.This implementation of sequence to sequence is without batching. Follow through below given steps to understand it better.
 
-# Environment Setup
+#Environment Setup
 
 ```
 !pip install torch==0.4.1 -q
@@ -247,11 +247,11 @@ output_size = lang_dataset.output_lang_words
 MAX_LENGTH = 10
 ```
 
-# Some Learning
+#Some Learning
 
 **Some basic understanding regarding PyTorch componenets used in Encoder or Decoder are  explianed below : **
 
-## Embeddings
+##Embeddings
 
 To learn language one must convert words to fixed size vectors. This can be done is two ways:
 
@@ -273,9 +273,9 @@ print(hello_embed)
 >tensor([[-0.2056,  1.0885,  2.1518, -0.5143, -0.9437]], grad_fn=<EmbeddingBackward>)
 
 
-## Unsqueeze & Squeeze
+##Unsqueeze & Squeeze
 
-### Unsqueeze
+###Unsqueeze
 unsqueeze() inserts singleton dim at position given as parameter. Insert a new axis that will appear at the axis position in the expanded array shape.[[3](https://pytorch.org/docs/stable/torch.html#torch.unsqueeze)]
 
 
@@ -289,7 +289,7 @@ print(input.unsqueeze(0).size())
 >torch.Size([1, 2, 4, 3])
 
 
-### Squeeze
+###Squeeze
 Returns a tensor with all the dimensions of input of size 1 removed. For example, if input is of shape: $(A×1×B×C×1×D)$ then the out tensor will be of shape: $(A×B×C×D)$.[[4](https://pytorch.org/docs/stable/torch.html#torch.squeeze)]
 
 
@@ -304,7 +304,7 @@ y.size()
 
 
 
-## Permute
+##Permute
 Interchange different axis. [[5](https://discuss.pytorch.org/t/permute-elements-of-a-tensor-along-a-dimension/1105)]
 
 
@@ -321,7 +321,7 @@ print(x.permute(2, 0, 1).size())
 Log Softmax applies logarithm after softmax : 
 $log( exp(x_i) / exp(x).sum() )$ [[6](https://discuss.pytorch.org/t/what-is-the-difference-between-log-softmax-and-softmax/11801)]
 
-## TopK
+##TopK
 Returns the k largest elements of the given input tensor along a given dimension.
 If dim is not given, the last dimension of the input is chosen.
 If largest is False then the k smallest elements are returned.A tuple of (values, indices) is returned, where the indices are the indices of the elements in the original input tensor. [[7](https://pytorch.org/docs/stable/torch.html#torch.topk)]
@@ -336,16 +336,15 @@ print(top_value, top_index)
     tensor([9., 8., 7.]) tensor([8, 7, 6])
 
 
-## GRU
+##GRU
 Applies a multi-layer gated recurrent unit (GRU) RNN to an input sequence. [[8](https://pytorch.org/docs/stable/nn.html#torch.nn.GRU)]
 
-# Learning Model
+#Learning Model
 With understanding of above elements, we are good to go with defining Encoder and Decoder Network.
 
-<p align="center"><img class="img-responsive" src="/assets/img/encoder_decoder.jpg"></p>
+![Encoder Decoder Architecure for Sequence to Sequence Learning](/assets/img/encoder_decoder.jpg)
 
-
-<p align="center">Figure 1. Encoder Decoder architecure while training</p>
+Figure 1. Encoder Decoder architecure while training
 
 An Encoder takes **input sequence** passes through the **Embedding Layer**. **Embedding Layer** converts word in to a fixed size vector, this Embedding Layer is trainable and get trained along with encoder and decoder. Here onward each word is in form of Embedded representation and passed to GRU. GRU takes 2 inputs 1) Encoder Hidden states and 2) Embedded word input. 
 All words of the input sentence are passed sequentially to GRU so that it takes for a word it takes hidden state of previous state as input and gives one output. For now I will be ignoring encoder outputs shown by :negative_squared_cross_mark: . (These Encoder outputs, we will be using when we implement attention mechanism)  
@@ -371,7 +370,7 @@ At training time we know the output sequence for the input sequecne so we provid
 At test time we dont know the output sequence for the input sequecne so output token generated at time step $t$ is given as input to $t+1$ step (As shown in Figure 2)
 
 
-### Encoder
+###Encoder
 
 ```python
 class EncoderRNN(nn.Module):
@@ -396,7 +395,7 @@ class EncoderRNN(nn.Module):
         return result
 ```
 
-#### Testing Encoder
+####Testing Encoder
 
 ```python
 encoder_test = EncoderRNN(input_size, hidden_size)
@@ -409,7 +408,7 @@ print(encoder_output.shape)
     torch.Size([1, 1, 256])
 
 
-### Decoder
+###Decoder
 
 ```python
 class DecoderRNN(nn.Module):
@@ -438,7 +437,7 @@ class DecoderRNN(nn.Module):
 
 ```
 
-#### Testing Decoder
+####Testing Decoder
 
 ```python
 decoder_test = DecoderRNN(hidden_size,output_size)
@@ -450,7 +449,7 @@ print(decoder_output.shape)
 >torch.Size([1, 3081])
 
 
-### Plotting Function
+###Plotting Function
 
 ```python
 def showPlot(points):
@@ -462,7 +461,7 @@ def showPlot(points):
     plt.show()
 ```
 
-# Actual Training
+#Actual Training
 
 Starting with actual training, making two object of encoder and decoder class respectively. 
 
@@ -575,17 +574,15 @@ train(encoder, decoder, total_epoch)
 
 
 
-<p align="center"><img class="img-responsive" src="/assets/img/seq2seq_1.png"></p>
+![png](seq2seq_files/seq2seq_54_2.png)
 
 
-
-# Evaluation
+#Evaluation
 
 Evaluation module follows the same flow as training, it takes pretrained encoder and decoder and generate translated text. The main thing here is teacher forcing is not followed while evaluation. The decoder generate a word at each time step and the same word is feed as input to next time step. 
-<p align="center"><img class="img-responsive" src="/assets/img/Encoder_decoder_testing.jpg"></p>
+![alt text](/assets/img/Encoder_decoder_testing.jpg)
 
-
-<p align="center">Figure 2. Encoder Decoder architecure while testing.</p>
+Figure 2. Encoder Decoder architecure while testing.
 
 At test time we dont know the output sequence for the input sequecne so output token generated at time step $t$ is given as input to $t+1$ step
 
