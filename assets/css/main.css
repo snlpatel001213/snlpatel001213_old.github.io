@@ -3516,14 +3516,14 @@ template {
 .highlight {
   background-color: #faf9f9;
   -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 10px;
   margin: 0;
 }
 
 .highlighter-rouge {
   color: #157ca4;
   font-weight: 400;
-  border: 1px double;
+  /* border: 1px double; */
   -webkit-border-radius: 3px;
   border-radius: 1px;
   padding: 0.1rem 0.5rem;
