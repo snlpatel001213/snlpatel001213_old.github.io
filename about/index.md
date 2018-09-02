@@ -8,14 +8,8 @@ class: page-template
 subclass: 'post page'
 ---
 
-<style>
-img {
-  border-radius: 50%;
-}
-</style>
 
-
-<img src="/assets/images/sunil.jpg" alt="Avatar" style="width:200px">
+<img src="/assets/images/sunil.jpg" alt="Avatar" style="width:200px;border-radius: 50%;" >
 
 
 Ghost is professional publishing platform designed for modern journalism. This is a demo site of a basic Ghost install to give you a general sense of what a new Ghost site looks like when set up for the first time.
