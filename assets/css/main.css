@@ -4052,6 +4052,10 @@ cite {
   font-size: 0.9rem;
   text-transform: uppercase;
   margin: 0 0 1rem 0;
+  background: #ffffff;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 1.9);
 }
 
 .chapters .chapter_inner .chapter_number::after {
@@ -4066,6 +4070,10 @@ cite {
   font-size: 1rem;
   font-weight: 400;
   margin: 0 0 0.5rem 0;
+  background: #ffffff;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 1.9);
 }
 
 .newsletter {
