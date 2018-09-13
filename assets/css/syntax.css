@@ -2,7 +2,7 @@
 .highlight pre {
     background: #1c1c1c;
     padding: 5px;
-    overflow-x: visible;
+    overflow-x: overlay;
  }
 .highlight .hll { background: color(var(--darkgrey) l(-3%)); }
 .highlight .c { color: #75715e } /* Comment */

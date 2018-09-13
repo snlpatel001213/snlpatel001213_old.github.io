@@ -3849,7 +3849,7 @@ template {
 }
 
 body {
-  font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
+  font-family: "Josefin Sans", "sans-serif";
   text-align: justify;
   -webkit-font-smoothing: antialiased;
   background-color: #262626;
