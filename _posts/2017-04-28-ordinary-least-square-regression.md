@@ -1,5 +1,13 @@
 ---
----
+layout: post
+title: Ordinary Least Square Regression
+description: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+modified: 2017-04-28
+category: articles
+tags: [Statistics]
+img: olsr.png
+comments: true
+share: true
 ---
 
 You may refer this literature for mathematical explanation of below implemented algorithm 

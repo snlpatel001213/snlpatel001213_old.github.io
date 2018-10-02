@@ -1,6 +1,15 @@
 ---
+layout: post
+title: Logistic Regression
+description: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+modified: 2014-04-28
+category: articles
+tags: [Statistics]
+img: logistic_regression.png    
+comments: true
+share: true
 ---
----
+
 You may refer this literature for mathematical explanation of below implemented algorithm 
 1) http://web.pdx.edu/~newsomj/da2/ho_logistic.pdf
  
@@ -375,4 +384,5 @@ False Positive :  26 , False Negative :  23 , True Positive :  53 , True Negativ
 Overall process of Logistic Regression can be summarized as given in below flowchart:
 
 <p align="center"> <img class="img-responsive" src="https://static.wixstatic.com/media/884a24_289fa5671d3f4edfac731872f7867222~mv2.png/v1/fill/w_577,h_676,al_c,usm_0.66_1.00_0.01/884a24_289fa5671d3f4edfac731872f7867222~mv2.png">
-Figure 3. Logistic Regression summarized.
+
+<p align="center">Figure 3. Logistic Regression summarized.</p>

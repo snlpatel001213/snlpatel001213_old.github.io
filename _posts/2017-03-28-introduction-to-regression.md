@@ -1,3 +1,15 @@
+---
+layout: post
+title: Introduction to Regression
+description: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+modified: 2017-03-28
+category: articles
+tags: [statistics]
+img: introduction_to_regression.png
+comments: true
+share: true
+---
+
 Regression is the process of estimating relationship between dependent variable and one or more independent variables.
 Regression makes us to understand effect  independent variables on dependent variable.
 
