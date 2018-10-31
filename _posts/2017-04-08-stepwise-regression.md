@@ -84,6 +84,7 @@ As shown in figure we will be mainly going through following steps:
     MaxPredictor : Number of most relevant column to be selected, It should be more than 0 and less than max(attributes)
  
     ```python
+    
     def stepwise_Regression(self, X, Y, learningRate, numberOfEpoches, maxPredictor):
         """
         :param Xtrain: 2D array[[-0.04315767605226367, 1.165157142272148, -0.45268840110500463,,,],[-0.04315767605226367, 1.165157142272148, -0.45268840110500463,,,],[],[]]
@@ -122,6 +123,7 @@ As shown in figure we will be mainly going through following steps:
    numberOfEpoches : Number of time the same data to be given to the machine learning algorithm so that it can learn.
 
    ```python
+   
     def giveErrorForColumn(self, Xcolumn, Y, learningRate, numberOfEpoches):
             """
             :param Xtrain:
@@ -182,6 +184,7 @@ As shown in figure we will be mainly going through following steps:
     coefficients :  $B_o and B_n$, where n can be any number from 1 to number of attribute(N)
 
     ```python
+    
     def predict(self, Xrow, coefficients):
             """
             for prediction based on given row and coefficients
@@ -205,6 +208,7 @@ As shown in figure we will be mainly going through following steps:
     maxPredictor – max number of columns with minimum squared error to be returned
 
     ```python
+    
     def accepetedColumns(self,squaredError,maxPredictor):
             """
             get columns with least r square value
