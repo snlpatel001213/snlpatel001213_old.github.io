@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Translation using batched sequence to sequence"
-img: objectDetection.webp # Add image post (optional)
+img: translation-using-batched-seq2seq/batched_seq_2_seq_38_2.png # Add image post (optional)
 date: 2018-11-18
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 tag: [pytorch , GPU, Python, Machine Learning Advance]
@@ -11,7 +11,7 @@ share: true
 
 In order to understand this tutorial you need to first understand [how sequence to sequence architecture can be implemented with batching](https://colab.research.google.com/drive/11OwyUDw5PFe9Uoam_N1n_IxWxearOnDv). In this tutorial I will be implementing the same sequence to sequence network, but his time I will be using baching. Batching efficiently utilize the power is parallel hardware such as GPU. In previous tutorial i have in detail illustrated how baching works with Sequence to sequence. In this tutorial we will be using same encoder and decoder and with little modification in data pipline, we able to achiieve our goal. 
 
-This tutorial will also demonstrate effect of batch size on learning. For our case you will see that batch size 32 is computationally ** 10X ** more efficient then batch size 2.
+This tutorial will also demonstrate effect of batch size on learning. For our case you will see that batch size 32 is computationally **10X** more efficient then batch size 2.
 
 # Environment Setup
 Installing Pytorch , tqdm. I am also installing **gputil** which will help me to monitor GPU memory usage. 
@@ -229,7 +229,7 @@ def prepare_data(lang1_name, lang2_name, reverse=False):
 
 ```
 
-Below given is the small modification in the preprocessing script that will help us to get equal size random batches. `pad_seq` function will append ** PAD token (0) ** to make all sentence equel in  given batch of source and token languages. `random_batch` function will fetch source language and target language sentence of given batch size.
+Below given is the small modification in the preprocessing script that will help us to get equal size random batches. `pad_seq` function will append **PAD token (0)** to make all sentence equel in  given batch of source and token languages. `random_batch` function will fetch source language and target language sentence of given batch size.
 
 
 ```python
@@ -317,7 +317,7 @@ def showPlot(points, title = ""):
 ```
 
 # Encoder 
-In Encoder and Decoder I have used Dropout as an additional operation to add regularize learning. More precisely Dropout is applied while training only. More over here you see one more modification ** "to(device)" **, to(device) help to transfer that object/ data to GPU and further computation takes place in defined device. * If GPU was not available the computation would takes place in CPU without any error. *
+In Encoder and Decoder I have used Dropout as an additional operation to add regularize learning. More precisely Dropout is applied while training only. More over here you see one more modification **"to(device)"**, to(device) help to transfer that object/ data to GPU and further computation takes place in defined device. *If GPU was not available the computation would takes place in CPU without any error.*
 
 
 ``` python
@@ -401,7 +401,7 @@ class customLoss(nn.Module):
 NLL = customLoss(2).to(device)
 ```
 
-Below given are two functions to test using given model and get output while training.* No buddy writes ** Evaluate ** function before training but for to use these function to evaluate training progress it is required to initialize them before training begins.* Evaluate function are almost simillar to training function, it just we dont calculate loss and optimize parameters while evaluating.
+Below given are two functions to test using given model and get output while training.No buddy writes **Evaluate** function before training but for to use these function to evaluate training progress it is required to initialize them before training begins.*Evaluate function are almost simillar to training function, it just we dont calculate loss and optimize parameters while evaluating*.
 
 
 ```python
@@ -456,7 +456,7 @@ Now I will be combining all parts of the implementations in to one function and 
 5.  test : To Evaluate by using random samples while training
 6.  plot : To plot progress  
 
-In present implementation I will be using ** learning rate 0.0001 ** and ** RMSprop  optimizer **.
+In present implementation I will be using **learning rate 0.0001** and **RMSprop  optimizer**.
 
 
 ```python
@@ -515,7 +515,7 @@ def train_it(encoder,decoder,batch_size, iterations, test = True, plot = False):
 As a rule of thumb one should use batch size between 4 to 64. You may read more about choosing optimum batch size from [here](https://stats.stackexchange.com/questions/164876/tradeoff-batch-size-vs-number-of-iterations-to-train-a-neural-network)
 Next is we will be using batch size 2. It is clear from the plot of loss vs Iteration that  loss is not decreasing and hence no learning is taking place. With lower batch size then optimum one it will take more time to get trained.
 
-** %%time ** helps in watching time utilized by perticular cell in iPython Notebook
+**%%time** helps in watching time utilized by perticular cell in iPython Notebook
 
 
 ```python
@@ -557,7 +557,7 @@ train_it(encoder,decoder,32, 1000, test = False, plot = True)
     Wall time: 2min 21s
 
 
-When we run with batch size 2 for 1000 iteration, it processes 2000 samples and takes 1min 34 sec OR 94 seconds OR 2000/94 = ** 21.27 samples/sec ** . When we run with batch size 32 for 1000 iteration, it processes 32000 samples and takes 2 min 21 sec Or 94 seconds.  OR 32000/94 = ** 226.95 samples/sec ** . ** That is 10X improvement. ** The reported loss in second case is also lower then first case. Obviously the second case processes more sample so its loss will be much lower than the first one.
+When we run with batch size 2 for 1000 iteration, it processes 2000 samples and takes 1min 34 sec OR 94 seconds OR 2000/94 = **21.27 samples/sec** . When we run with batch size 32 for 1000 iteration, it processes 32000 samples and takes 2 min 21 sec Or 94 seconds.  OR 32000/94 = **226.95 samples/sec** . **That is 10X improvement.** The reported loss in second case is also lower then first case. Obviously the second case processes more sample so its loss will be much lower than the first one.
 
 
 ```
