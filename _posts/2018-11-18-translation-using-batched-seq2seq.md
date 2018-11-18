@@ -559,8 +559,9 @@ train_it(encoder,decoder,32, 1000, test = False, plot = True)
 
 When we run with batch size 2 for 1000 iteration, it processes 2000 samples and takes 1min 34 sec OR 94 seconds OR 2000/94 = **21.27 samples/sec** . When we run with batch size 32 for 1000 iteration, it processes 32000 samples and takes 2 min 21 sec Or 94 seconds.  OR 32000/94 = **226.95 samples/sec** . **That is 10X improvement.** The reported loss in second case is also lower then first case. Obviously the second case processes more sample so its loss will be much lower than the first one.
 
+Slowly you will see that the traslation is getting better and better after each 1000 iterations.
 
-```
+```python
 encoder = EncoderRNN(input_size, hidden_size, n_layers=1)
 decoder = DecoderRNN(hidden_size, output_size, n_layers=1)
 encoder =  encoder.to(device)
@@ -570,73 +571,82 @@ train_it(encoder,decoder,32, 10000, test = True, plot = True)
 >    Iteration :  0  ___________________________________________  Loss :  tensor(85.3690, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  je suis tres seul ici . EOS
     Target :  i m very lonely here . EOS
-    Predicted :  i . EOS . EOS . EOS
+    **Predicted** :  i . EOS . EOS . EOS
     Input :  je te connais a peine . EOS
     Target :  i barely know you . EOS PAD
-    Predicted :  i . EOS . EOS . EOS
-    Iteration :  1000  ___________________________________________  Loss :  tensor(31.7856, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  i . EOS . EOS . EOS
+
+>   Iteration :  1000  ___________________________________________  Loss :  tensor(31.7856, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  vous n allez pas abandonner si ? EOS PAD PAD PAD
     Target :  you re not going to give up are you ? EOS
-    Predicted :  would you know what you want you ? EOS ? EOS
+    **Predicted** :  would you know what you want you ? EOS ? EOS
     Input :  je ne t abandonne pas . EOS PAD PAD PAD PAD
     Target :  i won t leave you behind . EOS PAD PAD PAD
-    Predicted :  i m not sure you . EOS . EOS . EOS
-    Iteration :  2000  ___________________________________________  Loss :  tensor(25.8427, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  i m not sure you . EOS . EOS . EOS
+
+
+>    Iteration :  2000  ___________________________________________  Loss :  tensor(25.8427, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  vous pouvez choisir l un d entre eux . EOS
     Target :  you may choose one of them . EOS PAD PAD
-    Predicted :  you can t be a good job . EOS you
+    **Predicted** :  you can t be a good job . EOS you
     Input :  tom ordonna a mary de le faire . EOS PAD
     Target :  tom ordered mary to do it . EOS PAD PAD
-    Predicted :  tom often to lose mary . EOS mary . EOS
-    Iteration :  3000  ___________________________________________  Loss :  tensor(25.1522, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  tom often to lose mary . EOS mary . EOS
+    
+>    Iteration :  3000  ___________________________________________  Loss :  tensor(25.1522, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  je recois souvent des lettres de lui . EOS PAD PAD
     Target :  i often receive letters from him . EOS PAD PAD PAD
-    Predicted :  i m sure him to go to the hospital . EOS
+    **Predicted** :  i m sure him to go to the hospital . EOS
     Input :  il abandonna le lycee la premiere annee . EOS PAD PAD
     Target :  he dropped out of college in the first year . EOS
-    Predicted :  he walked out of the window . EOS . EOS .
-    Iteration :  4000  ___________________________________________  Loss :  tensor(25.0122, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  he walked out of the window . EOS . EOS .
+>   Iteration :  4000  ___________________________________________  Loss :  tensor(25.0122, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  j aimerais confirmer l heure de depart . EOS PAD
     Target :  i d like to confirm the departure time . EOS
-    Predicted :  i d like to meet the meeting . EOS .
+    **Predicted** :  i d like to meet the meeting . EOS .
     Input :  laissez tomber ! EOS PAD PAD PAD PAD PAD PAD
     Target :  drop it ! EOS PAD PAD PAD PAD PAD PAD
-    Predicted :  let s sit down ! EOS ! EOS . EOS
-    Iteration :  5000  ___________________________________________  Loss :  tensor(24.6480, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  let s sit down ! EOS ! EOS . EOS
+
+>   Iteration :  5000  ___________________________________________  Loss :  tensor(24.6480, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  pourquoi est ce que tu t es leve si tot ? EOS
     Target :  why did you get up so early ? EOS PAD PAD PAD
-    Predicted :  why did you think you re so so so so so so
+    **Predicted** :  why did you think you re so so so so so so
     Input :  je ne t ai jamais dit de demissionner . EOS PAD PAD
     Target :  i never told you to quit . EOS PAD PAD PAD PAD
-    Predicted :  i ve never told you . EOS you before you have any
-    Iteration :  6000  ___________________________________________  Loss :  tensor(19.8581, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  i ve never told you . EOS you before you have any
+
+>   Iteration :  6000  ___________________________________________  Loss :  tensor(19.8581, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  ce n est pas votre boulot . EOS
     Target :  that s not your job . EOS PAD
-    Predicted :  this is not really bad . EOS is
+    **Predicted** :  this is not really bad . EOS is
     Input :  suis je oblige d etre hospitalise ? EOS
     Target :  do i have to be hospitalized ? EOS
-    Predicted :  am i sure i m ok ? EOS
-    Iteration :  7000  ___________________________________________  Loss :  tensor(23.7747, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  am i sure i m ok ? EOS
+
+>   Iteration :  7000  ___________________________________________  Loss :  tensor(23.7747, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  tu veux juste paraitre diplomate . EOS
     Target :  you re just being diplomatic . EOS
-    Predicted :  you re joking . EOS you want
+    **Predicted** :  you re joking . EOS you want
     Input :  tom est bucheron . EOS PAD PAD
     Target :  tom is a lumberjack . EOS PAD
-    Predicted :  tom is very different . EOS he
-    Iteration :  8000  ___________________________________________  Loss :  tensor(22.6949, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  tom is very different . EOS he
+
+>   Iteration :  8000  ___________________________________________  Loss :  tensor(22.6949, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  tom posa l assiette de sandwiches sur la table devant mary . EOS PAD PAD
     Target :  tom put the plate of sandwiches on the table in front of mary . EOS
-    Predicted :  tom is mary on the table . EOS . EOS . EOS . EOS .
+    **Predicted** :  tom is mary on the table . EOS . EOS . EOS . EOS .
     Input :  j ai assez d argent pour proceder a son acquisition . EOS PAD PAD PAD
     Target :  i have enough money to buy it . EOS PAD PAD PAD PAD PAD PAD
-    Predicted :  i have enough money to buy it . EOS . EOS . EOS . EOS
-    Iteration :  9000  ___________________________________________  Loss :  tensor(20.8866, device='cuda:0', grad_fn=<ThAddBackward>)
+    **Predicted** :  i have enough money to buy it . EOS . EOS . EOS . EOS
+
+>   Iteration :  9000  ___________________________________________  Loss :  tensor(20.8866, device='cuda:0', grad_fn=<ThAddBackward>)
     Input :  gardez les mains en l air ! EOS
     Target :  keep your hands up . EOS PAD PAD
-    Predicted :  hands it ! EOS ! EOS ! EOS
+    **Predicted** :  hands it ! EOS ! EOS ! EOS
     Input :  tiens toi tranquille ! EOS PAD PAD PAD
     Target :  hold still . EOS PAD PAD PAD PAD
-    Predicted :  go . EOS you . EOS . EOS
+    **Predicted** :  go . EOS you . EOS . EOS
 
 
 
