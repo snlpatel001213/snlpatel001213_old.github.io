@@ -599,7 +599,6 @@ Iteration :   1000  _______  Loss :  tensor(31.7856, device='cuda:0', grad_fn=<T
     - Target :  tom ordered mary to do it . EOS PAD PAD
     - Predicted :  tom often to lose mary . EOS mary . EOS
     
-
 ---
  Iteration :    3000  _______  Loss :  tensor(25.1522, device='cuda:0', grad_fn=<ThAddBackward>)
     
@@ -609,6 +608,7 @@ Iteration :   1000  _______  Loss :  tensor(31.7856, device='cuda:0', grad_fn=<T
 - Input :  il abandonna le lycee la premiere annee . EOS PAD PAD
     - Target :  he dropped out of college in the first year . EOS
     - Predicted :  he walked out of the window . EOS . EOS .
+    
 ---
  Iteration :  4000  _______  Loss :  tensor(25.0122, device='cuda:0', grad_fn=<ThAddBackward>)
     
