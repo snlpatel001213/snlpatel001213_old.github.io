@@ -550,7 +550,7 @@ train_it(encoder,decoder,32, 1000, test = False, plot = True)
 
 
 
-![png](../assets/ssimg/translation-using-batched-seq2seq/batched_seq_2_seq_36_1.png)
+![png](../assets/img/translation-using-batched-seq2seq/batched_seq_2_seq_36_1.png)
 
 
     CPU times: user 1min 52s, sys: 29.6 s, total: 2min 21s
@@ -580,8 +580,7 @@ Iteration :  0  _______  Loss :  tensor(85.3690, device='cuda:0', grad_fn=<ThAdd
 
 ---
 
-Iteration :   1000  _______  
-	Loss :  tensor(31.7856, device='cuda:0', grad_fn=<ThAddBackward>)
+Iteration :   1000  _______  Loss :  tensor(31.7856, device='cuda:0', grad_fn=<ThAddBackward>)
 - Input :  vous n allez pas abandonner si ? EOS PAD PAD PAD
     - Target :  you re not going to give up are you ? EOS
     - Predicted :  would you know what you want you ? EOS ? EOS
@@ -591,8 +590,7 @@ Iteration :   1000  _______
 
 
 ---
- Iteration :     2000  _______  
-	Loss :  tensor(25.8427, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :     2000  _______  Loss :  tensor(25.8427, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  vous pouvez choisir l un d entre eux . EOS
     - Target :  you may choose one of them . EOS PAD PAD
@@ -603,8 +601,7 @@ Iteration :   1000  _______
     
 
 ---
- Iteration :    3000  _______  
-	Loss :  tensor(25.1522, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :    3000  _______  Loss :  tensor(25.1522, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  je recois souvent des lettres de lui . EOS PAD PAD
     - Target :  i often receive letters from him . EOS PAD PAD PAD
@@ -613,8 +610,7 @@ Iteration :   1000  _______
     - Target :  he dropped out of college in the first year . EOS
     - Predicted :  he walked out of the window . EOS . EOS .
 ---
- Iteration :  4000  _______  
-	Loss :  tensor(25.0122, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :  4000  _______  Loss :  tensor(25.0122, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  j aimerais confirmer l heure de depart . EOS PAD
     - Target :  i d like to confirm the departure time . EOS
@@ -624,8 +620,7 @@ Iteration :   1000  _______
     - Predicted :  let s sit down ! EOS ! EOS . EOS
 
 ---
- Iteration :  5000  _______  
-	Loss :  tensor(24.6480, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :  5000  _______  Loss :  tensor(24.6480, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  pourquoi est ce que tu t es leve si tot ? EOS
 - Target :  why did you get up so early ? EOS PAD PAD PAD
@@ -635,8 +630,7 @@ Iteration :   1000  _______
     - Predicted :  i ve never told you . EOS you before you have any
 
 ---
- Iteration :  6000  _______  
-	Loss :  tensor(19.8581, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :  6000  _______  Loss :  tensor(19.8581, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  ce n est pas votre boulot . EOS
     - Target :  that s not your job . EOS PAD
@@ -656,9 +650,7 @@ Iteration :   1000  _______
     - Predicted :  tom is very different . EOS he
 
 ---
- Iteration :  8000  _______ 
-    
-	Loss :  tensor(22.6949, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :  8000  _______ Loss :  tensor(22.6949, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  tom posa l assiette de sandwiches sur la table devant mary . EOS PAD PAD
     - Target :  tom put the plate of sandwiches on the table in front of mary . EOS
@@ -668,8 +660,7 @@ Iteration :   1000  _______
     - Predicted :  i have enough money to buy it . EOS . EOS . EOS . EOS
 
 ---
- Iteration :  9000  _______  
-	Loss :  tensor(20.8866, device='cuda:0', grad_fn=<ThAddBackward>)
+ Iteration :  9000  _______  Loss :  tensor(20.8866, device='cuda:0', grad_fn=<ThAddBackward>)
     
 - Input :  gardez les mains en l air ! EOS
     - Target :  keep your hands up . EOS PAD PAD
@@ -678,7 +669,8 @@ Iteration :   1000  _______
     - Target :  hold still . EOS PAD PAD PAD PAD
     - Predicted :  go . EOS you . EOS . EOS
 
-
+---
+Finaly you will receive follwing plot of loss v/s iterations.
 
 ![png](../assets/img/translation-using-batched-seq2seq/batched_seq_2_seq_38_2.png)
 
